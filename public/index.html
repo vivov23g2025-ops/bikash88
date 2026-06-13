@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>বিকাশ৮৮ - লাইভ পেমেন্ট সিস্টেম</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h2>bKash<span>88</span></h2>
+        </div>
+
+        <div id="register-box" class="form-box">
+            <h3>নতুন অ্যাকাউন্ট তৈরি করুন</h3>
+            <input type="number" id="reg-phone" placeholder="বিকাশ অ্যাকাউন্ট নম্বর">
+            <input type="password" id="reg-password" placeholder="পিন নম্বর (৪ বা ৬ ডিজিট)">
+            <button onclick="registerUser()">রেজিস্ট্রেশন করুন</button>
+            <p>ইতিমধ্যেই অ্যাকাউন্ট আছে? <a href="#" onclick="toggleForm('login-box')">লগইন করুন</a></p>
+        </div>
+
+        <div id="login-box" class="form-box" style="display: none;">
+            <h3>লগইন করুন</h3>
+            <input type="number" id="login-phone" placeholder="বিকাশ অ্যাকাউন্ট নম্বর">
+            <input type="password" id="login-password" placeholder="পিন নম্বর">
+            <button onclick="loginUser()">লগইন করুন</button>
+            <p>নতুন ইউজার? <a href="#" onclick="toggleForm('register-box')">রেজিস্ট্রেশন করুন</a></p>
+        </div>
+
+        <div id="dashboard-box" class="form-box" style="display: none;">
+            <h3>স্বাগতম, <span id="user-display"></span></h3>
+            <div class="balance-card">
+                <p>বর্তমান ব্যালেন্স</p>
+                <h2 id="balance-display">৳ 0.00</h2>
+            </div>
+
+            <div class="send-money-section">
+                <h4>টাকা পাঠান (Send Money)</h4>
+                <input type="number" id="send-phone" placeholder="প্রাপকের নম্বর">
+                <input type="number" id="send-amount" placeholder="টাকার পরিমাণ">
+                <button onclick="sendMoney()">টাকা পাঠান</button>
+            </div>
+
+            <button class="logout-btn" onclick="logout()">লগআউট</button>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = window.location.origin + '/api';
+        let currentPhone = '';
+
+        function toggleForm(boxId) {
+            document.getElementById('register-box').style.display = 'none';
+            document.getElementById('login-box').style.display = 'none';
+            document.getElementById('dashboard-box').style.display = 'none';
+            document.getElementById(boxId).style.display = 'block';
+        }
+
+        async function registerUser() {
+            const phone = document.getElementById('reg-phone').value;
+            const password = document.getElementById('reg-password').value;
+
+            const res = await fetch(`${API_URL}/register`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ phone, password })
+            });
+            const data = await res.json();
+            alert(data.message);
+            if(data.success) toggleForm('login-box');
+        }
+
+        async function loginUser() {
+            const phone = document.getElementById('login-phone').value;
+            const password = document.getElementById('login-password').value;
+
+            const res = await fetch(`${API_URL}/login`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ phone, password })
+            });
+            const data = await res.json();
+            alert(data.message);
+            if(data.success) {
+                currentPhone = data.user.phone;
+                document.getElementById('user-display').innerText = currentPhone;
+                document.getElementById('balance-display').innerText = '৳ ' + data.user.balance;
+                toggleForm('dashboard-box');
+            }
+        }
+
+        async function sendMoney() {
+            const receiverPhone = document.getElementById('send-phone').value;
+            const amount = document.getElementById('send-amount').value;
+
+            const res = await fetch(`${API_URL}/send-money`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ senderPhone: currentPhone, receiverPhone, amount })
+            });
+            const data = await res.json();
+            alert(data.message);
+            if(data.success) {
+                document.getElementById('balance-display').innerText = '৳ ' + data.newBalance;
+                document.getElementById('send-phone').value = '';
+                document.getElementById('send-amount').value = '';
+            }
+        }
+
+        function logout() {
+            currentPhone = '';
+            toggleForm('login-box');
+        }
+    </script>
+</body>
+</html>
