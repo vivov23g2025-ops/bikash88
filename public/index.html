@@ -3,102 +3,431 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BIKAS88</title>
+    <title id="siteTitle">বিকাশ৮৮ - সেরা অনলাইন গেমিং প্ল্যাটফর্ম</title>
+    <!-- আপনার অপ্টিমাইজড সিএসএস ফাইল -->
+    <link rel="stylesheet" href="style.css">
     <style>
-        body { 
-            background-color: #1a162b; 
-            color: white; 
-            margin: 0; 
-            font-family: sans-serif; 
-            user-select: none; 
-            overflow-x: hidden; 
+        /* ভাষা ড্রপডাউনের জন্য সামান্য কিছু ইন্টিগ্রেটেড স্টাইল */
+        .lang-select select {
+            background: var(--bg-header);
+            color: var(--color-text-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            padding: 4px 8px;
+            font-size: 12px;
+            cursor: pointer;
+            outline: none;
+        }
+        .lang-select select:focus {
+            border-color: var(--color-primary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ১. হেডার সেকশন -->
+    <header class="header">
+        <div class="logo-area">
+            <a href="#" class="logo-img">BIKASH<span>88</span></a>
+        </div>
+        <div class="header-right">
+            <button class="btn-top-small btn-top-login" id="lnkLogin1" onclick="openModal()">লগইন</button>
+            <button class="btn-top-small btn-top-reg" id="lnkReg1" onclick="openModal()">রেজিস্ট্রেশন</button>
+            
+            <!-- ভাষা পরিবর্তন অপশন (ড্রপডাউন) -->
+            <div class="lang-select">
+                <select id="langSwitcher" onchange="switchLanguage(this.value)">
+                    <option value="bn">🇧🇩 BN</option>
+                    <option value="en">🇺🇸 EN</option>
+                </select>
+            </div>
+            
+            <!-- লগইন পরবর্তী ডেমো ইউজার মেনু -->
+            <div class="user-logged-menu" id="userMenu">
+                <div class="wallet-info">⚖️ <strong id="txtWallet">৳ 500.00</strong></div>
+                <div class="icon-btn">
+                    🔔 <span class="icon-badge"></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ২. টেক্সট নেভিগেশন বার -->
+    <nav class="text-navbar">
+        <a href="#" class="nav-link active" id="navHome">🏠 হোম</a>
+        <a href="#" class="nav-link" id="navCasino">🔥 লাইভ ক্যাসিনো</a>
+        <a href="#" class="nav-link" id="navSlots">🎰 স্লটস</a>
+        <a href="#" class="nav-link" id="navSportsbook">⚽ স্পোর্টসবুক</a>
+        <a href="#" class="nav-link" id="navTable">🃏 টেবিল গেমস</a>
+        <a href="#" class="nav-link" id="navPromo">🎁 প্রমোশন</a>
+    </nav>
+
+    <!-- ৩. ব্যানার সেকশন -->
+    <section class="banner-container">
+        <h1 class="banner-title" id="bannerTitle">১০০% ওয়েলকাম বোনাস!</h1>
+        <p class="banner-sub" id="bannerSub">আজই জয়েন করুন এবং আপনার প্রথম ডিপোজিটে জিতে নিন আকর্ষণীয় বোনাস।</p>
+        <button class="btn-claim" id="btnClaim" style="width: 160px;" onclick="openModal()">ক্লেম করুন</button>
+    </section>
+
+    <!-- ৪. মেইন অথেনটিকেশন বাটন (মোবাইল ভিউর জন্য) -->
+    <div class="main-auth-btns">
+        <button class="btn-main-act btn-main-login" id="lnkLogin2" onclick="openModal()">লগইন</button>
+        <button class="btn-main-act btn-main-reg" id="lnkReg2" onclick="openModal()">রেজিস্ট্রেশন করুন</button>
+    </div>
+
+    <!-- ۵. গেম ক্যাটাগরি মেনু -->
+    <div class="category-menu">
+        <div class="cat-item active">
+            <span class="cat-icon">🎰</span>
+            <span id="catSlots">স্লটস</span>
+        </div>
+        <div class="cat-item">
+            <span class="cat-icon">🎲</span>
+            <span id="catCasino">লাইভ ক্যাসিনো</span>
+        </div>
+        <div class="cat-item">
+            <span class="cat-icon">🏏</span>
+            <span id="catCricket">ক্রিকেট</span>
+        </div>
+        <div class="cat-item">
+            <span class="cat-icon">⚽</span>
+            <span id="catSports">স্পোর্টস</span>
+        </div>
+        <div class="cat-item">
+            <span class="cat-icon">🃏</span>
+            <span id="catTable">টেবিল</span>
+        </div>
+    </div>
+
+    <!-- ৬. মেইন গেম গ্রিড -->
+    <main class="game-grid">
+        <div class="game-card">
+            <span class="game-card-icon">👑</span>
+            <span class="game-card-name">Crazy Time</span>
+        </div>
+        <div class="game-card">
+            <span class="game-card-icon">⚡</span>
+            <span class="game-card-name">Lightning Roulette</span>
+        </div>
+        <div class="game-card">
+            <span class="game-card-icon">🐯</span>
+            <span class="game-card-name">Dragon Tiger</span>
+        </div>
+        <div class="game-card">
+            <span class="game-card-icon">🍬</span>
+            <span class="game-card-name">Sweet Bonanza</span>
+        </div>
+        <div class="game-card">
+            <span class="game-card-icon">🚀</span>
+            <span class="game-card-name">Aviator</span>
+        </div>
+        <div class="game-card">
+            <span class="game-card-icon">🎣</span>
+            <span class="game-card-name">Mega Fishing</span>
+        </div>
+    </main>
+
+    <!-- ৭. প্রোমো সেকশন -->
+    <section class="promo-section">
+        <div class="promo-card">
+            <div class="promo-card-title" id="promoTitle1">সীমিত সময়ের অফার</div>
+            <div class="promo-banner-mock banner-yellow">
+                <h3 id="promoHead1">রোজকার ক্যাশব্যাক</h3>
+                <p id="promoSub1">প্রতিদিন ৫% পর্যন্ত লস ব্যাক অফার!</p>
+                <button class="promo-btn" id="promoBtn1">বিস্তারিত</button>
+            </div>
+        </div>
+        <div class="promo-card">
+            <div class="promo-card-title" id="promoTitle2">নতুন ইউজার স্পেশাল</div>
+            <div class="promo-banner-mock banner-purple">
+                <h3 id="promoHead2">ফ্রি স্পিন অফার</h3>
+                <p id="promoSub2">অ্যাকাউন্ট ভেরিফাই করলেই ২০টি ফ্রি স্পিন।</p>
+                <button class="promo-btn" id="promoBtn2">দাবি করুন</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ৮. ফুটার সেকশন -->
+    <footer class="main-footer">
+        <div class="download-apk-btn" id="btnDownload">
+            🤖 Android App ডাউনলোড করুন
+        </div>
+
+        <div class="footer-row-partners">
+            <div class="partner-group">
+                <span id="ftPartner1">গেমিং পার্টনারস</span>
+                <div class="partner-icons">🎰 🎲 🃏 🎯</div>
+            </div>
+            <div class="partner-group">
+                <span id="ftPartner2">সিকিউরিটি পার্টনারস</span>
+                <div class="partner-icons">🔒 🛡️ 💳</div>
+            </div>
+        </div>
+
+        <div class="seo-section">
+            <h4 class="seo-title" id="seoTitle">বকাশ৮৮ - বাংলাদেশের ১ নম্বর নিরাপদ গেমিং প্ল্যাটফর্ম</h4>
+            <p id="seoDesc">আমরা প্রদান করি বিশ্বস্ত ডিপোজিট এবং ফাস্ট উইথড্রয়াল সিস্টেম। ২৪ ঘন্টা লাইভ কাস্টমার সাপোর্ট এবং সেরা সব গেমের কালেকশন নিয়ে আমরা আছি আপনার পাশে।</p>
+        </div>
+
+        <div class="bottom-copyright-bar">
+            <div class="footer-links">
+                <a href="#" id="ftLinkAbout">আমাদের সম্পর্কে</a>
+                <a href="#" id="ftLinkTerms">শর্তাবলী</a>
+                <a href="#" id="ftLinkPrivacy">গোপনীয়তা নীতি</a>
+                <a href="#" id="ftLinkFaq">FAQ</a>
+            </div>
+            <div class="copyright-text" id="ftCopyright">
+                &copy; 2026 বিকাশ৮৮. সর্বস্বত্ব সংরক্ষিত।
+            </div>
+        </div>
+    </footer>
+
+    <!-- ৯. রেজিস্ট্রেশন মডাল উইজেট -->
+    <div class="modal" id="regModal" onclick="closeModalOutside(event)">
+        <div class="modal-content-reg">
+            <div class="reg-step-container">
+                <div class="reg-step-box active">১</div>
+                <div class="reg-step-line"></div>
+                <div class="reg-step-box">২</div>
+            </div>
+
+            <form id="registrationForm" onsubmit="event.preventDefault();">
+                <label class="reg-label" id="lblUser">ইউজারনেম<span>*</span></label>
+                <input type="text" class="reg-input-field" id="inputUser" placeholder="সর্বনিম্ন ৪ অক্ষরের নাম" required>
+
+                <label class="reg-label" id="lblPhone">ফোন নম্বর<span>*</span></label>
+                <div class="reg-phone-row">
+                    <div class="reg-flag-box">🇧🇩 +৮৮০</div>
+                    <input type="tel" class="reg-input-field reg-phone-input" id="inputPhone" placeholder="১XXXXXXXXX" required>
+                </div>
+
+                <label class="reg-label" id="lblPass">পাসওয়ার্ড<span>*</span></label>
+                <input type="password" class="reg-input-field" id="inputPass" placeholder="নিরাপদ পাসওয়ার্ড দিন" required>
+
+                <button type="submit" class="reg-btn-submit" id="btnSubmitReg">এগিয়ে যান 🚀</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ১০. রেস্পনসিভ চ্যাট সিস্টেম উইজেট -->
+    <div class="bhai88-chat-container">
+        <div class="chat-sub-buttons" id="chatSubButtons">
+            <a href="https://t.me/yourchannel" target="_blank" class="sub-btn sub-tg" title="Telegram">✈️</a>
+            <a href="mailto:support@bikash88.com" class="sub-btn sub-mail" title="Email">✉️</a>
+        </div>
+        <button class="main-floating-btn" onclick="toggleChatSystem()">💬</button>
+    </div>
+
+    <!-- লাইভ চ্যাট উইন্ডো -->
+    <div class="bhai88-chat-window" id="chatWindow">
+        <div class="chat-win-header">
+            <div class="chat-win-title" id="chatTitle">বিকাশ৮৮ কাস্টমার সাপোর্ট</div>
+            <div class="chat-win-close" onclick="toggleChatWindow(false)">&times;</div>
+        </div>
+        <div class="chat-win-body" id="chatBody">
+            <div class="bot-msg-bubble" id="chatWelcomeMsg">
+                আসসালামু আলাইকুম! বিকাশ৮৮ সাপোর্টে আপনাকে স্বাগতম। আপনাকে কীভাবে সাহায্য করতে পারি?
+            </div>
+            <div class="quick-replies-container" id="quickRepliesBox">
+                <button class="quick-reply-btn" onclick="sendQuickReply(this.innerText)">কীভাবে ডিপোজিট করব?</button>
+                <button class="quick-reply-btn" onclick="sendQuickReply(this.innerText)">আমার বোনাস অ্যাড হয়নি</button>
+                <button class="quick-reply-btn" onclick="sendQuickReply(this.innerText)">অ্যাকাউন্ট ভেরিফিকেশন সমস্যা</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ১১. সিকিউরড এডমিন প্যানেল -->
+    <div id="adminPanel">
+        <h3>নিরাপদ এডমিন ড্যাশবোর্ড</h3>
+    </div>
+
+    <!-- ==========================================================================
+       জাভাস্ক্রিপ্ট লজিক (ভাষা পরিবর্তন, মডাল ও চ্যাট লজিক)
+       ========================================================================== -->
+    <script>
+        // ডিকশনারি ডাটাবেস (বাংলা এবং ইংরেজি ডাটা)
+        const langData = {
+            bn: {
+                siteTitle: "বিকাশ৮৮ - সেরা অনলাইন গেমিং প্ল্যাটফর্ম",
+                lnkLogin1: "লগইন", lnkLogin2: "লগইন",
+                lnkReg1: "রেজিস্ট্রেশন", lnkReg2: "রেজিস্ট্রেশন করুন",
+                txtWallet: "৳ 500.00",
+                navHome: "🏠 হোম", navCasino: "🔥 লাইভ ক্যাসিনো", navSlots: "🎰 স্লটস", navSportsbook: "⚽ স্পোর্টসবুক", navTable: "🃏 টেবিল গেমস", navPromo: "🎁 প্রমোশন",
+                bannerTitle: "১০০% ওয়েলকাম বোনাস!", bannerSub: "আজই জয়েন করুন এবং আপনার প্রথম ডিপোজিটে জিতে নিন আকর্ষণীয় বোনাস।", btnClaim: "ক্লেম করুন",
+                catSlots: "স্লটস", catCasino: "লাইভ ক্যাসিনো", catCricket: "ক্রিকেট", catSports: "স্পোর্টস", catTable: "টেবিল",
+                promoTitle1: "সীমিত সময়ের অফার", promoHead1: "রোজকার ক্যাশব্যাক", promoSub1: "প্রতিদিন ৫% পর্যন্ত লস ব্যাক অফার!", promoBtn1: "বিস্তারিত",
+                promoTitle2: "নতুন ইউজার স্পেশাল", promoHead2: "ফ্রি স্পিন অফার", promoSub2: "অ্যাকাউন্ট ভেরিফাই করলেই ২০টি ফ্রি স্পিন।", promoBtn2: "দাবি করুন",
+                btnDownload: "🤖 Android App ডাউনলোড করুন", ftPartner1: "গেমিং পার্টনারস", ftPartner2: "সিকিউরিটি পার্টনারস",
+                seoTitle: "বিকাশ৮৮ - বাংলাদেশের ১ নম্বর নিরাপদ গেমিং প্ল্যাটফর্ম", seoDesc: "আমরা প্রদান করি বিশ্বস্ত ডিপোজিট এবং ফাস্ট উইথড্রয়াল সিস্টেম। ২৪ ঘন্টা লাইভ কাস্টমার সাপোর্ট এবং সেরা সব গেমের কালেকশন নিয়ে আমরা আছি আপনার পাশে।",
+                ftLinkAbout: "আমাদের সম্পর্কে", ftLinkTerms: "শর্তাবলী", ftLinkPrivacy: "গোপনীয়তা নীতি", ftLinkFaq: "FAQ",
+                ftCopyright: "&copy; 2026 বিকাশ৮৮. সর্বস্বত্ব সংরক্ষিত।",
+                lblUser: "ইউজারনেম*", inputUserPlaceholder: "সর্বনিম্ন ৪ অক্ষরের নাম",
+                lblPhone: "ফোন নম্বর*", inputPhonePlaceholder: "১XXXXXXXXX",
+                lblPass: "পাসওয়ার্ড*", inputPassPlaceholder: "নিরাপদ পাসওয়ার্ড দিন",
+                btnSubmitReg: "এগিয়ে যান 🚀", chatTitle: "বিকাশ৮৮ কাস্টমার সাপোর্ট",
+                chatWelcomeMsg: "আসসালামু আলাইকুম! বিকাশ৮৮ সাপোর্টে আপনাকে স্বাগতম। আপনাকে কীভাবে সাহায্য করতে পারি?",
+                quickReplies: ["কীভাবে ডিপোজিট করব?", "আমার বোনাস অ্যাড হয়নি", "অ্যাকাউন্ট ভেরিফিকেশন সমস্যা"],
+                botResponse: "আপনার প্রশ্নটির জন্য ধন্যবাদ। আমাদের একজন রিপ্রেজেন্টেটিভ খুব শীঘ্রই আপনার সাথে যুক্ত হচ্ছেন।"
+            },
+            en: {
+                siteTitle: "Bikash88 - Best Online Gaming Platform",
+                lnkLogin1: "Login", lnkLogin2: "Login",
+                lnkReg1: "Registration", lnkReg2: "Register Now",
+                txtWallet: "৳ 500.00",
+                navHome: "🏠 Home", navCasino: "🔥 Live Casino", navSlots: "🎰 Slots", navSportsbook: "⚽ Sportsbook", navTable: "🃏 Table Games", navPromo: "🎁 Promotions",
+                bannerTitle: "100% Welcome Bonus!", bannerSub: "Join today and win exciting bonuses on your first deposit.", btnClaim: "Claim Now",
+                catSlots: "Slots", catCasino: "Live Casino", catCricket: "Cricket", catSports: "Sports", catTable: "Table",
+                promoTitle1: "Limited Time Offer", promoHead1: "Daily Cashback", promoSub1: "Up to 5% loss back offer every day!", promoBtn1: "Details",
+                promoTitle2: "New User Special", promoHead2: "Free Spin Offer", promoSub2: "Get 20 free spins upon verifying your account.", promoBtn2: "Claim",
+                btnDownload: "🤖 Download Android App", ftPartner1: "Gaming Partners", ftPartner2: "Security Partners",
+                seoTitle: "Bikash88 - No. 1 Secure Gaming Platform in Bangladesh", seoDesc: "We provide trusted deposit and fast withdrawal systems. With 24-hour live customer support and the best game collection, we are here for you.",
+                ftLinkAbout: "About Us", ftLinkTerms: "Terms & Conditions", ftLinkPrivacy: "Privacy Policy", ftLinkFaq: "FAQ",
+                ftCopyright: "&copy; 2026 Bikash88. All Rights Reserved.",
+                lblUser: "Username*", inputUserPlaceholder: "Minimum 4 characters",
+                lblPhone: "Phone Number*", inputPhonePlaceholder: "1XXXXXXXXX",
+                lblPass: "Password*", inputPassPlaceholder: "Enter secure password",
+                btnSubmitReg: "Continue 🚀", chatTitle: "Bikash88 Customer Support",
+                chatWelcomeMsg: "Welcome to Bikash88 Support! How can we assist you today?",
+                quickReplies: ["How to deposit?", "My bonus not added", "Account verification issue"],
+                botResponse: "Thank you for your question. One of our representatives will join you shortly."
+            }
+        };
+
+        // বর্তমান ভাষা ট্র্যাকার (ডিফল্ট: বট রেসপন্স হ্যান্ডলিং এর জন্য)
+        let currentLang = 'bn';
+
+        // ভাষা পরিবর্তন করার কোর লজিক
+        function switchLanguage(lang) {
+            currentLang = lang;
+            const data = langData[lang];
+            
+            // টাইটেল এবং টেক্সট পরিবর্তন
+            document.getElementById('siteTitle').innerText = data.siteTitle;
+            document.getElementById('lnkLogin1').innerText = data.lnkLogin1;
+            document.getElementById('lnkLogin2').innerText = data.lnkLogin2;
+            document.getElementById('lnkReg1').innerText = data.lnkReg1;
+            document.getElementById('lnkReg2').innerText = data.lnkReg2;
+            document.getElementById('txtWallet').innerText = data.txtWallet;
+            
+            // নেভিগেশন
+            document.getElementById('navHome').innerText = data.navHome;
+            document.getElementById('navCasino').innerText = data.navCasino;
+            document.getElementById('navSlots').innerText = data.navSlots;
+            document.getElementById('navSportsbook').innerText = data.navSportsbook;
+            document.getElementById('navTable').innerText = data.navTable;
+            document.getElementById('navPromo').innerText = data.navPromo;
+            
+            // ব্যানার ও ক্যাটাগরি
+            document.getElementById('bannerTitle').innerText = data.bannerTitle;
+            document.getElementById('bannerSub').innerText = data.bannerSub;
+            document.getElementById('btnClaim').innerText = data.btnClaim;
+            document.getElementById('catSlots').innerText = data.catSlots;
+            document.getElementById('catCasino').innerText = data.catCasino;
+            document.getElementById('catCricket').innerText = data.catCricket;
+            document.getElementById('catSports').innerText = data.catSports;
+            document.getElementById('catTable').innerText = data.catTable;
+            
+            // প্রোমো ও ফুটার
+            document.getElementById('promoTitle1').innerText = data.promoTitle1;
+            document.getElementById('promoHead1').innerText = data.promoHead1;
+            document.getElementById('promoSub1').innerText = data.promoSub1;
+            document.getElementById('promoBtn1').innerText = data.promoBtn1;
+            document.getElementById('promoTitle2').innerText = data.promoTitle2;
+            document.getElementById('promoHead2').innerText = data.promoHead2;
+            document.getElementById('promoSub2').innerText = data.promoSub2;
+            document.getElementById('promoBtn2').innerText = data.promoBtn2;
+            document.getElementById('btnDownload').innerText = data.btnDownload;
+            document.getElementById('ftPartner1').innerText = data.ftPartner1;
+            document.getElementById('ftPartner2').innerText = data.ftPartner2;
+            document.getElementById('seoTitle').innerText = data.seoTitle;
+            document.getElementById('seoDesc').innerText = data.seoDesc;
+            document.getElementById('ftLinkAbout').innerText = data.ftLinkAbout;
+            document.getElementById('ftLinkTerms').innerText = data.ftLinkTerms;
+            document.getElementById('ftLinkPrivacy').innerText = data.ftLinkPrivacy;
+            document.getElementById('ftLinkFaq').innerText = data.ftLinkFaq;
+            document.getElementById('ftCopyright').innerHTML = data.ftCopyright;
+            
+            // মডাল এলিমেন্টস
+            document.getElementById('lblUser').innerHTML = data.lblUser;
+            document.getElementById('inputUser').placeholder = data.inputUserPlaceholder;
+            document.getElementById('lblPhone').innerHTML = data.lblPhone;
+            document.getElementById('inputPhone').placeholder = data.inputPhonePlaceholder;
+            document.getElementById('lblPass').innerHTML = data.lblPass;
+            document.getElementById('inputPass').placeholder = data.inputPassPlaceholder;
+            document.getElementById('btnSubmitReg').innerText = data.btnSubmitReg;
+            
+            // লাইভ চ্যাট উইন্ডো
+            document.getElementById('chatTitle').innerText = data.chatTitle;
+            document.getElementById('chatWelcomeMsg').innerText = data.chatWelcomeMsg;
+            
+            // কুইক রিপ্লাই বাটন আপডেট
+            const replyButtons = document.querySelectorAll('#quickRepliesBox .quick-reply-btn');
+            replyButtons.forEach((btn, index) => {
+                btn.innerText = data.quickReplies[index];
+            });
         }
 
-        .header { 
-            background-color: #0d0a1b; 
-            padding: 8px 10px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center;
-            border-bottom: 1px solid #1f1a3a;
+        // মডাল কন্ট্রোল
+        function openModal() {
+            document.getElementById('regModal').style.display = 'flex';
         }
-        .logo-area { display: flex; align-items: center; gap: 5px; }
-        .logo-img { font-size: 20px; font-weight: bold; color: #fff; cursor: pointer; text-decoration: none; }
-        .logo-img span { color: #ff007f; }
+        function closeModal() {
+            document.getElementById('regModal').style.display = 'none';
+        }
+        function closeModalOutside(event) {
+            if (event.target.id === 'regModal') {
+                closeModal();
+            }
+        }
 
-        .header-right { display: flex; gap: 6px; align-items: center; }
-        .btn-top-small { padding: 5px 10px; font-size: 11px; border-radius: 4px; border: none; font-weight: bold; cursor: pointer; }
-        .btn-login { background-color: transparent; color: #ff007f; border: 1px solid #ff007f; }
-        .btn-reg { background-color: #ff007f; color: white; }
+        // চ্যাট বাটন ও উইন্ডো টগল লজিক
+        function toggleChatSystem() {
+            const subButtons = document.getElementById('chatSubButtons');
+            const chatWindow = document.getElementById('chatWindow');
+            
+            if (chatWindow.style.display === 'flex') {
+                toggleChatWindow(false);
+            } else {
+                subButtons.classList.toggle('open');
+                setTimeout(() => {
+                    if(subButtons.classList.contains('open')) {
+                        toggleChatWindow(true);
+                    }
+                }, 200);
+            }
+        }
 
-        .user-info-area { display: flex; align-items: center; gap: 8px; background: #251f3d; padding: 4px 10px; border-radius: 20px; font-size: 12px; }
-        .user-balance { color: #00ff66; font-weight: bold; }
-        .btn-logout { background: #3d355e; border: none; color: #ff3366; padding: 2px 6px; border-radius: 4px; cursor: pointer; font-size: 11px; }
+        function toggleChatWindow(show) {
+            const chatWindow = document.getElementById('chatWindow');
+            const subButtons = document.getElementById('chatSubButtons');
+            if (show) {
+                chatWindow.style.display = 'flex';
+                subButtons.classList.remove('open');
+            } else {
+                chatWindow.style.display = 'none';
+            }
+        }
 
-        .lang-select { background: #251f3d; color: white; border: none; font-size: 11px; padding: 4px; border-radius: 3px; }
+        // কুইক রিপ্লাই রেসপন্স লজিক (ভাষা অনুযায়ী ডাইনামিক)
+        function sendQuickReply(message) {
+            const chatBody = document.getElementById('chatBody');
+            
+            // ইউজার চ্যাট বাবল
+            const userMsg = document.createElement('div');
+            userMsg.className = 'user-msg-bubble';
+            userMsg.innerText = message;
+            chatBody.appendChild(userMsg);
+            chatBody.scrollTop = chatBody.scrollHeight;
 
-        .banner-container { width: 100%; position: relative; margin-top: 2px; height: 140px; overflow: hidden; }
-        .slider { width: 100%; height: 100%; display: flex; }
-        .slide { min-width: 100%; height: 100%; position: relative; }
-        .slide img { width: 100%; height: 100%; object-fit: cover; }
-        .slide-text { position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.6); padding: 4px 8px; border-radius: 4px; font-size: 11px; }
-
-        .notice-bar { background-color: #0d0a1c; padding: 6px 10px; display: flex; align-items: center; gap: 10px; font-size: 12px; border-bottom: 1px solid #1f1a3a; }
-        .notice-title { background: #ff007f; padding: 2px 5px; border-radius: 3px; font-weight: bold; font-size: 10px; white-space: nowrap; }
-        marquee { color: #ccc; }
-
-        .action-row { display: flex; padding: 10px; gap: 10px; justify-content: center; }
-        .action-card { flex: 1; max-width: 160px; background: linear-gradient(135deg, #2b163d, #1a0a26); border: 1px solid #4a154b; border-radius: 6px; padding: 10px; text-align: center; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2); transition: 0.2s; }
-        .action-card:active { transform: scale(0.95); }
-        .action-icon { font-size: 20px; margin-bottom: 3px; }
-        .action-card.deposit .action-icon { color: #00ff66; }
-        .action-card.withdraw .action-icon { color: #ffaa00; }
-        .action-title { font-size: 12px; font-weight: bold; color: #fff; }
-
-        .tab-bar { display: flex; overflow-x: auto; background: #0c091f; padding: 4px; gap: 4px; border-bottom: 1px solid #1f1a3a; }
-        .tab-item { padding: 8px 14px; font-size: 12px; font-weight: bold; color: #8a85a5; white-space: nowrap; cursor: pointer; border-radius: 4px; }
-        .tab-item.active { background: #251f3d; color: #ff007f; border-bottom: 2px solid #ff007f; }
-
-        .games-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 10px; padding-bottom: 80px; }
-        .game-card { background: #251f3d; border-radius: 6px; overflow: hidden; text-align: center; border: 1px solid #312952; cursor: pointer; position: relative; }
-        .game-thumb { width: 100%; height: 80px; background: #130f24; display: flex; align-items: center; justify-content: center; font-size: 26px; color: #524780; font-weight: bold; }
-        .game-name { padding: 4px; font-size: 10px; font-weight: bold; color: #ddd; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .game-tag { position: absolute; top: 3px; left: 3px; background: red; font-size: 7px; font-weight: bold; padding: 1px 3px; border-radius: 2px; text-transform: uppercase; }
-
-        .modal-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 9999; padding: 15px; box-sizing: border-box; }
-        .modal-box { background: #231b36; width: 100%; max-width: 340px; border-radius: 8px; border: 1px solid #45346c; overflow: hidden; animation: zoomIn 0.2s ease; }
-        @keyframes zoomIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        .modal-header { background: #0f0b1e; padding: 12px; font-size: 14px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #31244e; }
-        .btn-close { background: none; border: none; color: #ff007f; font-size: 18px; font-weight: bold; cursor: pointer; }
-        .modal-body { padding: 15px; }
-
-        label { display: block; font-size: 11px; color: #a49dbd; margin-bottom: 4px; }
-        .input-group { margin-bottom: 12px; }
-        .modal-box input, .modal-box select { width: 100%; padding: 10px; background: #130f24; border: 1px solid #3c2f5c; border-radius: 4px; color: white; box-sizing: border-box; font-size: 13px; outline: none; }
-        .modal-box input:focus { border-color: #ff007f; }
-        .btn-submit { width: 100%; padding: 10px; background: #ff007f; color: white; border: none; border-radius: 4px; font-size: 14px; font-weight: bold; cursor: pointer; transition: 0.2s; }
-        .btn-submit:active { background: #cc0066; }
-        .form-switch-text { text-align: center; font-size: 12px; color: #aaa; margin-top: 12px; }
-        .form-switch-text a { color: #ff007f; text-decoration: none; font-weight: bold; }
-
-        .foot-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: #0c091f; display: flex; justify-content: space-around; padding: 6px 0; border-top: 1px solid #1f1a3a; z-index: 999; }
-        .foot-item { text-align: center; color: #8a85a5; font-size: 10px; text-decoration: none; cursor: pointer; flex: 1; }
-        .foot-item.active { color: #ff007f; }
-        .foot-icon { font-size: 18px; margin-bottom: 2px; }
-
-        .chat-window { position: fixed; bottom: 65px; right: 15px; width: 280px; height: 350px; background: #1e1933; border: 1px solid #ff007f; border-radius: 8px; display: none; flex-direction: column; z-index: 10000; box-shadow: 0 5px 15px rgba(0,0,0,0.5); overflow: hidden; }
-        .chat-header { background: #ff007f; padding: 10px; font-size: 12px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
-        .chat-body { flex: 1; padding: 10px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; font-size: 12px; }
-        .bot-msg-bubble { background: #2c2447; padding: 6px 10px; border-radius: 8px 8px 8px 0; max-width: 85%; align-self: flex-start; line-height: 1.4; }
-        .user-msg-bubble { background: #ff007f; color: white; padding: 6px 10px; border-radius: 8px 8px 0 8px; max-width: 85%; align-self: flex-end; }
-        .chat-options { display: flex; flex-direction: column; gap: 5px; margin-top: 5px; }
-        .chat-opt-btn { background: #130f24; border: 1px solid #45346c; color: #ccc; padding: 6px; text-align: left; border-radius: 4px; cursor: pointer; font-size: 11px; }
-        .chat-opt-btn:hover { border-color: #ff007f; color: #fff; }
-
-        .admin-panel { position: fixed; top: 5%; left: 5%; width: 90%; height: 90%; background: #0a0814; border: 2px solid #ffaa00; z-index: 100000; display: none; border-radius: 8px; flex-direction: column; overflow: hidden; }
-        .admin-header { background: #18132e; padding: 12px; display: flex; justify-content: space-between; font-weight: bold; color: #ffaa00; border-bottom: 1px solid #31275c; font-size: 13px; }
-        .admin-content { padding: 12px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
-        .admin-tabs { display: flex; background: #130f24; border-bottom: 1px solid #221a3a; }
-        .admin-tab { flex: 1; text-align: center; padding: 10px; cursor: pointer; font-size: 13px; font-weight: bold; color: #888; }\n        .admin-tab.active { color: #ffaa00; border-bottom: 2px solid #ffaa00; background: #1a1430; }\n        .admin-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 11px; }\n        .admin-table th, .admin-table td { border: 1px solid #251e42; padding: 6px; text-align: left; }\n        .admin-table th { background: #17122b; color: #ffaa00; }\n    </style>\n</head>\n<body>\n\n    <div class="header">\n        <div class="logo-area" id="logoClick">\n            <a class="logo-img" href="#">BIKAS<span>88</span></a>\n        </div>\n        <div class="header-right" id="headerAuthButtons">\n            <button class="btn-top-small btn-login" onclick="openModal('loginModal')">লগইন</button>\n            <button class="btn-top-small btn-reg" onclick="openModal('registerModal')">সাইন আপ</button>\n            <select class="lang-select"><option>BN</option><option>EN</option></select>\n        </div>\n    </div>\n\n    <div class="banner-container">\n        <div class="slider" id="mainSlider">\n            <div class="slide">\n                <div class="slide-text">ক্যাসিনো গেম খেলুন ঘরে বসেই সেরা রেটে!</div>\n                <div style="width:100%; height:100%; background: linear-gradient(45deg, #ff007f, #7b00ff); display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:bold;">🔥 BIKAS88 PREMIUM GAMING</div>\n            </div>\n            <div class="slide">\n                <div class="slide-text">বিকাশ ও নগদে ১ মিনিটে ইনস্ট্যান্ট ডিপোজিট সুবিধা!</div>\n                <div style="width:100%; height:100%; background: linear-gradient(45deg, #0033aa, #00cc66); display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:bold;">⚡ FAST AUTOMATIC DEPOSIT</div>\n            </div>\n        </div>\n    </div>\n\n    <div class="notice-bar">\n        <div class="notice-title">ঘোষণা</div>\n        <marquee scrollamount="4">স্বাগতম BIKAS88 প্ল্যাটফর্মে! নতুন অ্যাকাউন্টে পাচ্ছেন ৫০ টাকা ইনস্ট্যান্ট ফ্রি ট্রায়াল বোনাস। নিরাপদ ডিপোজিট এবং সুপারফাস্ট উইথড্রয়াল সুবিধা উপভোগ করুন ২৪ ঘণ্টা।</marquee>\n    </div>\n\n    <div class="action-row">\n        <div class="action-card deposit" onclick="checkAuthAndOpen('depositModal')">\n            <div class="action-icon">💰</div>\n            <div class="action-title">ডিপোজিট</div>\n        </div>\n        <div class="action-card withdraw" onclick="checkAuthAndOpen('withdrawModal')">\n            <div class="action-icon">🏧</div>\n            <div class="action-title">উইথড্র করুন</div>\n        </div>\n    </div>\n\n    <div class="tab-bar">\n        <div class="tab-item active" id="cat-hot" onclick="switchCategory('hot')">🔥 জনপ্রিয় গেম</div>\n        <div class="tab-item" id="cat-slots" onclick="switchCategory('slots')">🎰 স্লট গেমস</div>\n        <div class="tab-item" id="cat-live" onclick="switchCategory('live')">🃏 লাইভ ক্যাসিনো</div>\n        <div class="tab-item" id="cat-sports" onclick="switchCategory('sports')">⚽ স্পোর্টসবুক</div>\n    </div>\n\n    <div class="games-grid" id="gamesContainer">\n    </div>\n\n    <div class="modal-overlay" id="registerModal">\n        <div class="modal-box">\n            <div class="modal-header">\n                <span>নতুন অ্যাকাউন্ট তৈরি করুন</span>\n                <button class="btn-close" onclick="closeModal('registerModal')">×</button>\n            </div>\n            <div class="modal-body">\n                <div class="input-group">\n                    <label>বিকাশ/নগদ মোবাইল নম্বর (১১ ডিজিট)</label>\n                    <input type="number" id="regPhone" placeholder="যেমন: 017XXXXXXXX">\n                </div>\n                <div class="input-group">\n                    <label>সিকিউর অ্যাকাউন্ট পিন কোড</label>\n                    <input type="password" id="regPassword" placeholder="পাসওয়ার্ড লিখুন">\n                </div>\n                <button class="btn-submit" onclick="handleRegister()">রেজিস্ট্রেশন করুন</button>\n                <div class="form-switch-text">ইতিমধ্যেই অ্যাকাউন্ট আছে? <a href="#" onclick="switchModal('registerModal', 'loginModal')">লগইন করুন</a></div>\n            </div>\n        </div>\n    </div>\n\n    <div class="modal-overlay" id="loginModal">\n        <div class="modal-box">\n            <div class="modal-header">\n                <span>অ্যাকাউন্টে লগইন করুন</span>\n                <button class="btn-close" onclick="closeModal('loginModal')">×</button>\n            </div>\n            <div class="modal-body">\n                <div class="input-group">\n                    <label>মোবাইল নম্বর</label>\n                    <input type="number" id="loginPhone" placeholder="আপনার ফোন নম্বর">\n                </div>\n                <div class="input-group">\n                    <label>পিন কোড</label>\n                    <input type="password" id="loginPassword" placeholder="আপনার পিন নম্বর">\n                </div>\n                <button class="btn-submit" onclick="handleLogin()">লগইন নিশ্চিত করুন</button>\n                <div class="form-switch-text">নতুন ইউজার? <a href="#" onclick="switchModal('loginModal', 'registerModal')">অ্যাকাউন্ট খুলুন</a></div>\n            </div>\n        </div>\n    </div>\n\n    <div class="modal-overlay" id="depositModal">\n        <div class="modal-box">\n            <div class="modal-header">\n                <span>ইনস্ট্যান্ট ডিপোজিট গেটওয়ে</span>\n                <button class="btn-close" onclick="closeModal('depositModal')">×</button>\n            </div>\n            <div class="modal-body">\n                <div style="background:#130f24; padding:8px; border-radius:6px; margin-bottom:12px; font-size:11px; color:#ffaa00; border:1px dashed #ffaa00;">\n                    ⚠️ নিয়ম: নিচে দেওয়া এজেন্টের নম্বরে টাকা পাঠানোর পর ট্রানজেকশন রিকোয়েস্ট দিন।\n                </div>\n                <div class="input-group">\n                    <label>পেমেন্ট মেথড সিলেক্ট করুন</label>\n                    <select id="depMethod">\n                        <option value="bKash">bKash (Agent: 01794889280)</option>\n                        <option value="Nagad">Nagad (Agent: 01794889280)</option>\n                    </select>\n                </div>\n                <div class="input-group">\n                    <label>ডিপোজিট টাকার পরিমাণ (সর্বনিম্ন ২০০ ৳)</label>\n                    <input type="number" id="depAmount" placeholder="টাকার পরিমাণ লিখুন">\n                </div>\n                <div class="input-group">\n                    <label>যে নম্বর থেকে টাকা পাঠিয়েছেন (Sender Number)</label>\n                    <input type="number" id="depSender" placeholder="আপনার বিকাশ/নগদ নম্বর">\n                </div>\n                <button class="btn-submit" style="background:#00cc66;" onclick="handleDepositSubmit()">ডিপোজিট রিকোয়েস্ট পাঠান</button>\n            </div>\n        </div>\n    </div>\n\n    <div class="modal-overlay" id="withdrawModal">\n        <div class="modal-box">\n            <div class="modal-header">\n                <span>টাকা উত্তোলন (Withdrawal)</span>\n                <button class="btn-close" onclick="closeModal('withdrawModal')">×</button>\n            </div>\n            <div class="modal-body">\n                <div class="input-group">\n                    <label>পেমেন্ট মেথড</label>\n                    <select id="witMethod">\n                        <option value="bKash">bKash Personal</option>\n                        <option value="Nagad">Nagad Personal</option>\n                    </select>\n                </div>\n                <div class="input-group">\n                    <label>উইথড্রাল টাকার পরিমাণ (সর্বনিম্ন ৫০০ ৳)</label>\n                    <input type="number" id="witAmount" placeholder="কত টাকা তুলতে চান?">\n                </div>\n                <div class="input-group">\n                    <label>প্রাপক পার্সোনাল মোবাইল নম্বর</label>\n                    <input type="number" id="witReceiver" placeholder="যে নম্বরে টাকা নিবেন">\n                </div>\n                <button class="btn-submit" style="background:#ffaa00; color:#000;" onclick="handleWithdrawSubmit()">উইথড্রাল রিকোয়েস্ট করুন</button>\n            </div>\n        </div>\n    </div>\n\n    <div class="foot-nav">\n        <a class="foot-item active" href="#"><div class="foot-icon">🏠</div>হোম</a>\n        <a class="foot-item" href="#" onclick="checkAuthAndOpen('depositModal')"><div class="foot-icon">💰</div>ডিপোজিট</a>\n        <a class="foot-item sub-tg" href="#" onclick="openLiveChatAgent()"><div class="foot-icon">💬</div>হেল্পলাইন</a>\n        <a class="foot-item" href="#" onclick="openModal('loginModal')"><div class="foot-icon">👤</div>মাই প্রোফাইল</a>\n    </div>\n\n    <div class="chat-window" id="bhai88ChatWindow">\n        <div class="chat-header">\n            <span>BIKAS88 লাইভ কাস্টমার সাপোর্ট</span>\n            <button class="btn-close" style="color:white;" onclick="closeLiveChatAgent()">×</button>\n        </div>\n        <div class="chat-body" id="chatWindowBody">\n            <div class="bot-msg-bubble">আসসালামু আলাইকুম! BIKAS88 কাস্টমার কেয়ারে আপনাকে স্বাগতম। আপনাকে কীভাবে সাহায্য করতে পারি? নিচের যেকোনো একটি প্রশ্ন সিলেক্ট করুন:</div>\n            <div class="chat-options">\n                <button class="chat-opt-btn" onclick="handleBotOption('আমি কীভাবে অ্যাকাউন্টে টাকা ডিপোজিট করব?', 'ডিপোজিট করতে প্রথমে ড্যাশবোর্ডের ডিপোজিট বাটনে চাপুন। সেখানে দেওয়া এজেন্ট নম্বরে টাকা পাঠিয়ে ফর্মটি পূরণ করে সাবমিট করুন। ১ থেকে ৫ মিনিটে ব্যালেন্স যোগ হবে।')">১. কীভাবে ডিপোজিট করব?</button>\n                <button class="chat-opt-btn" onclick="handleBotOption('সর্বনিম্ন কত টাকা উইথড্র করা যায়?', 'আমাদের সাইটে সর্বনিম্ন উইথড্রাল ৫০০ টাকা এবং সর্বোচ্চ ২৫,০০০ টাকা। ২৪ ঘণ্টার যেকোনো সময় উইথড্র করতে পারবেন।')">২. সর্বনিম্ন উইথড্র কত?</button>\n                <button class="chat-opt-btn" onclick="handleBotOption('টাকা পাঠিয়েছি কিন্তু ব্যালেন্স আসেনি কেন?', 'লেনদেনের চাপ থাকলে কখনো ২-৪ মিনিট সময় লাগতে পারে। ৫ মিনিটের বেশি হলে দয়া করে আপনার প্রেরক নম্বরসহ এখানে মেসেজ দিন, এডমিন চেক করছে।')">৩. টাকা পাঠিয়েছি ব্যালেন্স আসেনি</button>\n            </div>\n        </div>\n    </div>\n\n    <div class="admin-panel" id="adminPanel">\n        <div class="admin-header">\n            <span>BIKAS88 CORE CONTROL PANEL v1.2</span>\n            <button class="btn-close" style="color:#ffaa00;" id="closeAdminBtn">×</button>\n        </div>\n        <div class="admin-tabs">\n            <div class="admin-tab active" id="adminTabRequests">ডিপোজিট/উইথড্র রিকোয়েস্ট</div>\n            <div class="admin-tab" id="adminTabUsers">ইউজার ডেটাবেজ</div>\n        </div>\n        <div class="admin-content">\n            <div id="adminRequestsView">\n                <h4 style="margin:0; color:#fff;">পেনন্ডিং ট্রানজেকশন তালিকা</h4>\n                <table class="admin-table">\n                    <thead>\n                        <tr><th>ইউজার</th><th>টাইপ</th><th>মেথড</th><th>পরিমাণ</th><th>অ্যাকশন</th></tr>\n                    </thead>\n                    <tbody id="adminRequestsTableBody">\n                        <tr><td colspan="5" style="text-align:center; color:#555;">কোনো রিকোয়েস্ট পেন্ডিং নেই।</td></tr>\n                    </tbody>\n                </table>\n            </div>\n            <div id="adminUsersView" style="display:none;">\n                <h4 style="margin:0; color:#fff;">নিবন্ধিত ইউজার ডাটাবেজ</h4>\n                <table class="admin-table">\n                    <thead>\n                        <tr><th>মোবাইল নম্বর</th><th>ব্যালেন্স (৳)</th></tr>\n                    </thead>\n                    <tbody id="adminUsersTableBody"></tbody>\n                </table>\n            </div>\n        </div>\n    </div>\n\n    <script>\n        const API_BASE_URL = window.location.origin + '/api';\n        let loggedInUser = null;\n\n        const gamesData = {\n            hot: [\n                {name: 'Crazy Time Live', icon: '🎡', tag: 'hot'},\n                {name: 'Cricket Star Sports', icon: '🏏', tag: 'live'},\n                {name: 'Super Joker Slot', icon: '🎰', tag: 'new'},\n                {name: 'Aviator Lucky Game', icon: '🚀', tag: 'hot'},\n                {name: 'Roulette PRO', icon: '🔮', tag: 'hot'}\n            ],\n            slots: [\n                {name: 'Super Joker Slot', icon: '🎰', tag: 'new'},\n                {name: '777 Classic Fruits', icon: '🍒', tag: 'popular'},\n                {name: 'Gates of Olympus', icon: '⚡', tag: 'hot'}\n            ],\n            live: [\n                {name: 'Crazy Time Live', icon: '🎡', tag: 'hot'},\n                {name: 'Evolution Blackjack', icon: '🃏', tag: 'hot'},\n                {name: 'Baccarat Squeeze', icon: '🎴', tag: 'live'}\n            ],\n            sports: [\n                {name: 'Cricket Star Sports', icon: '🏏', tag: 'live'},\n                {name: 'FIFA Football Live', icon: '⚽', tag: 'hot'}\n            ]\n        };\n\n        function renderGames(category) {\n            const container = document.getElementById('gamesContainer');\n            container.innerHTML = '';\n            const list = gamesData[category] || [];\n            \n            list.forEach(game => {\n                const card = document.createElement('div');\n                card.className = 'game-card';\n                card.onclick = () => alert(`\"${game.name}\" গেমটি চালু হচ্ছে... খেলার আগে নিশ্চিত করুন ওয়ালেটে পর্যাপ্ত ব্যালেন্স আছে।`);\n                card.innerHTML = `\n                    <div class="game-tag">${game.tag}</div>\n                    <div class="game-thumb">${game.icon}</div>\n                    <div class="game-name">${game.name}</div>\n                `;\n                container.appendChild(card);\n            });\n        }\n\n        function switchCategory(cat) {\n            document.querySelectorAll('.tab-item').forEach(el => el.classList.remove('active'));\n            document.getElementById('cat-' + cat).classList.add('active');\n            renderGames(cat);\n        }\n\n        let currentSlide = 0;\n        setInterval(() => {\n            currentSlide = (currentSlide + 1) % 2;\n            document.getElementById('mainSlider').style.transform = `translateX(-${currentSlide * 100}%)`;\n            document.getElementById('mainSlider').style.transition = 'transform 0.5s ease-in-out';\n        }, 4000);\n\n        function openModal(id) { document.getElementById(id).style.display = 'flex'; }\n        function closeModal(id) { document.getElementById(id).style.display = 'none'; }\n        function switchModal(closeId, openId) { closeModal(closeId); openModal(openId); }\n\n        function checkAuthAndOpen(modalId) {\n            if (!loggedInUser) {\n                alert('অনুগ্রহ করে গেম বা লেনদেন শুরু করার আগে অ্যাকাউন্টে লগইন করুন!');\n                openModal('loginModal');\n            } else {\n                openModal(modalId);\n            }\n        }\n\n        async function handleRegister() {\n            const phone = document.getElementById('regPhone').value;\n            const password = document.getElementById('regPassword').value;\n\n            if(phone.length !== 11) return alert('সঠিক ১১ ডিজিটের মোবাইল নম্বর দিন!');\n            if(!password) return alert('পিন কোড টাইপ করুন!');\n\n            try {\n                const response = await fetch(`${API_BASE_URL}/register`, {\n                    method: 'POST',\n                    headers: { 'Content-Type': 'application/json' },\n                    body: JSON.stringify({ phone, password })\n                });\n                const data = await response.json();\n                alert(data.message);\n                if(data.success) switchModal('registerModal', 'loginModal');\n            } catch (err) { alert('সার্ভার কানেকশন এরর!'); }\n        }\n\n        async function handleLogin() {\n            const phone = document.getElementById('loginPhone').value;\n            const password = document.getElementById('loginPassword').value;\n\n            try {\n                const response = await fetch(`${API_BASE_URL}/login`, {\n                    method: 'POST',\n                    headers: { 'Content-Type': 'application/json' },\n                    body: JSON.stringify({ phone, password })\n                });\n                const data = await response.json();\n                alert(data.message);\n                if(data.success) {\n                    loggedInUser = data.user;\n                    closeModal('loginModal');\n                    updateHeaderUI();\n                }\n            } catch (err) { alert('সার্ভার কানেকশন এরর!'); }\n        }\n\n        function updateHeaderUI() {\n            const authArea = document.getElementById('headerAuthButtons');\n            if(loggedInUser) {\n                authArea.innerHTML = `\n                    <div class="user-info-area">\n                        <span>📱 ${loggedInUser.phone}</span>\n                        <span class="user-balance" id="liveBalanceDisplay">৳ ${loggedInUser.balance}</span>\n                        <button class="btn-logout" onclick="handleLogout()">লগআউট</button>\n                    </div>\n                `;\n            } else {\n                authArea.innerHTML = `\n                    <button class="btn-top-small btn-login" onclick="openModal('loginModal')">লগইন</button>\n                    <button class="btn-top-small btn-reg" onclick="openModal('registerModal')">সাইন আপ</button>\n                `;\n            }\n        }\n\n        function handleLogout() {\n            loggedInUser = null;\n            updateHeaderUI();\n            alert('সফলভাবে লগআউট করা হয়েছে!');\n        }\n\n        function handleDepositSubmit() {\n            const amount = document.getElementById('depAmount').value;\n            const sender = document.getElementById('depSender').value;\n            if(!amount || amount < 200) return alert('সর্বনিম্ন ২০০ টাকা ডিপোজিট করতে হবে!');\n            if(!sender) return alert('টাকা পাঠানোর নম্বরটি দিন!');\n\n            alert('আপনার ডিপোজিট রিকোয়েস্টটি এডমিন প্যানেলে পাঠানো হয়েছে। অনুগ্রহ করে ২-৫ মিনিট অপেক্ষা করুন।');\n            closeModal('depositModal');\n        }\n\n        async function handleWithdrawSubmit() {\n            const amount = document.getElementById('witAmount').value;\n            const receiver = document.getElementById('witReceiver').value;\n            if(!amount || amount < 500) return alert('সর্বনিম্ন ৫০০ টাকা উইথড্র করতে পারবেন!');\n            if(!receiver) return alert('টাকা পাওয়ার নম্বরটি দিন!');\n\n            if(loggedInUser.balance < amount) return alert('আপনার ওয়ালেটে পর্যাপ্ত ব্যালেন্স নেই!');\n\n            try {\n                const response = await fetch(`${API_BASE_URL}/send-money`, {\n                    method: 'POST',\n                    headers: { 'Content-Type': 'application/json' },\n                    body: JSON.stringify({\n                        senderPhone: loggedInUser.phone,\n                        receiverPhone: receiver,\n                        amount: amount\n                    })\n                });\n                const data = await response.json();\n                alert(data.message);\n                if(data.success) {\n                    loggedInUser.balance = data.newBalance;\n                    document.getElementById('liveBalanceDisplay').innerText = '৳ ' + loggedInUser.balance;\n                    closeModal('withdrawModal');\n                }\n            } catch (err) { alert('উইথড্রাল প্রোসেস ব্যর্থ হয়েছে!'); }\n        }\n\n        function openLiveChatAgent() {\n            document.getElementById('bhai88ChatWindow').style.display = 'flex';\n        }\n        function closeModal(id) {\n            document.getElementById(id).style.display = 'none';\n        }\n        function openModal(id) {\n            document.getElementById(id).style.display = 'flex';\n        }\n        function closeLiveChatAgent() {\n            document.getElementById('bhai88ChatWindow').style.display = 'none';\n        }\n\n        function handleBotOption(question, answer) {\n            const body = document.getElementById('chatWindowBody');\n            const userBubble = document.createElement('div');\n            userBubble.className = 'user-msg-bubble';\n            userBubble.innerText = question;\n            body.appendChild(userBubble);\n            body.scrollTop = body.scrollHeight;\n            \n            setTimeout(() => {\n                const botBubble = document.createElement('div');\n                botBubble.className = 'bot-msg-bubble';\n                botBubble.innerText = answer;\n                body.appendChild(botBubble);\n                body.scrollTop = body.scrollHeight;\n            }, 600);\n        }\n\n        let logoClicks = 0;\n        document.getElementById('logoClick').onclick = () => {\n            logoClicks++;\n            if(logoClicks === 3) {\n                if(prompt(\"অ্যাডমিন সিকিউরিটি পিন দিন:\") === \"8800\") {\n                    document.getElementById('adminPanel').style.display = 'flex';\n                } else { alert(\"ভুল অ্যাডমিন পিন কোড!\"); }\n                logoClicks = 0;\n            }\n        };\n        document.getElementById('closeAdminBtn').onclick = () => { document.getElementById('adminPanel').style.display = 'none'; };\n\n        document.getElementById('adminTabRequests').onclick = function() {\n            this.classList.add('active'); document.getElementById('adminTabUsers').classList.remove('active');\n            document.getElementById('adminRequestsView').style.display = 'block'; document.getElementById('adminUsersView').style.display = 'none';\n        };\n        document.getElementById('adminTabUsers').onclick = function() {\n            this.classList.add('active'); document.getElementById('adminTabRequests').classList.remove('active');\n            document.getElementById('adminRequestsView').style.display = 'none'; document.getElementById('adminUsersView').style.display = 'block';\n        };\n\n        window.onload = () => { renderGames('hot'); };\n    </script>\n</body>\n</html>\n```
-
-**গুরুত্বপূর্ণ টিপস:** কোডটি গিটহাবে সেভ করার পর অবশ্যই **২ মিনিট** অপেক্ষা করবেন, যেন আপনার রেন্ডার সার্ভার ব্যাকএন্ডে পুরো প্রজেক্টটি ফ্রেশভাবে আপডেট করে নিতে পারে। এরপর ব্রাউজারের ইনকগনিটো (Incognito) মোডে বা ক্যাশ মেমোরি ক্লিয়ার করে সাইটটি ওপেন করুন। এবার আপনার সেই অসাধারণ গেমিং লুক একদম পারফেক্টভাবে চলে আসবে!
+            // বট রেসপন্স (ভাষা অনুযায়ী মেসেজ পিক করবে)
+            setTimeout(() => {
+                const botMsg = document.createElement('div');
+                botMsg.className = 'bot-msg-bubble';
+                botMsg.innerText = langData[currentLang].botResponse;
+                chatBody.appendChild(botMsg);
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
