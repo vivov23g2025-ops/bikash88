@@ -1,140 +1,136 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-const User = require('../models/user');
+const User = require('../models/User');
 const Transaction = require('../models/Transaction');
 
-// ১. ইউজার রেজিস্ট্রেশন (Sign Up) API
+// ------------ ১. রিয়েল রেজিস্ট্রেশন এপিআই ------------
 router.post('/register', async (req, res) => {
     try {
-        const { phone, password } = req.body;
+        const { username, phone, password } = req.body;
 
-        // নম্বরটি আগে থেকেই আছে কিনা চেক করা
-        const userExists = await User.findOne({ phone });
-        if (userExists) {
-            return res.status(400).json({ success: false, message: "এই নম্বরটি দিয়ে ইতিমধ্যেই অ্যাকাউন্ট খোলা আছে!" });
+        if (!username || !phone || !password) {
+            return res.status(400).json({ status: "error", message: "সবগুলো ফিল্ড পূরণ করুন!" });
         }
 
-        // পাসওয়ার্ড সিকিউর বা হ্যাশ করা
-        const hashedPassword = await bcrypt.hash(password, 10);
+        // ইউজার আগে থেকেই আছে কিনা চেক
+        const existingUser = await User.findOne({ $or: [{ username: username.toLowerCase() }, { phone }] });
+        if (existingUser) {
+            return res.status(400).json({ status: "error", message: "ইউজারনেম বা ফোন নম্বরটি ইতিমধ্যে ব্যবহৃত হয়েছে!" });
+        }
 
-        // নতুন ইউজার তৈরি ও ৫০ টাকা ফ্রি ব্যালেন্স উপহার
+        // পাসওয়ার্ড হ্যাশ (এনক্রিপ্ট) করা
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
+
         const newUser = new User({
+            username: username.toLowerCase(),
             phone,
-            password: hashedPassword,
-            balance: 50 // নতুন অ্যাকাউন্ট খুললে বোনাস
+            password_hash: hashedPassword
         });
 
         await newUser.save();
-        res.status(201).json({ success: true, message: "অ্যাকাউন্ট তৈরি সফল হয়েছে! ৫০ টাকা বোনাস দেওয়া হয়েছে।" });
+        res.status(201).json({ status: "success", message: "রেজিস্ট্রেশন সফল হয়েছে! লগইন করুন।" });
 
     } catch (error) {
-        res.status(500).json({ success: false, message: "সার্ভার এরর: " + error.message });
+        res.status(500).json({ status: "error", message: "সার্ভারে সমস্যা হয়েছে, আবার চেষ্টা করুন।" });
     }
 });
 
-// ২. ইউজার লগইন (Login) API
+// ------------ ২. রিয়েল লগইন এপিআই ------------
 router.post('/login', async (req, res) => {
     try {
-        const { phone, password } = req.body;
+        const { username, password } = req.body;
 
-        // ইউজার চেক করা
-        const user = await User.findOne({ phone });
+        const user = await User.findOne({ username: username.toLowerCase() });
         if (!user) {
-            return res.status(400).json({ success: false, message: "অ্যাকাউন্ট পাওয়া যায়নি! প্রথমে রেজিস্ট্রেশন করুন।" });
+            return res.status(400).json({ status: "error", message: "ইউজারনেম পাওয়া যায়নি!" });
         }
 
-        // পাসওয়ার্ড চেক করা
-        const isMatch = await bcrypt.compare(password, user.password);
+        // পাসওয়ার্ড ভেরিফাই করা
+        const isMatch = await bcrypt.compare(password, user.password_hash);
         if (!isMatch) {
-            return res.status(400).json({ success: false, message: "ভুল পাসওয়ার্ড! আবার চেষ্টা করুন।" });
+            return res.status(400).json({ status: "error", message: "ভুল পাসওয়ার্ড! আবার চেষ্টা করুন।" });
         }
 
-        res.json({ 
-            success: true, 
-            message: "লগইন সফল হয়েছে!", 
-            user: { phone: user.phone, balance: user.balance, role: user.role } 
+        if (user.status === 'suspended') {
+            return res.status(403).json({ status: "error", message: "আপনার অ্যাকাউন্টটি সাময়িকভাবে স্থগিত আছে।" });
+        }
+
+        // লগইন সফল (রিয়েল ডাটা ফ্রন্টএন্ডে পাঠানো হচ্ছে)
+        res.status(200).json({
+            status: "success",
+            message: "লগইন সফল হয়েছে!",
+            user: {
+                id: user._id,
+                username: user.username,
+                phone: user.phone,
+                balance: user.wallet_balance
+            }
         });
 
     } catch (error) {
-        res.status(500).json({ success: false, message: "সার্ভার এরর: " + error.message });
+        res.status(500).json({ status: "error", message: "সার্ভার এরর!" });
     }
 });
 
-// ৩. ব্যালেন্স চেক (Check Balance) API
-router.get('/balance/:phone', async (req, res) => {
+// ------------ ৩. ম্যানুয়াল ডিপোজিট রিকোয়েস্ট এপিআই ------------
+router.post('/deposit', async (req, res) => {
     try {
-        const user = await User.findOne({ phone: req.params.phone });
-        if (!user) return res.status(404).json({ success: false, message: "ইউজার পাওয়া যায়নি" });
-        
-        res.json({ success: true, balance: user.balance });
-    } catch (error) {
-        res.status(500).json({ success: false, message: "সার্ভার এরর" });
-    }
-});
+        const { userId, amount, method, transactionId, userNumber } = req.body;
 
-// ৪. মানি ট্রান্সফার (Send Money) API
-router.post('/send-money', async (req, res) => {
-    try {
-        const { senderPhone, receiverPhone, amount } = req.body;
-        const transferAmount = Number(amount);
+        const user = await User.findById(userId);
+        if (!user) return res.status(404).json({ status: "error", message: "ইউজার পাওয়া যায়নি!" });
 
-        if (transferAmount <= 0) {
-            return res.status(400).json({ success: false, message: "সঠিক পরিমাণ টাকা লিখুন!" });
-        }
-
-        // প্রেরক ও প্রাপক খুঁজে বের করা
-        const sender = await User.findOne({ phone: senderPhone });
-        const receiver = await User.findOne({ phone: receiverPhone });
-
-        if (!receiver) {
-            return res.status(404).json({ success: false, message: "প্রাপকের বিকাশ অ্যাকাউন্টটি খুঁজে পাওয়া যায়নি!" });
-        }
-
-        if (sender.phone === receiver.phone) {
-            return res.status(400).json({ success: false, message: "নিজের নম্বরে টাকা পাঠানো সম্ভব নয়!" });
-        }
-
-        // ব্যালেন্স চেক
-        if (sender.balance < transferAmount) {
-            return res.status(400).json({ success: false, message: "আপনার অ্যাকাউন্টে পর্যাপ্ত ব্যালেন্স নেই!" });
-        }
-
-        // ব্যালেন্স আদান-প্রদান করা
-        sender.balance -= transferAmount;
-        receiver.balance += transferAmount;
-
-        await sender.save();
-        await receiver.save();
-
-        // হিস্ট্রিতে ট্রানজেকশন রেকর্ড সেভ করা
-        const transaction = new Transaction({
-            sender: senderPhone,
-            receiver: receiverPhone,
-            amount: transferAmount,
-            type: "Send Money"
+        const newDeposit = new Transaction({
+            userId: user._id,
+            username: user.username,
+            type: 'deposit',
+            amount: Number(amount),
+            method,
+            transactionId,
+            userNumber
         });
-        await transaction.save();
 
-        res.json({ success: true, message: `সফলভাবে ${transferAmount} টাকা পাঠানো হয়েছে!`, newBalance: sender.balance });
+        await newDeposit.save();
+        res.status(200).json({ status: "success", message: "ডিপোজিট রিকোয়েস্ট জমা হয়েছে। এডমিন ভেরিফাই করছে।" });
 
     } catch (error) {
-        res.status(500).json({ success: false, message: "সার্ভার এরর: " + error.message });
+        res.status(500).json({ status: "error", message: "ডিপোজিট সাবমিট হয়নি।" });
     }
 });
 
-// ৫. স্টেটমেন্ট বা হিস্ট্রি (Transaction History) API
-router.get('/statement/:phone', async (req, res) => {
+// ------------ ৪. উইথড্রয়াল রিকোয়েস্ট এপিআই ------------
+router.post('/withdraw', async (req, res) => {
     try {
-        const phone = req.params.phone;
-        // ইউজারের করা বা আসা সব লেনদেনের তালিকা (সর্বশেষগুলো আগে আসবে)
-        const history = await Transaction.find({
-            $or: [{ sender: phone }, { receiver: phone }]
-        }).sort({ date: -1 });
+        const { userId, amount, method, userNumber } = req.body;
 
-        res.json({ success: true, history });
+        const user = await User.findById(userId);
+        if (!user) return res.status(404).json({ status: "error", message: "ইউজার পাওয়া যায়নি!" });
+
+        // ব্যালেন্স চেক করা
+        if (user.wallet_balance < Number(amount)) {
+            return res.status(400).json({ status: "error", message: "আপনার অ্যাকাউন্টে পর্যাপ্ত ব্যালেন্স নেই!" });
+        }
+
+        // উইথড্র রিকোয়েস্ট তৈরি করা এবং সাময়িকভাবে ব্যালেন্স কেটে নেওয়া
+        const newWithdraw = new Transaction({
+            userId: user._id,
+            username: user.username,
+            type: 'withdrawal',
+            amount: Number(amount),
+            method,
+            userNumber
+        });
+
+        user.wallet_balance -= Number(amount); // ব্যালেন্স হোল্ড করা
+        await user.save();
+        await newWithdraw.save();
+
+        res.status(200).json({ status: "success", message: "উইথড্রয়াল রিকোয়েস্ট সফল হয়েছে। কিছুক্ষণের মধ্যে টাকা পেয়ে যাবেন।" });
+
     } catch (error) {
-        res.status(500).json({ success: false, message: "সার্ভার এরর" });
+        res.status(500).json({ status: "error", message: "উইথড্র সাবমিট হয়নি।" });
     }
 });
 
