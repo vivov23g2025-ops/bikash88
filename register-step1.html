@@ -3,43 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>রেজিস্ট্রেশন (ধাপ ১) - BIKASH88</title>
+    <title>নিবন্ধন - ধাপ ১ - BIKASH88</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="auth-page">
 
 <div class="auth-container">
+
     <div class="stepper">
-        <div class="step active">1</div>
+        <div class="step active">১</div>
         <div class="line"></div>
-        <div class="step">2</div>
+        <div class="step">২</div>
         <div class="line"></div>
         <div class="step">✓</div>
     </div>
 
     <form class="auth-form" action="register-step2.html" method="GET">
-        <div class="form-group">
-            <label>ব্যবহারকারীর নাম <span>*</span></label>
-            <input type="text" placeholder="কমপক্ষে 6 থেকে 13 টি অক্ষর থাকতে হবে।" required>
-        </div>
 
-        <div class="form-group">
-            <label>পাসওয়ার্ড <span>*</span></label>
-            <input type="password" placeholder="Fill in password" required>
-        </div>
+        <label for="reg-username">ব্যবহারকারীর নাম *</label>
+        <input type="text" id="reg-username" name="username" placeholder="কমপক্ষে ৬ অক্ষর" minlength="6" required>
 
-        <div class="form-group">
-            <label>পাসওয়ার্ড নিশ্চিত করুন <span>*</span></label>
-            <input type="password" placeholder="Confirm password" required>
-        </div>
+        <label for="reg-password">পাসওয়ার্ড *</label>
+        <input type="password" id="reg-password" name="password" placeholder="পাসওয়ার্ড দিন" minlength="6" required>
 
-        <button type="submit" class="auth-btn">Continue</button>
+        <label for="confirm-password">পাসওয়ার্ড নিশ্চিত করুন *</label>
+        <input type="password" id="confirm-password" name="confirm_password" placeholder="আবার পাসওয়ার্ড দিন" required>
+
+        <button type="submit" class="auth-btn">পরবর্তী ধাপ</button>
 
         <p class="switch-page">
-            ইতিমধ্যে একটি সদস্যপদ আছে? <a href="login.html">প্রবেশ করুন</a>
+            ইতিমধ্যে একটি সদস্যপদ আছে? 
+            <a href="login.html">প্রবেশ করুন</a>
         </p>
+
     </form>
+
 </div>
+
+<script>
+    const password = document.getElementById("reg-password");
+    const confirmPassword = document.getElementById("confirm-password");
+
+    function validatePassword(){
+        if(password.value != confirmPassword.value) {
+            confirmPassword.setCustomValidity("পাসওয়ার্ড দুটি মেলেনি!");
+        } else {
+            confirmPassword.setCustomValidity('');
+        }
+    }
+
+    password.onchange = validatePassword;
+    confirmPassword.onkeyup = validatePassword;
+</script>
 
 </body>
 </html>
