@@ -9,32 +9,33 @@
 <body class="auth-page">
 
 <div class="auth-container">
+
     <div class="auth-header">
-        <h2>BHAI88-এ আপনাকে স্বাগতম</h2>
-        <a href="Index.html" class="close-btn">✕</a>
+        <h2>BIKASH88-এ আপনাকে স্বাগত</h2>
+        <a href="index.html" class="close-btn">✕</a>
     </div>
 
-    <form class="auth-form" action="Index.html" method="POST">
-        <div class="form-group">
-            <label>ব্যবহারকারীর নাম <span>*</span></label>
-            <input type="text" placeholder="এখানে পূরণ করুন" required>
-        </div>
+    <form class="auth-form" action="dashboard.html" method="POST">
 
-        <div class="form-group">
-            <label>পাসওয়ার্ড <span>*</span></label>
-            <input type="password" placeholder="এখানে পূরণ করুন" required>
-        </div>
+        <label for="username">ব্যবহারকারীর নাম *</label>
+        <input type="text" id="username" name="username" placeholder="এখানে পূরণ করুন" required>
+
+        <label for="password">পাসওয়ার্ড *</label>
+        <input type="password" id="password" name="password" placeholder="এখানে পূরণ করুন" required>
 
         <div class="forgot-pass">
-            <a href="#">পাসওয়ার্ড ভুলে গেছেন</a>
+            <a href="#">পাসওয়ার্ড ভুলে গেছেন?</a>
         </div>
 
-        <button type="submit" class="auth-btn">প্রবেশ করুন</button>
+        <button type="submit" class="auth-btn">প্ৰবেশ করুন</button>
 
         <p class="switch-page">
-            অ্যাকাউন্ট নেই? <a href="register-step1.html">নিবন্ধন</a>
+            অ্যাকাউন্ট নেই? 
+            <a href="register-step1.html">নিবন্ধন করুন</a>
         </p>
+
     </form>
+
 </div>
 
 </body>
