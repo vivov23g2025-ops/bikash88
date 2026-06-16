@@ -1,45 +1,39 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>রেজিস্ট্রেশন - BIKASH88</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>নিবন্ধন (ধাপ ২) - BIKASH88</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="auth-page">
 
 <div class="auth-container">
+    <div class="stepper" style="display: flex; align-items: center; justify-content: center; margin-bottom: 25px;">
+        <div class="step" style="width: 30px; height: 30px; border-radius: 50%; background: #28a745; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">✓</div>
+        <div class="line" style="flex: 0.5; height: 2px; background: #28a745; margin: 0 10px;"></div>
+        <div class="step active" style="width: 30px; height: 30px; border-radius: 50%; background: #007bff; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">২</div>
+        <div class="line" style="flex: 0.5; height: 2px; background: #eee; margin: 0 10px;"></div>
+        <div class="step" style="width: 30px; height: 30px; border-radius: 50%; background: #eee; color: #777; display: flex; align-items: center; justify-content: center; font-weight: bold;">✓</div>
+    </div>
 
-<div class="stepper">
-<div class="step active">1</div>
-<div class="line"></div>
-<div class="step">2</div>
-<div class="line"></div>
-<div class="step">✓</div>
-</div>
+    <form action="login.html" method="GET">
+        <div class="form-group">
+            <label>ওটিপি (OTP) কোড *</label>
+            <input type="text" placeholder="আপনার ফোনে পাঠানো ৪ বা ৬ ডিজিটের কোড" required>
+        </div>
 
-<form action="register-step2.html">
+        <div class="form-group">
+            <label>রেফারেল কোড (ঐচ্ছিক)</label>
+            <input type="text" placeholder="যদি থাকে">
+        </div>
 
-<label>ব্যবহারকারীর নাম *</label>
-<input type="text" placeholder="কমপক্ষে ৬ অক্ষর">
+        <button type="submit" class="auth-btn">নিবন্ধন সম্পন্ন করুন</button>
 
-<label>পাসওয়ার্ড *</label>
-<input type="password" placeholder="Password">
-
-<label>পাসওয়ার্ড নিশ্চিত করুন *</label>
-<input type="password" placeholder="Confirm Password">
-
-<button class="auth-btn">
-Continue
-</button>
-
-<p class="switch-page">
-ইতিমধ্যে একটি সদস্যপদ আছে?
-<a href="login.html">প্রবেশ করুন</a>
-</p>
-
-</form>
-
+        <p class="switch-page" style="text-align: center; margin-top: 15px;">
+            ইতিমধ্যে একটি সদস্যপদ আছে? <a href="login.html">প্রবেশ করুন</a>
+        </p>
+    </form>
 </div>
 
 </body>
