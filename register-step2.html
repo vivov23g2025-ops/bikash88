@@ -3,56 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>রেজিস্ট্রেশন (ধাপ ২) - BIKASH88</title>
+    <title>নিবন্ধন - ধাপ ২ - BIKASH88</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="auth-page">
 
 <div class="auth-container">
+
     <div class="stepper">
-        <div class="step complete">1</div>
-        <div class="line complete"></div>
-        <div class="step active">2</div>
+        <div class="step">১</div>
+        <div class="line"></div>
+        <div class="step active">২</div>
         <div class="line"></div>
         <div class="step">✓</div>
     </div>
 
-    <form class="auth-form" action="login.html" method="POST">
-        <div class="form-group">
-            <label>মুদ্রা <span>*</span></label>
-            <select class="reg-select-field">
-                <option value="BDT">BDT</option>
-            </select>
-        </div>
+    <form class="auth-form" action="registration-success.html" method="POST">
 
-        <div class="form-group">
-            <label>মোবাইল নম্বর <span>*</span></label>
-            <div class="reg-phone-row">
-                <div class="reg-flag-box">🇧🇩 +880</div>
-                <input type="tel" placeholder="Phone Number" required style="flex: 1;">
-            </div>
-        </div>
+        <label for="phone">মোবাইল নাম্বার *</label>
+        <input type="tel" id="phone" name="phone" placeholder="আপনার মোবাইল নাম্বার" required>
 
-        <div class="form-group">
-            <label>ইমেইল</label>
-            <input type="email" placeholder="Fill in Email (Optional)">
-        </div>
+        <label for="verification-code">যাচাইকরণ কোড (OTP) *</label>
+        <input type="text" id="verification-code" name="otp" placeholder="কোডটি এখানে দিন" required>
 
-        <div class="form-group">
-            <label>রেফারেল কোড</label>
-            <input type="text" placeholder="Fill in Referral Code (Optional)">
-        </div>
+        <button type="submit" class="auth-btn">নিবন্ধন সম্পন্ন করুন</button>
 
-        <div class="form-group checkbox-group">
-            <input type="checkbox" id="terms" required>
-            <label for="terms" class="label-inline">আমি আইনি বয়সী এবং আমি এর সাথে একমত শর্তাবলী</label>
-        </div>
+        <p class="switch-page">
+            ইতিমধ্যে একটি সদস্যপদ আছে? 
+            <a href="login.html">প্রবেশ করুন</a>
+        </p>
 
-        <div class="btn-group-row">
-            <a href="register-step1.html" class="auth-btn btn-back">পেছনে</a>
-            <button type="submit" class="auth-btn btn-submit">সম্পূর্ণ</button>
-        </div>
     </form>
+
 </div>
 
 </body>
