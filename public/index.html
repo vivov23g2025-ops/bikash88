@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="siteTitle">ভাই৮৮ - সেরা অনলাইন গেমিং প্ল্যাটফর্ম</title>
+    <title id="siteTitle">বিকাশ৮৮ - সেরা অনলাইন গেমিং প্ল্যাটফর্ম</title>
+    <!-- আপনার অপ্টিমাইজড সিএসএস ফাইল -->
     <link rel="stylesheet" href="style.css">
     <style>
+        /* ভাষা ড্রপডাউনের জন্য সামান্য কিছু ইন্টিগ্রেটেড স্টাইল */
         .lang-select select {
             background: var(--bg-header);
             color: var(--color-text-white);
@@ -26,15 +28,13 @@
     <!-- ১. হেডার সেকশন -->
     <header class="header">
         <div class="logo-area">
-            <a href="#" class="logo-img">BHAI<span>88</span></a>
+            <a href="#" class="logo-img">BIKASH<span>88</span></a>
         </div>
         <div class="header-right">
-            <!-- লগইন না থাকা অবস্থায় এই বাটনগুলো দেখাবে -->
-            <div id="authButtonsTop" style="display: flex; gap: 8px; align-items: center;">
-                <button class="btn-top-small btn-top-login" id="lnkLogin1" onclick="openAuthModal('login')">প্রবেশ করুন</button>
-                <button class="btn-top-small btn-top-reg" id="lnkReg1" onclick="openAuthModal('reg1')">নিবন্ধন</button>
-            </div>
+            <button class="btn-top-small btn-top-login" id="lnkLogin1" onclick="location.href='login.html'">লগইন</button>
+            <button class="btn-top-small btn-top-reg" id="lnkReg1" onclick="location.href='register-step1.html'">রেজিস্ট্রেশন</button>
             
+            <!-- ভাষা পরিবর্তন অপশন (ড্রপডাউন) -->
             <div class="lang-select">
                 <select id="langSwitcher" onchange="switchLanguage(this.value)">
                     <option value="bn">🇧🇩 BN</option>
@@ -42,9 +42,9 @@
                 </select>
             </div>
             
-            <!-- ইউজার লগইন করলে এই মেনুটি জাভাস্ক্রিপ্টের মাধ্যমে শো করানো হবে (ডিফল্ট হাইড ও ব্যালেন্স ফাকা) -->
-            <div class="user-logged-menu" id="userMenu" style="display: none;">
-                <div class="wallet-info">⚖️ <strong id="txtWallet"></strong></div>
+            <!-- লগইন পরবর্তী ডেমো ইউজার মেনু -->
+            <div class="user-logged-menu" id="userMenu">
+                <div class="wallet-info">⚖️ <strong id="txtWallet">৳ 500.00</strong></div>
                 <div class="icon-btn">
                     🔔 <span class="icon-badge"></span>
                 </div>
@@ -66,16 +66,16 @@
     <section class="banner-container">
         <h1 class="banner-title" id="bannerTitle">১০০% ওয়েলকাম বোনাস!</h1>
         <p class="banner-sub" id="bannerSub">আজই জয়েন করুন এবং আপনার প্রথম ডিপোজিটে জিতে নিন আকর্ষণীয় বোনাস।</p>
-        <button class="btn-claim" id="btnClaim" style="width: 160px;" onclick="openAuthModal('reg1')">ক্লেম করুন</button>
+        <button class="btn-claim" id="btnClaim" style="width: 160px;" onclick="openModal()">ক্লেম করুন</button>
     </section>
 
     <!-- ৪. মেইন অথেনটিকেশন বাটন (মোবাইল ভিউর জন্য) -->
-    <div class="main-auth-btns" id="mobileAuthBtns">
-        <button class="btn-main-act btn-main-login" id="lnkLogin2" onclick="openAuthModal('login')">প্রবেশ করুন</button>
-        <button class="btn-main-act btn-main-reg" id="lnkReg2" onclick="openAuthModal('reg1')">নিবন্ধন</button>
+    <div class="main-auth-btns">
+        <button class="btn-main-act btn-main-login" id="lnkLogin2" onclick="location.href='login.html'">লগইন</button>
+        <button class="btn-main-act btn-main-reg" id="lnkReg2" onclick="location.href='register-step1.html'">রেজিস্ট্রেশন করুন</button>
     </div>
 
-    <!-- ৫. গেম ক্যাটাগরি মেনু -->
+    <!-- ۵. গেম ক্যাটাগরি মেনু -->
     <div class="category-menu">
         <div class="cat-item active">
             <span class="cat-icon">🎰</span>
@@ -155,7 +155,7 @@
 
         <div class="footer-row-partners">
             <div class="partner-group">
-                <span id="ftPartner1">ゲミゲ পার্টনারস</span>
+                <span id="ftPartner1">গেমিং পার্টনারস</span>
                 <div class="partner-icons">🎰 🎲 🃏 🎯</div>
             </div>
             <div class="partner-group">
@@ -165,7 +165,7 @@
         </div>
 
         <div class="seo-section">
-            <h4 class="seo-title" id="seoTitle">ভাই৮৮ - বাংলাদেশের ১ নম্বর নিরাপদ গেমিং প্ল্যাটফর্ম</h4>
+            <h4 class="seo-title" id="seoTitle">বকাশ৮৮ - বাংলাদেশের ১ নম্বর নিরাপদ গেমিং প্ল্যাটফর্ম</h4>
             <p id="seoDesc">আমরা প্রদান করি বিশ্বস্ত ডিপোজিট এবং ফাস্ট উইথড্রয়াল সিস্টেম। ২৪ ঘন্টা লাইভ কাস্টমার সাপোর্ট এবং সেরা সব গেমের কালেকশন নিয়ে আমরা আছি আপনার পাশে।</p>
         </div>
 
@@ -177,141 +177,16 @@
                 <a href="#" id="ftLinkFaq">FAQ</a>
             </div>
             <div class="copyright-text" id="ftCopyright">
-                &copy; 2026 ভাই৮৮. সর্বস্বত্ব সংরক্ষিত।
+                &copy; 2026 বিকাশ৮৮. সর্বস্বত্ব সংরক্ষিত।
             </div>
         </div>
     </footer>
-
-    <!-- ৯. ডাইনামিক অথেনটিকেশন মডাল উইজেট (Screenshot_20260616-004856_2.png, Screenshot_20260616-004912_2.png, Screenshot_20260616-004954_2.png অনুযায়ী সংশোধিত) -->
-    <div class="modal" id="regModal" onclick="closeModalOutside(event)">
-        <div class="modal-content-reg" style="position: relative;">
-            <span onclick="closeModal()" class="modal-close-x">✕</span>
-            <div id="modalAlert" class="modal-alert"></div>
-
-            <!-- ================= ১. লগইন ফর্ম (Screenshot_20260616-004856_2.png) ================= -->
-            <div id="loginFormSection" style="display: none;">
-                <h3 class="modal-form-title">ভাই৮৮-এ আপনাকে স্বাগত</h3>
-                <form onsubmit="event.preventDefault(); handleAuthSubmit('login');">
-                    <div class="modal-field-group">
-                        <label class="reg-label">ব্যবহারকারীর নাম <span>*</span></label>
-                        <input type="text" class="reg-input-field" placeholder="এখানে পূরণ করুন" required>
-                    </div>
-
-                    <div class="modal-field-group">
-                        <label class="reg-label">পাসওয়ার্ড <span>*</span></label>
-                        <input type="password" class="reg-input-field" placeholder="এখানে পূরণ করুন" required>
-                    </div>
-
-                    <div class="forgot-pass-box" style="text-align: right; margin: 8px 0;">
-                        <a href="#" style="color: #bbb; text-decoration: none; font-size: 13px;">পাসওয়ার্ড ভুলে গেছেন</a>
-                    </div>
-
-                    <button type="submit" class="reg-btn-submit" style="background: #ffc107; color: #000; font-weight: bold;">প্রবেশ করুন</button>
-                    
-                    <p class="modal-switch-text" style="text-align: center; margin-top: 15px;">
-                        অ্যাকাউন্ট নেই? <a href="#" onclick="openAuthModal('reg1')" style="color: #e91e63; text-decoration: underline;">নিবন্ধন</a>
-                    </p>
-                </form>
-            </div>
-
-            <!-- ================= ২. রেজিস্ট্রেশন ধাপ ১ (Screenshot_20260616-004912_2.png) ================= -->
-            <div id="regStep1Section" style="display: none;">
-                <!-- স্টেপ বার ইন্ডিকেটর -->
-                <div class="reg-step-container" style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 20px;">
-                    <div class="reg-step-box active" style="background: #ffc107; color: #000; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-weight: bold;">1</div>
-                    <div class="reg-step-line" style="height: 2px; width: 40px; background: #444;"></div>
-                    <div class="reg-step-box" style="background: #333; color: #fff; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 4px;">2</div>
-                    <div class="reg-step-line" style="height: 2px; width: 40px; background: #444;"></div>
-                    <div class="reg-step-box" style="background: #333; color: #fff; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 4px;">✓</div>
-                </div>
-
-                <form onsubmit="event.preventDefault(); openAuthModal('reg2');">
-                    <div class="modal-field-group">
-                        <label class="reg-label">ব্যবহারকারীর নাম <span>*</span></label>
-                        <input type="text" class="reg-input-field" placeholder="কমপক্ষে 6 থেকে 13 টি অক্ষর থাকতে হবে।" required>
-                    </div>
-
-                    <div class="modal-field-group">
-                        <label class="reg-label">পাসওয়ার্ড <span>*</span></label>
-                        <input type="password" class="reg-input-field" placeholder="Fill in password" required>
-                    </div>
-
-                    <div class="modal-field-group">
-                        <label class="reg-label">পাসওয়ার্ড নিশ্চিত করুন <span>*</span></label>
-                        <input type="password" class="reg-input-field" placeholder="Confirm password" required>
-                    </div>
-
-                    <button type="submit" class="reg-btn-submit" style="background: #ffc107; color: #000; font-weight: bold; margin-top: 15px;">Continue</button>
-                    
-                    <p class="modal-switch-text" style="text-align: center; margin-top: 15px;">
-                        ইতিমধ্যে একটি সদস্যপদ আছে? <a href="#" onclick="openAuthModal('login')" style="color: #e91e63;">প্রবেশ করুন</a>
-                    </p>
-                </form>
-            </div>
-
-            <!-- ================= ৩. রেজিস্ট্রেশন ধাপ ২ (Screenshot_20260616-004954_2.png) ================= -->
-            <div id="regStep2Section" style="display: none;">
-                <!-- স্টেপ বার ইন্ডিকেটর -->
-                <div class="reg-step-container" style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 20px;">
-                    <div class="reg-step-box" style="background: #333; color: #fff; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 4px;">1</div>
-                    <div class="reg-step-line" style="height: 2px; width: 40px; background: #ffc107;"></div>
-                    <div class="reg-step-box active" style="background: #ffc107; color: #000; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-weight: bold;">2</div>
-                    <div class="reg-step-line" style="height: 2px; width: 40px; background: #444;"></div>
-                    <div class="reg-step-box" style="background: #333; color: #fff; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 4px;">✓</div>
-                </div>
-
-                <form onsubmit="event.preventDefault(); handleAuthSubmit('register');">
-                    <div class="modal-field-group">
-                        <label class="reg-label">মুদ্রা <span>*</span></label>
-                        <select class="reg-input-field select-dark" style="width: 100%; padding: 10px; background: #222; color: #fff; border: 1px solid #444;">
-                            <option value="BDT">BDT</option>
-                        </select>
-                    </div>
-
-                    <div class="modal-field-group">
-                        <label class="reg-label">মোবাইল নম্বর <span>*</span></label>
-                        <div class="reg-phone-row" style="display: flex; gap: 5px;">
-                            <select class="reg-input-field" style="width: 35%; background: #222; color: #fff; border: 1px solid #444;">
-                                <option value="+880">🇧🇩 +880</option>
-                            </select>
-                            <input type="tel" class="reg-input-field" style="width: 65%;" placeholder="Phone Number" required>
-                        </div>
-                    </div>
-
-                    <div class="modal-field-group">
-                        <label class="reg-label">ইমেইল</label>
-                        <input type="email" class="reg-input-field" placeholder="Fill in Email (Optional)">
-                    </div>
-
-                    <div class="modal-field-group">
-                        <label class="reg-label">রেফারেল কোড</label>
-                        <input type="text" class="reg-input-field" placeholder="Fill in Referral Code (Optional)">
-                    </div>
-
-                    <div class="modal-checkbox-group" style="display: flex; align-items: flex-start; gap: 8px; margin: 12px 0;">
-                        <input type="checkbox" id="termsBox" required style="margin-top: 4px;">
-                        <label for="termsBox" style="font-size: 13px; color: #bbb;">আমি আইনি বয়সী এবং আমি এর সাথে একমত শর্তাবলী</label>
-                    </div>
-
-                    <div class="modal-btn-row" style="display: flex; gap: 10px; margin-top: 15px;">
-                        <button type="button" class="reg-btn-submit btn-muted" style="background: #333; color: #fff; width: 40%;" onclick="openAuthModal('reg1')">পেছনে</button>
-                        <button type="submit" class="reg-btn-submit" style="background: #ffc107; color: #000; font-weight: bold; width: 60%;">সম্পূর্ণ</button>
-                    </div>
-
-                    <p class="modal-switch-text" style="text-align: center; margin-top: 15px;">
-                        ইতিমধ্যে একটি সদস্যপদ আছে? <a href="#" onclick="openAuthModal('login')" style="color: #e91e63;">প্রবেশ করুন</a>
-                    </p>
-                </form>
-            </div>
-
-        </div>
-    </div>
 
     <!-- ১০. রেস্পনসিভ চ্যাট সিস্টেম উইজেট -->
     <div class="bhai88-chat-container">
         <div class="chat-sub-buttons" id="chatSubButtons">
             <a href="https://t.me/yourchannel" target="_blank" class="sub-btn sub-tg" title="Telegram">✈️</a>
-            <a href="mailto:support@bhai88.com" class="sub-btn sub-mail" title="Email">✉️</a>
+            <a href="mailto:support@bikash88.com" class="sub-btn sub-mail" title="Email">✉️</a>
         </div>
         <button class="main-floating-btn" onclick="toggleChatSystem()">💬</button>
     </div>
@@ -319,12 +194,12 @@
     <!-- লাইভ চ্যাট উইন্ডো -->
     <div class="bhai88-chat-window" id="chatWindow">
         <div class="chat-win-header">
-            <div class="chat-win-title" id="chatTitle">ভাই৮৮ কাস্টমার সাপোর্ট</div>
+            <div class="chat-win-title" id="chatTitle">বিকাশ৮৮ কাস্টমার সাপোর্ট</div>
             <div class="chat-win-close" onclick="toggleChatWindow(false)">&times;</div>
         </div>
         <div class="chat-win-body" id="chatBody">
             <div class="bot-msg-bubble" id="chatWelcomeMsg">
-                আসসালামু আলাইকুম! ভাই৮৮ সাপোর্টে আপনাকে স্বাগত। আপনাকে কীভাবে সাহায্য করতে পারি?
+                আসসালামু আলাইকুম! বিকাশ৮৮ সাপোর্টে আপনাকে স্বাগতম। আপনাকে কীভাবে সাহায্য করতে পারি?
             </div>
             <div class="quick-replies-container" id="quickRepliesBox">
                 <button class="quick-reply-btn" onclick="sendQuickReply(this.innerText)">কীভাবে ডিপোজিট করব?</button>
@@ -334,111 +209,88 @@
         </div>
     </div>
 
+    <!-- ১১. সিকিউরড এডমিন প্যানেল -->
+    <div id="adminPanel">
+        <h3>নিরাপদ এডমিন ড্যাশবোর্ড</h3>
+    </div>
+
+    <!-- ==========================================================================
+       জাভাস্ক্রিপ্ট লজিক (ভাষা পরিবর্তন, মডাল ও চ্যাট লজিক)
+       ========================================================================== -->
     <script>
-        // ফর্ম অপশন কন্ট্রোল ফাংশন
-        function openAuthModal(formType) {
-            const modal = document.getElementById('regModal');
-            const loginSec = document.getElementById('loginFormSection');
-            const step1Sec = document.getElementById('regStep1Section');
-            const step2Sec = document.getElementById('regStep2Section');
-            const alertBox = document.getElementById('modalAlert');
-            
-            modal.style.display = 'flex';
-            alertBox.style.display = 'none';
-            
-            loginSec.style.display = 'none';
-            step1Sec.style.display = 'none';
-            step2Sec.style.display = 'none';
-            
-            if (formType === 'login') {
-                loginSec.style.display = 'block';
-            } else if (formType === 'reg1') {
-                step1Sec.style.display = 'block';
-            } else if (formType === 'reg2') {
-                step2Sec.style.display = 'block';
-            }
-        }
-
-        function closeModal() {
-            document.getElementById('regModal').style.display = 'none';
-        }
-
-        function closeModalOutside(event) {
-            if (event.target.id === 'regModal') {
-                closeModal();
-            }
-        }
-
-        function showAlert(msg, type) {
-            const alertBox = document.getElementById('modalAlert');
-            alertBox.innerText = msg;
-            alertBox.style.display = 'block';
-            alertBox.style.background = type === 'success' ? '#28a745' : '#dc3545';
-        }
-
-        // অথেনটিকেশন সাবমিট হ্যান্ডলার (লগইন বা সাকসেস হলে ব্যালেন্স লোড হবে)
-        function handleAuthSubmit(type) {
-            if (type === 'login') {
-                showAlert('লগইন সফল হয়েছে!', 'success');
-                setTimeout(() => { 
-                    closeModal(); 
-                    // লগইন সাকসেস হওয়ার পরেই কেবল ব্যালেন্স ও নোটিফিকেশন আইকন শো করবে
-                    document.getElementById('authButtonsTop').style.display = 'none';
-                    document.getElementById('mobileAuthBtns').style.display = 'none';
-                    document.getElementById('txtWallet').innerText = '৳ 500.00';
-                    document.getElementById('userMenu').style.display = 'flex';
-                }, 1200);
-            } else if (type === 'register') {
-                showAlert('নিবন্ধন সম্পূর্ণ হয়েছে!', 'success');
-                setTimeout(() => { openAuthModal('login'); }, 1200);
-            }
-        }
-
+        // ডিকশনারি ডাটাবেস (বাংলা এবং ইংরেজি ডাটা)
         const langData = {
             bn: {
-                siteTitle: "ভাই৮৮ - সেরা অনলাইন গেমিং প্ল্যাটফর্ম",
-                lnkLogin1: "প্রবেশ করুন", lnkLogin2: "প্রবেশ করুন",
-                lnkReg1: "নিবন্ধন", lnkReg2: "নিবন্ধন",
+                siteTitle: "বিকাশ৮৮ - সেরা অনলাইন গেমিং প্ল্যাটফর্ম",
+                lnkLogin1: "লগইন", lnkLogin2: "লগইন",
+                lnkReg1: "রেজিস্ট্রেশন", lnkReg2: "রেজিস্ট্রেশন করুন",
+                txtWallet: "৳ 500.00",
                 navHome: "🏠 হোম", navCasino: "🔥 লাইভ ক্যাসিনো", navSlots: "🎰 স্লটস", navSportsbook: "⚽ স্পোর্টসবুক", navTable: "🃏 টেবিল গেমস", navPromo: "🎁 প্রমোশন",
                 bannerTitle: "১০০% ওয়েলকাম বোনাস!", bannerSub: "আজই জয়েন করুন এবং আপনার প্রথম ডিপোজিটে জিতে নিন আকর্ষণীয় বোনাস।", btnClaim: "ক্লেম করুন",
                 catSlots: "স্লটস", catCasino: "লাইভ ক্যাসিনো", catCricket: "ক্রিকেট", catSports: "স্পোর্টস", catTable: "টেবিল",
                 promoTitle1: "সীমিত সময়ের অফার", promoHead1: "রোজকার ক্যাশব্যাক", promoSub1: "প্রতিদিন ৫% পর্যন্ত লস ব্যাক অফার!", promoBtn1: "বিস্তারিত",
                 promoTitle2: "নতুন ইউজার স্পেশাল", promoHead2: "ফ্রি স্পিন অফার", promoSub2: "অ্যাকাউন্ট ভেরিফাই করলেই ২০টি ফ্রি স্পিন।", promoBtn2: "দাবি করুন",
                 btnDownload: "🤖 Android App ডাউনলোড করুন", ftPartner1: "গেমিং পার্টনারস", ftPartner2: "সিকিউরিটি পার্টনারস",
-                seoTitle: "ভাই৮৮ - বাংলাদেশের ১ নম্বর নিরাপদ গেমিং প্ল্যাটফর্ম", seoDesc: "আমরা প্রদান করি বিশ্বস্ত ডিপোজিট এবং ফাস্ট উইথড্রয়াল সিস্টেম। ২৪ ঘন্টা লাইভ কাস্টমার সাপোর্ট এবং সেরা সব গেমের কালেকশন নিয়ে আমরা আছি আপনার পাশে।",
+                seoTitle: "বিকাশ৮৮ - বাংলাদেশের ১ নম্বর নিরাপদ গেমিং প্ল্যাটফর্ম", seoDesc: "আমরা প্রদান করি বিশ্বস্ত ডিপোজিট এবং ফাস্ট উইথড্রয়াল সিস্টেম। ২৪ ঘন্টা লাইভ কাস্টমার সাপোর্ট এবং সেরা সব গেমের কালেকশন নিয়ে আমরা আছি আপনার পাশে।",
                 ftLinkAbout: "আমাদের সম্পর্কে", ftLinkTerms: "শর্তাবলী", ftLinkPrivacy: "গোপনীয়তা নীতি", ftLinkFaq: "FAQ",
-                ftCopyright: "&copy; 2026 ভাই৮৮. সর্বস্বত্ব সংরক্ষিত।"
+                ftCopyright: "&copy; 2026 বিকাশ৮৮. সর্বস্বত্ব সংরক্ষিত।",
+                lblUser: "ইউজারনেম*", inputUserPlaceholder: "সর্বনিম্ন ৪ অক্ষরের নাম",
+                lblPhone: "ফোন নম্বর*", inputPhonePlaceholder: "১XXXXXXXXX",
+                lblPass: "পাসওয়ার্ড*", inputPassPlaceholder: "নিরাপদ পাসওয়ার্ড দিন",
+                btnSubmitReg: "এগিয়ে যান 🚀", chatTitle: "বিকাশ৮৮ কাস্টমার সাপোর্ট",
+                chatWelcomeMsg: "আসসালামু আলাইকুম! বিকাশ৮৮ সাপোর্টে আপনাকে স্বাগতম। আপনাকে কীভাবে সাহায্য করতে পারি?",
+                quickReplies: ["কীভাবে ডিপোজিট করব?", "আমার বোনাস অ্যাড হয়নি", "অ্যাকাউন্ট ভেরিফিকেশন সমস্যা"],
+                botResponse: "আপনার প্রশ্নটির জন্য ধন্যবাদ। আমাদের একজন রিপ্রেজেন্টেটিভ খুব শীঘ্রই আপনার সাথে যুক্ত হচ্ছেন।"
             },
             en: {
-                siteTitle: "Bhai88 - Best Online Gaming Platform",
+                siteTitle: "Bikash88 - Best Online Gaming Platform",
                 lnkLogin1: "Login", lnkLogin2: "Login",
                 lnkReg1: "Registration", lnkReg2: "Register Now",
+                txtWallet: "৳ 500.00",
                 navHome: "🏠 Home", navCasino: "🔥 Live Casino", navSlots: "🎰 Slots", navSportsbook: "⚽ Sportsbook", navTable: "🃏 Table Games", navPromo: "🎁 Promotions",
                 bannerTitle: "100% Welcome Bonus!", bannerSub: "Join today and win exciting bonuses on your first deposit.", btnClaim: "Claim Now",
                 catSlots: "Slots", catCasino: "Live Casino", catCricket: "Cricket", catSports: "Sports", catTable: "Table",
                 promoTitle1: "Limited Time Offer", promoHead1: "Daily Cashback", promoSub1: "Up to 5% loss back offer every day!", promoBtn1: "Details",
                 promoTitle2: "New User Special", promoHead2: "Free Spin Offer", promoSub2: "Get 20 free spins upon verifying your account.", promoBtn2: "Claim",
                 btnDownload: "🤖 Download Android App", ftPartner1: "Gaming Partners", ftPartner2: "Security Partners",
-                seoTitle: "Bhai88 - No. 1 Secure Gaming Platform in Bangladesh", seoDesc: "We provide trusted deposit and fast withdrawal systems. With 24-hour live customer support and the best game collection, we are here for you.",
+                seoTitle: "Bikash88 - No. 1 Secure Gaming Platform in Bangladesh", seoDesc: "We provide trusted deposit and fast withdrawal systems. With 24-hour live customer support and the best game collection, we are here for you.",
                 ftLinkAbout: "About Us", ftLinkTerms: "Terms & Conditions", ftLinkPrivacy: "Privacy Policy", ftLinkFaq: "FAQ",
-                ftCopyright: "&copy; 2026 Bhai88. All Rights Reserved."
+                ftCopyright: "&copy; 2026 Bikash88. All Rights Reserved.",
+                lblUser: "Username*", inputUserPlaceholder: "Minimum 4 characters",
+                lblPhone: "Phone Number*", inputPhonePlaceholder: "1XXXXXXXXX",
+                lblPass: "Password*", inputPassPlaceholder: "Enter secure password",
+                btnSubmitReg: "Continue 🚀", chatTitle: "Bikash88 Customer Support",
+                chatWelcomeMsg: "Welcome to Bikash88 Support! How can we assist you today?",
+                quickReplies: ["How to deposit?", "My bonus not added", "Account verification issue"],
+                botResponse: "Thank you for your question. One of our representatives will join you shortly."
             }
         };
 
+        // বর্তমান ভাষা ট্র্যাকার (ডিফল্ট: বট রেসপন্স হ্যান্ডলিং এর জন্য)
+        let currentLang = 'bn';
+
+        // ভাষা পরিবর্তন করার কোর লজিক
         function switchLanguage(lang) {
+            currentLang = lang;
             const data = langData[lang];
-            if(!data) return;
+            
+            // টাইটেল এবং টেক্সট পরিবর্তন
             document.getElementById('siteTitle').innerText = data.siteTitle;
             document.getElementById('lnkLogin1').innerText = data.lnkLogin1;
             document.getElementById('lnkLogin2').innerText = data.lnkLogin2;
             document.getElementById('lnkReg1').innerText = data.lnkReg1;
             document.getElementById('lnkReg2').innerText = data.lnkReg2;
+            document.getElementById('txtWallet').innerText = data.txtWallet;
+            
+            // নেভিগেশন
             document.getElementById('navHome').innerText = data.navHome;
             document.getElementById('navCasino').innerText = data.navCasino;
             document.getElementById('navSlots').innerText = data.navSlots;
             document.getElementById('navSportsbook').innerText = data.navSportsbook;
             document.getElementById('navTable').innerText = data.navTable;
             document.getElementById('navPromo').innerText = data.navPromo;
+            
+            // ব্যানার ও ক্যাটাগরি
             document.getElementById('bannerTitle').innerText = data.bannerTitle;
             document.getElementById('bannerSub').innerText = data.bannerSub;
             document.getElementById('btnClaim').innerText = data.btnClaim;
@@ -447,6 +299,8 @@
             document.getElementById('catCricket').innerText = data.catCricket;
             document.getElementById('catSports').innerText = data.catSports;
             document.getElementById('catTable').innerText = data.catTable;
+            
+            // প্রোমো ও ফুটার
             document.getElementById('promoTitle1').innerText = data.promoTitle1;
             document.getElementById('promoHead1').innerText = data.promoHead1;
             document.getElementById('promoSub1').innerText = data.promoSub1;
@@ -465,37 +319,71 @@
             document.getElementById('ftLinkPrivacy').innerText = data.ftLinkPrivacy;
             document.getElementById('ftLinkFaq').innerText = data.ftLinkFaq;
             document.getElementById('ftCopyright').innerHTML = data.ftCopyright;
+            
+            // মডাল এলিমেন্টস
+            document.getElementById('lblUser').innerHTML = data.lblUser;
+            document.getElementById('inputUser').placeholder = data.inputUserPlaceholder;
+            document.getElementById('lblPhone').innerHTML = data.lblPhone;
+            document.getElementById('inputPhone').placeholder = data.inputPhonePlaceholder;
+            document.getElementById('lblPass').innerHTML = data.lblPass;
+            document.getElementById('inputPass').placeholder = data.inputPassPlaceholder;
+            document.getElementById('btnSubmitReg').innerText = data.btnSubmitReg;
+            
+            // লাইভ চ্যাট উইন্ডো
+            document.getElementById('chatTitle').innerText = data.chatTitle;
+            document.getElementById('chatWelcomeMsg').innerText = data.chatWelcomeMsg;
+            
+            // কুইক রিপ্লাই বাটন আপডেট
+            const replyButtons = document.querySelectorAll('#quickRepliesBox .quick-reply-btn');
+            replyButtons.forEach((btn, index) => {
+                btn.innerText = data.quickReplies[index];
+            });
         }
 
+        // চ্যাট বাটন ও উইন্ডো টগল লজিক
         function toggleChatSystem() {
             const subButtons = document.getElementById('chatSubButtons');
             const chatWindow = document.getElementById('chatWindow');
+            
             if (chatWindow.style.display === 'flex') {
                 toggleChatWindow(false);
             } else {
                 subButtons.classList.toggle('open');
-                setTimeout(() => { if(subButtons.classList.contains('open')) toggleChatWindow(true); }, 200);
+                setTimeout(() => {
+                    if(subButtons.classList.contains('open')) {
+                        toggleChatWindow(true);
+                    }
+                }, 200);
             }
         }
 
         function toggleChatWindow(show) {
             const chatWindow = document.getElementById('chatWindow');
             const subButtons = document.getElementById('chatSubButtons');
-            if (show) { chatWindow.style.display = 'flex'; subButtons.classList.remove('open'); }
-            else { chatWindow.style.display = 'none'; }
+            if (show) {
+                chatWindow.style.display = 'flex';
+                subButtons.classList.remove('open');
+            } else {
+                chatWindow.style.display = 'none';
+            }
         }
 
+        // কুইক রিপ্লাই রেসপন্স লজিক (ভাষা অনুযায়ী ডাইনামিক)
         function sendQuickReply(message) {
             const chatBody = document.getElementById('chatBody');
+            
+            // ইউজার চ্যাট বাবল
             const userMsg = document.createElement('div');
             userMsg.className = 'user-msg-bubble';
             userMsg.innerText = message;
             chatBody.appendChild(userMsg);
             chatBody.scrollTop = chatBody.scrollHeight;
+
+            // বট রেসপন্স (ভাষা অনুযায়ী মেসেজ পিক করবে)
             setTimeout(() => {
                 const botMsg = document.createElement('div');
                 botMsg.className = 'bot-msg-bubble';
-                botMsg.innerText = "ধন্যবাদ। একজন রিপ্রেজেন্টেটিভ খুব শীঘ্রই যুক্ত হচ্ছেন।";
+                botMsg.innerText = langData[currentLang].botResponse;
                 chatBody.appendChild(botMsg);
                 chatBody.scrollTop = chatBody.scrollHeight;
             }, 1000);
