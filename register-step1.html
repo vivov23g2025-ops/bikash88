@@ -1,43 +1,44 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>লগইন - BIKASH88</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>নিবন্ধন (ধাপ ১) - BIKASH88</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="auth-page">
 
 <div class="auth-container">
+    <div class="auth-header">
+        <h2>BIKASH88-এ নিবন্ধন করুন</h2>
+        <a href="Index.html" class="close-btn">✕</a>
+    </div>
 
-<div class="auth-header">
-<h2>BIKASH88-এ আপনাকে স্বাগতম</h2>
-<a href="index.html" class="close-btn">✕</a>
-</div>
+    <form class="auth-form" action="register-step2.html" method="GET">
+        <div class="form-group">
+            <label>ব্যবহারকারীর নাম *</label>
+            <input type="text" placeholder="সর্বনিম্ন ৪ অক্ষরের নাম" required>
+        </div>
 
-<form class="auth-form">
+        <div class="form-group">
+            <label>ফোন নম্বর *</label>
+            <div class="reg-phone-row" style="display: flex; gap: 5px;">
+                <div class="reg-flag-box" style="background: #eee; padding: 0 10px; display: flex; align-items: center; border-radius: 4px; font-size: 13px; color: #333;">🇧🇩 +৮৮০</div>
+                <input type="tel" placeholder="১XXXXXXXXX" required style="flex: 1;">
+            </div>
+        </div>
 
-<label>ব্যবহারকারীর নাম *</label>
-<input type="text" placeholder="এখানে পূরণ করুন">
+        <div class="form-group">
+            <label>পাসওয়ার্ড *</label>
+            <input type="password" placeholder="নিরাপদ পাসওয়ার্ড দিন" required>
+        </div>
 
-<label>পাসওয়ার্ড *</label>
-<input type="password" placeholder="এখানে পূরণ করুন">
+        <button type="submit" class="auth-btn">পরবর্তী ধাপ 🚀</button>
 
-<div class="forgot-pass">
-<a href="#">পাসওয়ার্ড ভুলে গেছেন</a>
-</div>
-
-<button type="submit" class="auth-btn">
-প্রবেশ করুন
-</button>
-
-<p class="switch-page">
-অ্যাকাউন্ট নেই?
-<a href="register.html">নিবন্ধন</a>
-</p>
-
-</form>
-
+        <p class="switch-page" style="text-align: center; margin-top: 15px;">
+            ইতিমধ্যে অ্যাকাউন্ট আছে? <a href="login.html">প্রবেশ করুন</a>
+        </p>
+    </form>
 </div>
 
 </body>
