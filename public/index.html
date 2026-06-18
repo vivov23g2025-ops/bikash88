@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BIKASH88 - অনলাইন গেমিং প্ল্যাটফর্ম</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- v=2.0.4 ক্যাশ বাস্টিং যোগ করা হয়েছে যাতে Render.com এ সাথে সাথে নতুন ডিজাইন আপডেট হয় -->
+    <link rel="stylesheet" href="style.css?v=2.0.4">
 </head>
-<body>
+<body class="logged-out-state" id="main-body">
 
     <!-- Header Section -->
     <header class="header">
@@ -20,7 +21,7 @@
                 <div class="logo">B<span>IKASH88</span></div>
             </div>
             
-            <!-- Desktop Navigation Menu (Screenshot 3 এর মতো) -->
+            <!-- Desktop Navigation Menu (ডেস্কটপ মোডে ৩ নম্বর স্ক্রিনশটের মতো দেখাবে) -->
             <nav class="desktop-nav">
                 <a href="#" class="active">🏠 হোম</a>
                 <a href="#">ক্রিকেট</a>
@@ -34,176 +35,157 @@
             </nav>
 
             <div class="header-right">
-                <!-- লগআউট ভিউ: কোনো ব্যালেন্স দেখাবে না, শুধু ৳ BDT এবং লগইন/নিবন্ধন থাকবে -->
-                <div id="logged-out-header" class="auth-group">
-                    <div class="currency-indicator">
+                <!-- ১. লগআউট ভিউ: কোনো ব্যালেন্স থাকবে না, শুধু ৳ BDT এবং লগইন/নিবন্ধন বাটন থাকবে -->
+                <div class="logged-out-controls">
+                    <div class="currency-badge">
                         <span class="flag">🇧🇩</span> ৳ BDT
+                    </div>
+                    <button class="header-btn btn-login" onclick="toggleAuthModal('login')">লগইন</button>
+                    <button class="header-btn btn-register" onclick="toggleAuthModal('register')">রেজিস্ট্রেশন</button>
+                </div>
+
+                <!-- ২. লগইন ভিউ: সফলভাবে লগইন হলে ব্যালেন্স ও নোটিফিকেশন বেল দেখাবে -->
+                <div class="logged-in-controls">
+                    <div class="balance-box">
+                        <span class="scale-icon">⚖️</span>
+                        <span class="currency-symbol">৳</span>
+                        <span class="balance-amount">500.00</span>
+                        <span class="bell-icon">🔔</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Wrapper -->
+    <main class="main-content">
+        <!-- Hero Banner -->
+        <section class="hero-section">
+            <div class="hero-banner">
+                <div class="hero-text">
+                    <h1>১০০% ওয়েলকাম বোনাস!</h1>
+                    <p>আজই জয়েন করুন এবং আপনার প্রথম ডিপোজিটে জিতে নিন আকর্ষণীয় বোনাস।</p>
+                    <button class="btn-claim" onclick="toggleAuthModal('register')">ক্লেম করুন</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- আপনার স্ক্রিনশটের মতো মোবাইলের জন্য বড় দুটি বাটন -->
+        <div class="mobile-main-actions">
+            <button class="mobile-btn-action btn-gray-bg" onclick="toggleAuthModal('login')">লগইন</button>
+            <button class="mobile-btn-action btn-yellow-bg" onclick="toggleAuthModal('register')">রেজিস্ট্রেশন করুন</button>
+        </div>
+
+        <!-- ৯টি প্রধান ক্যাটাগরি গ্রিড (মোবাইলে ৩টি কলামে এবং ডেক্সটপে এক লাইনে সাজানো) -->
+        <section class="categories-grid">
             <div class="grid-item">
-                <div class="icon-box">🐟</div>
+                <div class="icon-wrapper">🏠</div>
+                <span>হোম</span>
+            </div>
+            <div class="grid-item">
+                <div class="icon-wrapper">🏏</div>
+                <span>ক্রিকেট</span>
+            </div>
+            <div class="grid-item">
+                <div class="icon-wrapper">🃏</div>
+                <span>লাইভ ক্যাসিনো</span>
+            </div>
+            <div class="grid-item">
+                <div class="icon-wrapper">🎰</div>
+                <span>স্লটস</span>
+            </div>
+            <div class="grid-item">
+                <div class="icon-wrapper">🎲</div>
+                <span>টেবিল গেম</span>
+            </div>
+            <div class="grid-item">
+                <div class="icon-wrapper">🚀</div>
+                <span>ক্র্যাশ</span>
+            </div>
+            <div class="grid-item">
+                <div class="icon-wrapper">⚽</div>
+                <span>স্পোর্টসবুক</span>
+            </div>
+            <div class="grid-item">
+                <div class="icon-wrapper">🐟</div>
                 <span>মাছ ধরা</span>
             </div>
             <div class="grid-item">
-                <div class="icon-box">🎱</div>
+                <div class="icon-wrapper">🎱</div>
                 <span>লটারি</span>
             </div>
-            <div class="grid-item mobile-only-item">
-                <div class="icon-box">🔥</div>
-                <span>Promo</span>
-            </div>
         </section>
 
-        <!-- ২ নম্বর স্ক্রিনশটের মতো মোবাইলের অতিরিক্ত লিংক সেকশন -->
-        <section class="mobile-quick-links">
-            <div class="two-column-row">
-                <div class="link-btn"><span class="icon">👥</span> রেফারেল</div>
-                <div class="link-btn"><span class="icon">👑</span> ভিআইপি</div>
-            </div>
-            <ul class="link-list">
-                <li><span>🎁 অতিরিক্ত পুরস্কার</span> <span class="arrow">❯</span></li>
-                <li><span>🌐 ভাষা</span> <span class="arrow">❯</span></li>
-                <li><span>💬 গ্রাহক সেবা</span> <span class="arrow">❯</span></li>
-                <li><span>📥 ডাউনলোড করুন</span> <span class="arrow">❯</span></li>
-            </ul>
-        </section>
-
-        <!-- গেম শো-কেস (ডেস্কটপে ৪টি পাশাপাশি সুন্দর দেখাবে) -->
-        <section class="game-showcase">
-            <h2>জনপ্রিয় গেমসমূহ</h2>
-            <div class="game-cards-container">
-                <div class="game-card card-green"><div class="game-title">Money Coming</div></div>
-                <div class="game-card card-gold"><div class="game-title">Super Ace</div></div>
-                <div class="game-card card-purple"><div class="game-title">Crazy Time</div></div>
-                <div class="game-card card-red"><div class="game-title">Aviator</div></div>
+        <!-- গেম সেকশন -->
+        <section class="game-section">
+            <h2 class="section-title">জনপ্রিয় গেমসমূহ</h2>
+            <div class="game-cards-wrapper">
+                <div class="game-card item-crazy"><span class="game-label">Crazy Time</span></div>
+                <div class="game-card item-lightning"><span class="game-label">Lightning Roulette</span></div>
+                <div class="game-card item-slots"><span class="game-label">Super Ace</span></div>
+                <div class="game-card item-aviator"><span class="game-label">Aviator</span></div>
             </div>
         </section>
     </main>
 
-    <!-- ফ্লোটিং চ্যাট ও গিফট বাটন -->
-    <div class="floating-widgets">
-        <div class="widget-gift">🎁</div>
-        <div class="widget-chat">💬</div>
+    <!-- ফ্লোটিং লাইভ সাপোর্ট বাটন (এই বাটনে ক্লিক করলে আপনি টেস্ট করার জন্য লগইন-লগআউট মোড সুইচ করতে পারবেন) -->
+    <div class="floating-chat-icon" onclick="simulateLoginToggle()">
+        <span class="chat-bubble">💬</span>
     </div>
 
-    <!-- পপআপ ফর্ম লজিক (লগইন এবং রেজিস্ট্রেশন) -->
-    <div id="auth-modal" class="modal-overlay" style="display: none;">
-        <div class="modal-container">
-            <button class="modal-close" onclick="closeAuthModal()">✕</button>
-            
-            <!-- লগইন ফর্ম -->
-            <div id="modal-login-form" class="auth-form-block">
-                <h3>BIKASH88-এ আপনাকে স্বাগতম</h3>
-                <div class="input-wrapper">
+    <!-- পপআপ মডাল বক্স -->
+    <div id="auth-modal-overlay" class="modal-overlay" style="display: none;">
+        <div class="modal-box">
+            <button class="close-modal" onclick="closeAuthModal()">✕</button>
+            <div class="modal-body-content">
+                <h3 id="modal-form-title">লগইন করুন</h3>
+                <div class="form-input-box">
                     <label>ব্যবহারকারীর নাম *</label>
-                    <input type="text" placeholder="এখানে পূরণ করুন">
+                    <input type="text" placeholder="ইউজারনেম দিন">
                 </div>
-                <div class="input-wrapper">
+                <div class="form-input-box">
                     <label>পাসওয়ার্ড *</label>
-                    <input type="password" placeholder="এখানে পূরণ করুন">
+                    <input type="password" placeholder="পাসওয়ার্ড দিন">
                 </div>
-                <button class="btn-submit-yellow" onclick="executeDemoLogin()">প্রবেশ করুন</button>
+                <button class="submit-auth-btn" onclick="performLoginAction()">নিশ্চিত করুন</button>
             </div>
         </div>
     </div>
 
     <script>
-        function toggleAuthModal(type) {
-            document.getElementById('auth-modal').style.display = 'flex';
-            document.getElementById('modal-login-form').style.display = 'block';
+        function toggleAuthModal(mode) {
+            document.getElementById('auth-modal-overlay').style.display = 'flex';
+            if(mode === 'login') {
+                document.getElementById('modal-form-title').innerText = 'বিকাশ৮৮-এ আপনাকে স্বাগতম';
+            } else {
+                document.getElementById('modal-form-title').innerText = 'নতুন অ্যাকাউন্ট তৈরি করুন';
+            }
         }
+
         function closeAuthModal() {
-            document.getElementById('auth-modal').style.none';
+            document.getElementById('auth-modal-overlay').style.display = 'none';
         }
-        function executeDemoLogin() {
-            // সফল লগইন ডেমো: ব্যালেন্স শো করবে
-            document.getElementById('logged-out-header').style.display = 'none';
-            document.getElementById('logged-in-header').style.display = 'flex';
+
+        function performLoginAction() {
+            const bodyEl = document.getElementById('main-body');
+            bodyEl.classList.remove('logged-out-state');
+            bodyEl.classList.add('logged-in-state');
             closeAuthModal();
+        }
+
+        // টেস্ট করার সুবিধার্থে ফ্লোটিং চ্যাট বাটনে ক্লিক করলে লগইন/লগআউট অবস্থা পরিবর্তন হবে
+        function simulateLoginToggle() {
+            const bodyEl = document.getElementById('main-body');
+            if(bodyEl.classList.contains('logged-out-state')) {
+                bodyEl.classList.remove('logged-out-state');
+                bodyEl.classList.add('logged-in-state');
+                alert('স্টেট পরিবর্তন: সফলভাবে লগইন করা হয়েছে! এখন ব্যালেন্স ক্যাপিউলটি দেখতে পাবেন।');
+            } else {
+                bodyEl.classList.remove('logged-in-state');
+                bodyEl.classList.add('logged-out-state');
+                alert('স্টেট পরিবর্তন: লগআউট করা হয়েছে! ব্যালেন্স লুকিয়ে ৳ BDT চলে এসেছে।');
+            }
         }
     </script>
 </body>
-                </html>                <span>স্পোর্টস</span>
-            </div>
-            <div class="grid-item">
-                <div class="icon-box">🐟</div>
-                <span>মাছ ধরা</span>
-            </div>
-            <div class="grid-item">
-                <div class="icon-box">🎱</div>
-                <span>লটারি</span>
-            </div>
-            <div class="grid-item mobile-only-item">
-                <div class="icon-box">🔥</div>
-                <span>Promo</span>
-            </div>
-        </section>
-
-        <!-- ২ নম্বর স্ক্রিনশটের মতো মোবাইলের অতিরিক্ত লিংক সেকশন -->
-        <section class="mobile-quick-links">
-            <div class="two-column-row">
-                <div class="link-btn"><span class="icon">👥</span> রেফারেল</div>
-                <div class="link-btn"><span class="icon">👑</span> ভিআইপি</div>
-            </div>
-            <ul class="link-list">
-                <li><span>🎁 অতিরিক্ত পুরস্কার</span> <span class="arrow">❯</span></li>
-                <li><span>🌐 ভাষা</span> <span class="arrow">❯</span></li>
-                <li><span>💬 গ্রাহক সেবা</span> <span class="arrow">❯</span></li>
-                <li><span>📥 ডাউনলোড করুন</span> <span class="arrow">❯</span></li>
-            </ul>
-        </section>
-
-        <!-- গেম শো-কেস (ডেস্কটপে ৪টি পাশাপাশি সুন্দর দেখাবে) -->
-        <section class="game-showcase">
-            <h2>জনপ্রিয় গেমসমূহ</h2>
-            <div class="game-cards-container">
-                <div class="game-card card-green"><div class="game-title">Money Coming</div></div>
-                <div class="game-card card-gold"><div class="game-title">Super Ace</div></div>
-                <div class="game-card card-purple"><div class="game-title">Crazy Time</div></div>
-                <div class="game-card card-red"><div class="game-title">Aviator</div></div>
-            </div>
-        </section>
-    </main>
-
-    <!-- ফ্লোটিং চ্যাট ও গিফট বাটন -->
-    <div class="floating-widgets">
-        <div class="widget-gift">🎁</div>
-        <div class="widget-chat">💬</div>
-    </div>
-
-    <!-- পপআপ ফর্ম লজিক (লগইন এবং রেজিস্ট্রেশন) -->
-    <div id="auth-modal" class="modal-overlay" style="display: none;">
-        <div class="modal-container">
-            <button class="modal-close" onclick="closeAuthModal()">✕</button>
-            
-            <!-- লগইন ফর্ম -->
-            <div id="modal-login-form" class="auth-form-block">
-                <h3>ভাই৮৮-এ আপনাকে স্বাগতম</h3>
-                <div class="input-wrapper">
-                    <label>ব্যবহারকারীর নাম *</label>
-                    <input type="text" placeholder="এখানে পূরণ করুন">
-                </div>
-                <div class="input-wrapper">
-                    <label>পাসওয়ার্ড *</label>
-                    <input type="password" placeholder="এখানে পূরণ করুন">
-                </div>
-                <button class="btn-submit-yellow" onclick="executeDemoLogin()">প্রবেশ করুন</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function toggleAuthModal(type) {
-            document.getElementById('auth-modal').style.display = 'flex';
-            document.getElementById('modal-login-form').style.display = 'block';
-        }
-        function closeAuthModal() {
-            document.getElementById('auth-modal').style.display = 'none';
-        }
-        function executeDemoLogin() {
-            // সফল লগইন ডেমো: ব্যালেন্স শো করবে
-            document.getElementById('logged-out-header').style.display = 'none';
-            document.getElementById('logged-in-header').style.display = 'flex';
-            closeAuthModal();
-        }
-    </script>
-</body>
-</html>
+    </html>
