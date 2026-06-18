@@ -1,4 +1,4 @@
-/* BIKASH88 আল্ট্রা-রেসপন্সিভ মোবাইল ফিক্সড স্টাইলশীট */
+/* BIKASH88 প্রিমিয়াম রেসপন্সিভ থিম */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -8,26 +8,19 @@
 }
 
 body {
-    background-color: #0c0f16;
+    background-color: #17142b;
     color: #ffffff;
-    padding-bottom: 30px;
     overflow-x: hidden;
 }
 
-/* স্টেট লজিক */
-body.logged-out-state .logged-in-controls { display: none !important; }
-body.logged-out-state .logged-out-controls { display: flex !important; }
-body.logged-in-state .logged-out-controls { display: none !important; }
-body.logged-in-state .logged-in-controls { display: flex !important; }
-
-/* হেডার ফিক্স - উপাদানের পারস্পরিক দূরত্ব ও সাইড গ্যাপ বজায় রাখবে */
+/* হেডার ফিক্স - ডেক্সটপে স্ক্রিন ছোট হলে বা মোবাইলে অটো হাইট লজিক */
 .header {
-    background-color: #141923;
-    padding: 10px 14px;
+    background-color: #0d0b1a;
+    padding: 14px 16px;
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid #202736;
+    border-bottom: 1px solid #1f1b3a;
 }
 
 .header-container {
@@ -37,72 +30,337 @@ body.logged-in-state .logged-in-controls { display: flex !important; }
     width: 100%;
 }
 
-.header-left {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-shrink: 0; /* কোনো মতেই লোগো ছোট বা সংকুচিত হবে না */
-}
-
 .menu-btn {
     background: none;
     border: none;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 5px;
     cursor: pointer;
-    padding: 6px;
 }
 
 .menu-btn span {
     display: block;
-    width: 22px;
+    width: 24px;
     height: 2.5px;
     background-color: #ffffff;
     border-radius: 2px;
 }
 
 .logo {
-    font-size: 19px;
+    font-size: 20px;
     font-weight: 900;
     color: #ffffff;
     letter-spacing: 0.5px;
 }
-.logo span { color: #ffbc00; }
+.logo span { color: #ffffff; }
 
-.desktop-nav { display: none; }
-
-/* ডানদিকের কন্ট্রোল প্যানেল একদম শেষ মাথায় লক থাকবে */
-.header-right {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex-grow: 1;
+.header-spacer-mobile {
+    width: 24px;
 }
 
-.logged-out-controls, .logged-in-controls {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+/* ভাই৮৮ এর মতো ডেক্সটপ ভিউতে নির্দিষ্ট উইডথ পর্যন্ত বাটন ও মেনু হাইড রাখার ফিক্স */
+.header-right-desktop {
+    display: none; 
 }
 
-/* কারেন্সি ব্যাজ রেসপন্সিভ সাইজ */
-.currency-badge {
-    background-color: #1a2232;
-    border: 1px solid #2d3748;
-    color: #48bb78;
-    padding: 6px 8px;
-    border-radius: 4px;
-    font-weight: 700;
-    font-size: 11px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    white-space: nowrap;
+/* মেইন কন্টেন্ট */
+.main-content {
+    padding: 12px;
 }
 
-/* বাটন সাইজ অপ্টিমাইজেশন */
-.header-btn {
+.hero-section {
+    margin-bottom: 20px;
+}
+
+.hero-banner {
+    background: linear-gradient(180deg, #321059, #1a0a33);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    padding: 30px 16px;
+    text-align: center;
+    border-bottom: 2px solid #a62eb8;
+}
+
+.hero-banner h1 {
+    font-size: 20px;
+    color: #ffffff;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.hero-banner p {
+    font-size: 13px;
+    color: #bfaed4;
+}
+
+.hero-actions-container {
+    background-color: #201c38;
+    padding: 14px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.btn-yellow-main {
+    width: 100%;
+    background: linear-gradient(180deg, #ffca08, #e0b000);
+    color: #000000;
+    font-weight: 800;
+    font-size: 14px;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.auth-split-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-split-white {
+    flex: 1;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: 800;
+    font-size: 14px;
+    padding: 11px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-split-magenta {
+    flex: 1;
+    background: linear-gradient(90deg, #cc2596, #94137c);
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 14px;
+    padding: 11px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* ৩ কলাম বিশিষ্ট আইকন গ্রিড */
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.grid-item {
+    background-color: #211e3b;
+    border-radius: 8px;
+    padding: 18px 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-item span {
+    font-size: 12px;
+    color: #c5c2db;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.gold-icon {
+    font-size: 28px;
+    color: #ffcc00;
+}
+
+.item-promo-highlight {
+    background-color: #29244a;
+}
+.text-white { color: #ffffff !important; }
+
+/* রেফারেল এবং ভিআইপি বাটন রো */
+.vip-referral-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.vip-card {
+    flex: 1;
+    background-color: #211e3b;
+    padding: 14px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.card-icon-gold {
+    font-size: 20px;
+    color: #ffcc00;
+}
+
+/* অতিরিক্ত ফিচার লিস্ট ভিউ */
+.native-menu-list {
+    background-color: #1c1933;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.menu-list-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid #282447;
+    cursor: pointer;
+}
+
+.menu-list-row:last-child {
+    border-bottom: none;
+}
+
+.menu-list-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #e2e0f0;
+}
+
+.row-graphic-icon {
+    font-size: 18px;
+}
+
+.menu-list-right {
+    color: #494569;
+    font-size: 12px;
+}
+
+/* ফ্লোটিং গিফট বাটন */
+.floating-pink-gift {
+    position: fixed;
+    bottom: 30px;
+    right: 16px;
+    width: 54px;
+    height: 54px;
+    background: radial-gradient(circle, #ff5ee3, #8f0f7e);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px rgba(237, 47, 190, 0.5);
+    z-index: 999;
+}
+.gift-animation { font-size: 24px; }
+
+/* সাইডবার মেনু মডিউল */
+.sidebar-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.75); z-index: 2000; display: flex;
+}
+.sidebar-content {
+    background-color: #121021; width: 260px; height: 100%; padding: 24px 16px;
+}
+.sidebar-header {
+    display: flex; justify-content: space-between; color: #ffca08; margin-bottom: 24px;
+}
+.close-sidebar { background: none; border: none; color: #fff; font-size: 22px; }
+.sidebar-nav a { display: block; color: #a9a6c4; text-decoration: none; padding: 12px; font-weight: bold; font-size: 14px; }
+.sidebar-nav a.active { background-color: #211e3b; color: #ffca08; border-radius: 6px; }
+
+/* মডাল পপআপ এবং রেজিস্ট্রেশন ফর্ম ডিজাইন ফিক্স (ভাই৮৮ স্টাইল) */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center; z-index: 3000;
+}
+.modal-box { 
+    background-color: #211e3b; 
+    width: 92%; 
+    max-width: 380px; 
+    padding: 24px; 
+    border-radius: 12px; 
+    position: relative; 
+    border: 1px solid #36325c;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+.close-modal { position: absolute; top: 14px; right: 14px; background: none; border: none; color: #fff; font-size: 20px; cursor: pointer; }
+.modal-title { text-align: center; margin-bottom: 20px; color: #ffffff; font-size: 18px; font-weight: bold; }
+
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; font-size: 12px; margin-bottom: 6px; color: #a9a6c4; }
+.form-group input, .form-select-native { 
+    width: 100%; 
+    padding: 12px; 
+    background-color: #17142b; 
+    border: 1px solid #36325c; 
+    color: #fff; 
+    border-radius: 6px; 
+    outline: none; 
+    font-size: 13px;
+}
+
+/* ফোন নম্বর স্পেশাল কন্টেইনার */
+.phone-input-container {
+    display: flex;
+    background-color: #17142b;
+    border: 1px solid #36325c;
+    border-radius: 6px;
+    align-items: center;
+}
+.country-code {
+    padding: 0 12px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 13px;
+    border-right: 1px solid #36325c;
+}
+.phone-input-container input {
+    border: none;
+    background: transparent;
+}
+
+/* ক্যাপচা যাচাইকরণ বক্স */
+.captcha-container {
+    display: flex;
+    gap: 10px;
+}
+.captcha-container input {
+    flex: 1;
+}
+.captcha-code-box {
+    background-color: #3b3566;
+    color: #ffca08;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 16px;
+    letter-spacing: 3px;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    user-select: none;
+}
+
+.submit-btn { width: 100%; padding: 14px; background: linear-gradient(180deg, #ffca08, #e0b000); border: none; font-weight: bold; border-radius: 6px; color: #000; cursor: pointer; font-size: 14px; margin-top: 10px; }
+
+/* 🖥️ ডেক্সটপ ওভাররাইড (অটো-হাইট ফিক্স) */
+@media (min-width: 1200px) {
+    .header-right-desktop { display: flex; align-items: center; gap: 10px; }
+    .header-spacer-mobile { display: none; }
+    .header-btn { border: none; padding: 8px 14px; border-radius: 6px; font-weight: bold; font-size: 13px; cursor: pointer; }
+    .btn-login { background-color: #2d3748; color: #fff; }
+    .btn-register { background-color: #ffbc00; color: #000; }
+    .currency-badge { background-color: #1a2232; padding: 8px; border-radius: 6px; font-size: 13px; color: #48bb78; font-weight: bold; }
+    .categories-grid { grid-template-columns: repeat(5, 1fr); }
+    }.header-btn {
     border: none;
     padding: 7px 11px;
     border-radius: 4px;
