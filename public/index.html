@@ -1,170 +1,208 @@
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BIKASH88</title>
-    <link rel="stylesheet" href="bikash88.css">
-</head>
-<body>
+/* প্রফেশনাল ইউআই স্টাইলশীট */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
 
-    <!-- হেডার সেকশন -->
-    <header class="header">
-        <div class="header-container">
-            <button class="menu-btn" onclick="toggleMobileSidebar(event)">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            
-            <div class="logo">BIKASH88</div>
-            
-            <div class="header-right-actions">
-                <div class="currency-badge">
-                    <span class="flag">🇧🇩</span> ৳ BDT
-                </div>
-            </div>
-        </div>
-    </header>
+body {
+    background-color: #17142b;
+    color: #ffffff;
+    overflow-x: hidden;
+}
 
-    <!-- মোবাইল সাইড ড্রয়ার মেনু (এখানেই অপশনগুলো যুক্ত করা হয়েছে) -->
-    <div id="mobile-sidebar" class="sidebar-overlay" onclick="closeSidebarMenu()">
-        <div class="sidebar-content" onclick="event.stopPropagation()">
-            <div class="sidebar-header">
-                <h3>মেনু ক্যাটাগরি</h3>
-                <button class="close-sidebar" onclick="closeSidebarMenu()">✕</button>
-            </div>
-            
-            <!-- স্ক্রিনশট ১ এর গেম মেনু অংশ -->
-            <nav class="sidebar-nav">
-                <a href="#" class="active"><span class="nav-icon">👑</span> বাড়ি</a>
-                <a href="#"><span class="nav-icon">🏏</span> ক্রিকেট</a>
-                <a href="#"><span class="nav-icon">🃏</span> লাইভ ক্যাসিনো</a>
-                <a href="#"><span class="nav-icon">🎰</span> স্লট গেম</a>
-                <a href="#"><span class="nav-icon">🎲</span> টেবিল গেম</a>
-                <a href="#"><span class="nav-icon">✈️</span> ক্র্যাশ</a>
-                <a href="#"><span class="nav-icon">⚽</span> স্পোর্টস</a>
-                <a href="#"><span class="nav-icon">🐟</span> মাছ ধরা</a>
-                <a href="#"><span class="nav-icon">🎱</span> লটারি</a>
-            </nav>
+/* হেডার */
+.header {
+    background-color: #0d0b1a;
+    padding: 12px 16px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #1f1b3a;
+}
 
-            <!-- স্ক্রিনশট ২ এর লাল মার্ক করা অপশনগুলো এখানে যুক্ত করা হলো -->
-            <div class="sidebar-extra-section">
-                <!-- রেফারেল এবং ভিআইপি গ্রিড বোতাম -->
-                <div class="extra-grid-buttons">
-                    <div class="grid-btn-item btn-referral">
-                        <span class="grid-icon">👥</span>
-                        <span class="grid-txt">রেফারেল</span>
-                    </div>
-                    <div class="grid-btn-item btn-vip">
-                        <span class="grid-icon">👑</span>
-                        <span class="grid-txt">ভিআইপি</span>
-                    </div>
-                </div>
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-                <!-- অতিরিক্ত মেনু লিস্ট -->
-                <div class="extra-list-menu">
-                    <div class="extra-list-item">
-                        <div class="item-left"><span class="list-icon">🎁</span> অতিরিক্ত পুরস্কার</div>
-                        <div class="item-right">❯</div>
-                    </div>
-                    <div class="extra-list-item" onclick="openMobileLangModal()">
-                        <div class="item-left"><span class="list-icon">🌐</span> ভাষা</div>
-                        <div class="item-right">❯</div>
-                    </div>
-                    <div class="extra-list-item">
-                        <div class="item-left"><span class="list-icon">💬</span> গ্রাহক সেবা</div>
-                        <div class="item-right">❯</div>
-                    </div>
-                    <div class="extra-list-item">
-                        <div class="item-left"><span class="list-icon">📥</span> ডাউনলোড করুন</div>
-                        <div class="item-right">❯</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+.menu-btn {
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
 
-    <!-- মূল প্রোফাইল এবং সেটিংস লেআউট কন্টেন্ট -->
-    <main class="main-container">
-        <div class="profile-layout-wrapper">
-            <div class="profile-user-card">
-                <div class="user-avatar-box">👤</div>
-                <div class="user-info-text">
-                    <h2>bhai88_user</h2>
-                    <span class="vip-tag">VIP 1</span>
-                    <div class="balance-display">প্রধান ব্যালেন্স: <span>৳ 0.00</span></div>
-                </div>
-            </div>
+.menu-btn span {
+    display: block;
+    width: 22px;
+    height: 2.5px;
+    background-color: #ffffff;
+    border-radius: 2px;
+}
 
-            <section class="premium-settings-panel">
-                <div class="settings-row">
-                    <div class="row-left"><span class="setting-icon">ℹ️</span>个人资料 / व्यक्तिगत তথ্য</div>
-                    <div class="row-right">❯</div>
-                </div>
-                <div class="settings-row">
-                    <div class="row-left"><span class="setting-icon">🛡️</span>অ্যাকাউন্ট সিকিউরিটি</div>
-                    <div class="row-right">❯</div>
-                </div>
-                <div class="settings-row">
-                    <div class="row-left"><span class="setting-icon">📊</span>ট্রানজেকশন রেকর্ড</div>
-                    <div class="row-right">❯</div>
-                </div>
-                <div class="settings-row">
-                    <div class="row-left"><span class="setting-icon">🎁</span>রিওয়ার্ড পয়েন্ট</div>
-                    <div class="row-right">❯</div>
-                </div>
-                <div class="settings-row" onclick="openMobileLangModal()">
-                    <div class="row-left"><span class="setting-icon">🌐</span>语言 / ভাষা (Language)</div>
-                    <div class="row-right"><span class="current-lang-txt">বাংলা (BD)</span> ❯</div>
-                </div>
-            </section>
-        </div>
-    </main>
+.logo { font-size: 20px; font-weight: bold; color: #ffffff; }
+.currency-badge { background-color: #121021; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; border: 1px solid #231f3f; }
 
-    <!-- মোবাইল ল্যাঙ্গুয়েজ মডাল পপআপ -->
-    <div id="mobile-lang-modal" class="modal-overlay" onclick="closeMobileLangModal()">
-        <div class="modal-box lang-modal-dark" onclick="event.stopPropagation()">
-            <div class="modal-header">
-                <h3>语言 / ভাষা নির্বাচন করুন</h3>
-                <button class="close-modal-btn" onclick="closeMobileLangModal()">✕</button>
-            </div>
-            <div class="lang-selection-container">
-                <div class="lang-row-option selected" onclick="selectLanguage('bn')">
-                    <div class="lang-info">
-                        <span class="flag-icon">🇧🇩</span>
-                        <span class="lang-text-label">বাংলা</span>
-                    </div>
-                    <span class="status-tick">✓</span>
-                </div>
-                <div class="lang-row-option" onclick="selectLanguage('en')">
-                    <div class="lang-info">
-                        <span class="flag-icon">🇬🇧</span>
-                        <span class="lang-text-label">English</span>
-                    </div>
-                    <span class="status-tick"></span>
-                </div>
-            </div>
-        </div>
-    </div>
+/* লেআউট কন্টেইনার */
+.main-container {
+    padding: 16px 12px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-    <script>
-        function toggleMobileSidebar(e) {
-            if(e) e.stopPropagation();
-            document.getElementById('mobile-sidebar').classList.toggle('open');
-        }
-        function closeSidebarMenu() {
-            document.getElementById('mobile-sidebar').classList.remove('open');
-        }
-        function openMobileLangModal() {
-            document.getElementById('mobile-lang-modal').classList.add('active');
-        }
-        function closeMobileLangModal() {
-            document.getElementById('mobile-lang-modal').classList.remove('active');
-        }
-        function selectLanguage(lang) {
-            closeMobileLangModal();
-        }
-    </script>
-</body>
-</html>
+.profile-user-card {
+    background: linear-gradient(135deg, #2b124c, #180a2b);
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+    border: 1px solid #3d2263;
+}
+
+.user-avatar-box {
+    width: 54px;
+    height: 54px;
+    background-color: #3b3566;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.user-info-text h2 { font-size: 16px; margin-bottom: 2px; }
+.vip-tag { background-color: #ffca08; color: #000; font-size: 11px; font-weight: bold; padding: 1px 8px; border-radius: 10px; }
+.balance-display { font-size: 13px; color: #a9a6c4; margin-top: 4px; }
+.balance-display span { color: #48bb78; font-weight: bold; }
+
+.premium-settings-panel {
+    background-color: #1c1933;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #252244;
+}
+
+.settings-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid #282447;
+    cursor: pointer;
+}
+.settings-row:last-child { border-bottom: none; }
+.row-left { display: flex; align-items: center; gap: 12px; font-size: 14px; color: #e2e0f0; }
+.setting-icon { font-size: 16px; }
+.row-right { color: #494569; font-size: 13px; }
+.current-lang-txt { color: #8f8ba8; margin-right: 4px; font-size: 12px; }
+
+/* সাইডবার মেনু মডিউল ডিজাইন (স্ক্রিনশট ১ ও ২ এর কম্বিনেশন) */
+.sidebar-overlay { 
+    position: fixed; top: 0; left: -100%; width: 100%; height: 100%; 
+    background-color: rgba(0,0,0,0.6); z-index: 1500; transition: left 0.3s ease; 
+}
+.sidebar-overlay.open { left: 0; }
+
+.sidebar-content { 
+    background-color: #131124; width: 280px; height: 100%; 
+    display: flex; flex-direction: column; overflow: hidden;
+}
+.sidebar-header { 
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px; border-bottom: 1px solid #1f1b3a;
+}
+.sidebar-header h3 { color: #ffca08; font-size: 16px; }
+.close-sidebar { background: none; border: none; color: #fff; font-size: 18px; cursor: pointer; }
+
+/* গেম ক্যাটাগরি মেনু স্ক্রল এরিয়া */
+.sidebar-nav { 
+    padding: 10px; overflow-y: auto; flex: 1; max-height: 50vh;
+}
+.sidebar-nav a { 
+    display: flex; align-items: center; gap: 12px; color: #a9a6c4; 
+    text-decoration: none; padding: 12px; font-size: 14px; border-radius: 6px; margin-bottom: 4px;
+}
+.sidebar-nav a.active, .sidebar-nav a:hover { background-color: #1c1933; color: #ffca08; }
+.nav-icon { font-size: 16px; }
+
+/* অতিরিক্ত অপশনগুলোর জন্য সিএসএস (যা নিচে যুক্ত হবে) */
+.sidebar-extra-section {
+    border-top: 2px solid #231f3f;
+    background-color: #17142b;
+    padding: 12px;
+}
+
+/* রেফারেল ও ভিআইপি ২ কলাম গ্রিড */
+.extra-grid-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+.grid-btn-item {
+    background-color: #201b3d;
+    border: 1px solid #2e2854;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+.grid-icon { font-size: 18px; }
+.grid-txt { font-size: 12px; font-weight: bold; color: #ffffff; }
+
+/* এক্সট্রা লিস্ট আইটেম স্টাইল */
+.extra-list-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.extra-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background-color: #131124;
+    border-radius: 6px;
+    cursor: pointer;
+    border-bottom: 1px solid #1c1933;
+}
+.item-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #e2e0f0;
+}
+.list-icon { font-size: 14px; }
+.item-right { color: #494569; font-size: 11px; }
+
+/* মডাল ওভারলে */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background-color: rgba(0, 0, 0, 0.75); display: none; align-items: center; justify-content: center; z-index: 3000;
+}
+.modal-overlay.active { display: flex; }
+.modal-box { background-color: #1a172e; width: 92%; max-width: 380px; border-radius: 12px; border: 1px solid #2b274c; padding: 20px; }
+.modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #231f3f; padding-bottom: 12px; margin-bottom: 16px; }
+.modal-header h3 { font-size: 16px; color: #ffffff; font-weight: bold; }
+.close-modal-btn { background: none; border: none; color: #a9a6c4; font-size: 18px; cursor: pointer; }
+
+/* ল্যাঙ্গুয়েজ কার্ড আইটেম */
+.lang-selection-container { display: flex; flex-direction: column; gap: 10px; }
+.lang-row-option { display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; background-color: #211e3b; border-radius: 8px; cursor: pointer; }
+.lang-row-option.selected { background-color: #29244d; border: 1px solid #ffca08; }
+.lang-info { display: flex; align-items: center; gap: 10px; }
+.flag-icon { font-size: 18px; }
+.lang-text-label { font-size: 13px; font-weight: bold; }
+.status-tick { color: #48bb78; font-weight: bold; }
