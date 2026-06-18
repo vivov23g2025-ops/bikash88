@@ -3,391 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="siteTitle">বিকাশ৮৮ - সেরা অনলাইন গেমিং প্ল্যাটফর্ম</title>
-    <!-- আপনার অপ্টিমাইজড সিএসএস ফাইল -->
+    <title>BHAI88 - অনলাইন গেমিং প্ল্যাটফর্ম</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* ভাষা ড্রপডাউনের জন্য সামান্য কিছু ইন্টিগ্রেটেড স্টাইল */
-        .lang-select select {
-            background: var(--bg-header);
-            color: var(--color-text-white);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-sm);
-            padding: 4px 8px;
-            font-size: 12px;
-            cursor: pointer;
-            outline: none;
-        }
-        .lang-select select:focus {
-            border-color: var(--color-primary);
-        }
-    </style>
 </head>
 <body>
 
-    <!-- ১. হেডার সেকশন -->
+    <!-- Header Section -->
     <header class="header">
-        <div class="logo-area">
-            <a href="#" class="logo-img">BIKASH<span>88</span></a>
-        </div>
-        <div class="header-right">
-            <button class="btn-top-small btn-top-login" id="lnkLogin1" onclick="location.href='login.html'">লগইন</button>
-            <button class="btn-top-small btn-top-reg" id="lnkReg1" onclick="location.href='register-step1.html'">রেজিস্ট্রেশন</button>
-            
-            <!-- ভাষা পরিবর্তন অপশন (ড্রপডাউন) -->
-            <div class="lang-select">
-                <select id="langSwitcher" onchange="switchLanguage(this.value)">
-                    <option value="bn">🇧🇩 BN</option>
-                    <option value="en">🇺🇸 EN</option>
-                </select>
+        <div class="header-container">
+            <div class="header-left">
+                <button class="menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="logo">B<span>HAI88</span></div>
             </div>
             
-            <!-- লগইন পরবর্তী ডেমো ইউজার মেনু -->
-            <div class="user-logged-menu" id="userMenu">
-                <div class="wallet-info">⚖️ <strong id="txtWallet">৳ 500.00</strong></div>
-                <div class="icon-btn">
-                    🔔 <span class="icon-badge"></span>
+            <!-- Desktop Navigation Menu (Screenshot 3 এর মতো) -->
+            <nav class="desktop-nav">
+                <a href="#" class="active">🏠 হোম</a>
+                <a href="#">ক্রিকেট</a>
+                <a href="#">লাইভ ক্যাসিনো</a>
+                <a href="#">স্লট গেম</a>
+                <a href="#">টেবিল গেম</a>
+                <a href="#">ক্র্যাশ</a>
+                <a href="#">স্পোর্টস</a>
+                <a href="#">মাছ ধরা</a>
+                <a href="#">লটারি</a>
+            </nav>
+
+            <div class="header-right">
+                <!-- লগআউট ভিউ: কোনো ব্যালেন্স দেখাবে না, শুধু ৳ BDT এবং লগইন/নিবন্ধন থাকবে -->
+                <div id="logged-out-header" class="auth-group">
+                    <div class="currency-indicator">
+                        <span class="flag">🇧🇩</span> ৳ BDT
+                    </div>
+                    <button class="btn-login-small" onclick="toggleAuthModal('login')">প্রবেশ করুন</button>
+                    <button class="btn-register-small" onclick="toggleAuthModal('register')">নিবন্ধন</button>
+                </div>
+
+                <!-- লগইন ভিউ: সফলভাবে লগইন হলে ব্যালেন্স ও নোটিফিকেশন দেখাবে -->
+                <div id="logged-in-header" class="auth-group style-logged-in" style="display: none;">
+                    <div class="balance-container">
+                        <span class="scale-icon">⚖️</span>
+                        <span class="balance-amount">৳ 500.00</span>
+                        <span class="bell-icon">🔔</span>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- ২. টেক্সট নেভিগেশন বার -->
-    <nav class="text-navbar">
-        <a href="#" class="nav-link active" id="navHome">🏠 হোম</a>
-        <a href="#" class="nav-link" id="navCasino">🔥 লাইভ ক্যাসিনো</a>
-        <a href="#" class="nav-link" id="navSlots">🎰 স্লটস</a>
-        <a href="#" class="nav-link" id="navSportsbook">⚽ স্পোর্টসবুক</a>
-        <a href="#" class="nav-link" id="navTable">🃏 টেবিল গেমস</a>
-        <a href="#" class="nav-link" id="navPromo">🎁 প্রমোশন</a>
-    </nav>
+    <!-- Main Content Wrapper -->
+    <main class="main-content">
+        <!-- Hero Banner -->
+        <section class="hero-section">
+            <div class="hero-banner">
+                <div class="hero-text">
+                    <h1>১০০% ক্যাশ ওয়েলকাম বোনাস</h1>
+                    <p>ডিপোজিট করুন ও পান সর্বোচ্চ ৳১০,০০০!</p>
+                    <button class="btn-hero-action">আজই যোগ দিন!</button>
+                </div>
+            </div>
+        </section>
 
-    <!-- ৩. ব্যানার সেকশন -->
-    <section class="banner-container">
-        <h1 class="banner-title" id="bannerTitle">১০০% ওয়েলকাম বোনাস!</h1>
-        <p class="banner-sub" id="bannerSub">আজই জয়েন করুন এবং আপনার প্রথম ডিপোজিটে জিতে নিন আকর্ষণীয় বোনাস।</p>
-        <button class="btn-claim" id="btnClaim" style="width: 160px;" onclick="openModal()">ক্লেম করুন</button>
-    </section>
+        <!-- ১ নম্বর স্ক্রিনশটের মতো মোবাইলের জন্য বড় বাটনসমূহ -->
+        <div class="mobile-hero-actions">
+            <button class="btn-yellow" onclick="toggleAuthModal('register')">নিবন্ধন</button>
+            <button class="btn-purple" onclick="toggleAuthModal('login')">প্রবেশ করুন</button>
+        </div>
 
-    <!-- ৪. মেইন অথেনটিকেশন বাটন (মোবাইল ভিউর জন্য) -->
-    <div class="main-auth-btns">
-        <button class="btn-main-act btn-main-login" id="lnkLogin2" onclick="location.href='login.html'">লগইন</button>
-        <button class="btn-main-act btn-main-reg" id="lnkReg2" onclick="location.href='register-step1.html'">রেজিস্ট্রেশন করুন</button>
-    </div>
+        <!-- ৯টি ক্যাটাগরি গ্রিড (মোবাইলে ৩টি করে, ডেস্কটপে এক লাইনে স্ক্রিনশট ৩ এর মতো) -->
+        <section class="categories-grid">
+            <div class="grid-item">
+                <div class="icon-box">🏠</div>
+                <span>বাড়ি</span>
+            </div>
+            <div class="grid-item">
+                <div class="icon-box">🏏</div>
+                <span>ক্রিকেট</span>
+            </div>
+            <div class="grid-item">
+                <div class="icon-box">🃏</div>
+                <span>লাইভ ক্যাসিনো</span>
+            </div>
+            <div class="grid-item">
+                <div class="icon-box">🎰</div>
+                <span>স্লট গেম</span>
+            </div>
+            <div class="grid-item">
+                <div class="icon-box">🎲</div>
+                <span>টেবিল গেম</span>
+            </div>
+            <div class="grid-item">
+                <div class="icon-box">🚀</div>
+                <span>ক্র্যাশ</span>
+            </div>
+            <div class="grid-item">
+                <div class="icon-box">⚽</div>
+                <span>স্পোর্টস</span>
+            </div>
+            <div class="grid-item">
+                <div class="icon-box">🐟</div>
+                <span>মাছ ধরা</span>
+            </div>
+            <div class="grid-item">
+                <div class="icon-box">🎱</div>
+                <span>লটারি</span>
+            </div>
+            <div class="grid-item mobile-only-item">
+                <div class="icon-box">🔥</div>
+                <span>Promo</span>
+            </div>
+        </section>
 
-    <!-- ۵. গেম ক্যাটাগরি মেনু -->
-    <div class="category-menu">
-        <div class="cat-item active">
-            <span class="cat-icon">🎰</span>
-            <span id="catSlots">স্লটস</span>
-        </div>
-        <div class="cat-item">
-            <span class="cat-icon">🎲</span>
-            <span id="catCasino">লাইভ ক্যাসিনো</span>
-        </div>
-        <div class="cat-item">
-            <span class="cat-icon">🏏</span>
-            <span id="catCricket">ক্রিকেট</span>
-        </div>
-        <div class="cat-item">
-            <span class="cat-icon">⚽</span>
-            <span id="catSports">স্পোর্টস</span>
-        </div>
-        <div class="cat-item">
-            <span class="cat-icon">🃏</span>
-            <span id="catTable">টেবিল</span>
-        </div>
-    </div>
+        <!-- ২ নম্বর স্ক্রিনশটের মতো মোবাইলের অতিরিক্ত লিংক সেকশন -->
+        <section class="mobile-quick-links">
+            <div class="two-column-row">
+                <div class="link-btn"><span class="icon">👥</span> রেফারেল</div>
+                <div class="link-btn"><span class="icon">👑</span> ভিআইপি</div>
+            </div>
+            <ul class="link-list">
+                <li><span>🎁 অতিরিক্ত পুরস্কার</span> <span class="arrow">❯</span></li>
+                <li><span>🌐 ভাষা</span> <span class="arrow">❯</span></li>
+                <li><span>💬 গ্রাহক সেবা</span> <span class="arrow">❯</span></li>
+                <li><span>📥 ডাউনলোড করুন</span> <span class="arrow">❯</span></li>
+            </ul>
+        </section>
 
-    <!-- ৬. মেইন গেম গ্রিড -->
-    <main class="game-grid">
-        <div class="game-card">
-            <span class="game-card-icon">👑</span>
-            <span class="game-card-name">Crazy Time</span>
-        </div>
-        <div class="game-card">
-            <span class="game-card-icon">⚡</span>
-            <span class="game-card-name">Lightning Roulette</span>
-        </div>
-        <div class="game-card">
-            <span class="game-card-icon">🐯</span>
-            <span class="game-card-name">Dragon Tiger</span>
-        </div>
-        <div class="game-card">
-            <span class="game-card-icon">🍬</span>
-            <span class="game-card-name">Sweet Bonanza</span>
-        </div>
-        <div class="game-card">
-            <span class="game-card-icon">🚀</span>
-            <span class="game-card-name">Aviator</span>
-        </div>
-        <div class="game-card">
-            <span class="game-card-icon">🎣</span>
-            <span class="game-card-name">Mega Fishing</span>
-        </div>
+        <!-- গেম শো-কেস (ডেস্কটপে ৪টি পাশাপাশি সুন্দর দেখাবে) -->
+        <section class="game-showcase">
+            <h2>জনপ্রিয় গেমসমূহ</h2>
+            <div class="game-cards-container">
+                <div class="game-card card-green"><div class="game-title">Money Coming</div></div>
+                <div class="game-card card-gold"><div class="game-title">Super Ace</div></div>
+                <div class="game-card card-purple"><div class="game-title">Crazy Time</div></div>
+                <div class="game-card card-red"><div class="game-title">Aviator</div></div>
+            </div>
+        </section>
     </main>
 
-    <!-- ৭. প্রোমো সেকশন -->
-    <section class="promo-section">
-        <div class="promo-card">
-            <div class="promo-card-title" id="promoTitle1">সীমিত সময়ের অফার</div>
-            <div class="promo-banner-mock banner-yellow">
-                <h3 id="promoHead1">রোজকার ক্যাশব্যাক</h3>
-                <p id="promoSub1">প্রতিদিন ৫% পর্যন্ত লস ব্যাক অফার!</p>
-                <button class="promo-btn" id="promoBtn1">বিস্তারিত</button>
-            </div>
-        </div>
-        <div class="promo-card">
-            <div class="promo-card-title" id="promoTitle2">নতুন ইউজার স্পেশাল</div>
-            <div class="promo-banner-mock banner-purple">
-                <h3 id="promoHead2">ফ্রি স্পিন অফার</h3>
-                <p id="promoSub2">অ্যাকাউন্ট ভেরিফাই করলেই ২০টি ফ্রি স্পিন।</p>
-                <button class="promo-btn" id="promoBtn2">দাবি করুন</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- ৮. ফুটার সেকশন -->
-    <footer class="main-footer">
-        <div class="download-apk-btn" id="btnDownload">
-            🤖 Android App ডাউনলোড করুন
-        </div>
-
-        <div class="footer-row-partners">
-            <div class="partner-group">
-                <span id="ftPartner1">গেমিং পার্টনারস</span>
-                <div class="partner-icons">🎰 🎲 🃏 🎯</div>
-            </div>
-            <div class="partner-group">
-                <span id="ftPartner2">সিকিউরিটি পার্টনারস</span>
-                <div class="partner-icons">🔒 🛡️ 💳</div>
-            </div>
-        </div>
-
-        <div class="seo-section">
-            <h4 class="seo-title" id="seoTitle">বকাশ৮৮ - বাংলাদেশের ১ নম্বর নিরাপদ গেমিং প্ল্যাটফর্ম</h4>
-            <p id="seoDesc">আমরা প্রদান করি বিশ্বস্ত ডিপোজিট এবং ফাস্ট উইথড্রয়াল সিস্টেম। ২৪ ঘন্টা লাইভ কাস্টমার সাপোর্ট এবং সেরা সব গেমের কালেকশন নিয়ে আমরা আছি আপনার পাশে।</p>
-        </div>
-
-        <div class="bottom-copyright-bar">
-            <div class="footer-links">
-                <a href="#" id="ftLinkAbout">আমাদের সম্পর্কে</a>
-                <a href="#" id="ftLinkTerms">শর্তাবলী</a>
-                <a href="#" id="ftLinkPrivacy">গোপনীয়তা নীতি</a>
-                <a href="#" id="ftLinkFaq">FAQ</a>
-            </div>
-            <div class="copyright-text" id="ftCopyright">
-                &copy; 2026 বিকাশ৮৮. সর্বস্বত্ব সংরক্ষিত।
-            </div>
-        </div>
-    </footer>
-
-    <!-- ১০. রেস্পনসিভ চ্যাট সিস্টেম উইজেট -->
-    <div class="bhai88-chat-container">
-        <div class="chat-sub-buttons" id="chatSubButtons">
-            <a href="https://t.me/yourchannel" target="_blank" class="sub-btn sub-tg" title="Telegram">✈️</a>
-            <a href="mailto:support@bikash88.com" class="sub-btn sub-mail" title="Email">✉️</a>
-        </div>
-        <button class="main-floating-btn" onclick="toggleChatSystem()">💬</button>
+    <!-- ফ্লোটিং চ্যাট ও গিফট বাটন -->
+    <div class="floating-widgets">
+        <div class="widget-gift">🎁</div>
+        <div class="widget-chat">💬</div>
     </div>
 
-    <!-- লাইভ চ্যাট উইন্ডো -->
-    <div class="bhai88-chat-window" id="chatWindow">
-        <div class="chat-win-header">
-            <div class="chat-win-title" id="chatTitle">বিকাশ৮৮ কাস্টমার সাপোর্ট</div>
-            <div class="chat-win-close" onclick="toggleChatWindow(false)">&times;</div>
-        </div>
-        <div class="chat-win-body" id="chatBody">
-            <div class="bot-msg-bubble" id="chatWelcomeMsg">
-                আসসালামু আলাইকুম! বিকাশ৮৮ সাপোর্টে আপনাকে স্বাগতম। আপনাকে কীভাবে সাহায্য করতে পারি?
-            </div>
-            <div class="quick-replies-container" id="quickRepliesBox">
-                <button class="quick-reply-btn" onclick="sendQuickReply(this.innerText)">কীভাবে ডিপোজিট করব?</button>
-                <button class="quick-reply-btn" onclick="sendQuickReply(this.innerText)">আমার বোনাস অ্যাড হয়নি</button>
-                <button class="quick-reply-btn" onclick="sendQuickReply(this.innerText)">অ্যাকাউন্ট ভেরিফিকেশন সমস্যা</button>
+    <!-- পপআপ ফর্ম লজিক (লগইন এবং রেজিস্ট্রেশন) -->
+    <div id="auth-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-container">
+            <button class="modal-close" onclick="closeAuthModal()">✕</button>
+            
+            <!-- লগইন ফর্ম -->
+            <div id="modal-login-form" class="auth-form-block">
+                <h3>ভাই৮৮-এ আপনাকে স্বাগতম</h3>
+                <div class="input-wrapper">
+                    <label>ব্যবহারকারীর নাম *</label>
+                    <input type="text" placeholder="এখানে পূরণ করুন">
+                </div>
+                <div class="input-wrapper">
+                    <label>পাসওয়ার্ড *</label>
+                    <input type="password" placeholder="এখানে পূরণ করুন">
+                </div>
+                <button class="btn-submit-yellow" onclick="executeDemoLogin()">প্রবেশ করুন</button>
             </div>
         </div>
     </div>
 
-    <!-- ১১. সিকিউরড এডমিন প্যানেল -->
-    <div id="adminPanel">
-        <h3>নিরাপদ এডমিন ড্যাশবোর্ড</h3>
-    </div>
-
-    <!-- ==========================================================================
-       জাভাস্ক্রিপ্ট লজিক (ভাষা পরিবর্তন, মডাল ও চ্যাট লজিক)
-       ========================================================================== -->
     <script>
-        // ডিকশনারি ডাটাবেস (বাংলা এবং ইংরেজি ডাটা)
-        const langData = {
-            bn: {
-                siteTitle: "বিকাশ৮৮ - সেরা অনলাইন গেমিং প্ল্যাটফর্ম",
-                lnkLogin1: "লগইন", lnkLogin2: "লগইন",
-                lnkReg1: "রেজিস্ট্রেশন", lnkReg2: "রেজিস্ট্রেশন করুন",
-                txtWallet: "৳ 500.00",
-                navHome: "🏠 হোম", navCasino: "🔥 লাইভ ক্যাসিনো", navSlots: "🎰 স্লটস", navSportsbook: "⚽ স্পোর্টসবুক", navTable: "🃏 টেবিল গেমস", navPromo: "🎁 প্রমোশন",
-                bannerTitle: "১০০% ওয়েলকাম বোনাস!", bannerSub: "আজই জয়েন করুন এবং আপনার প্রথম ডিপোজিটে জিতে নিন আকর্ষণীয় বোনাস।", btnClaim: "ক্লেম করুন",
-                catSlots: "স্লটস", catCasino: "লাইভ ক্যাসিনো", catCricket: "ক্রিকেট", catSports: "স্পোর্টস", catTable: "টেবিল",
-                promoTitle1: "সীমিত সময়ের অফার", promoHead1: "রোজকার ক্যাশব্যাক", promoSub1: "প্রতিদিন ৫% পর্যন্ত লস ব্যাক অফার!", promoBtn1: "বিস্তারিত",
-                promoTitle2: "নতুন ইউজার স্পেশাল", promoHead2: "ফ্রি স্পিন অফার", promoSub2: "অ্যাকাউন্ট ভেরিফাই করলেই ২০টি ফ্রি স্পিন।", promoBtn2: "দাবি করুন",
-                btnDownload: "🤖 Android App ডাউনলোড করুন", ftPartner1: "গেমিং পার্টনারস", ftPartner2: "সিকিউরিটি পার্টনারস",
-                seoTitle: "বিকাশ৮৮ - বাংলাদেশের ১ নম্বর নিরাপদ গেমিং প্ল্যাটফর্ম", seoDesc: "আমরা প্রদান করি বিশ্বস্ত ডিপোজিট এবং ফাস্ট উইথড্রয়াল সিস্টেম। ২৪ ঘন্টা লাইভ কাস্টমার সাপোর্ট এবং সেরা সব গেমের কালেকশন নিয়ে আমরা আছি আপনার পাশে।",
-                ftLinkAbout: "আমাদের সম্পর্কে", ftLinkTerms: "শর্তাবলী", ftLinkPrivacy: "গোপনীয়তা নীতি", ftLinkFaq: "FAQ",
-                ftCopyright: "&copy; 2026 বিকাশ৮৮. সর্বস্বত্ব সংরক্ষিত।",
-                lblUser: "ইউজারনেম*", inputUserPlaceholder: "সর্বনিম্ন ৪ অক্ষরের নাম",
-                lblPhone: "ফোন নম্বর*", inputPhonePlaceholder: "১XXXXXXXXX",
-                lblPass: "পাসওয়ার্ড*", inputPassPlaceholder: "নিরাপদ পাসওয়ার্ড দিন",
-                btnSubmitReg: "এগিয়ে যান 🚀", chatTitle: "বিকাশ৮৮ কাস্টমার সাপোর্ট",
-                chatWelcomeMsg: "আসসালামু আলাইকুম! বিকাশ৮৮ সাপোর্টে আপনাকে স্বাগতম। আপনাকে কীভাবে সাহায্য করতে পারি?",
-                quickReplies: ["কীভাবে ডিপোজিট করব?", "আমার বোনাস অ্যাড হয়নি", "অ্যাকাউন্ট ভেরিফিকেশন সমস্যা"],
-                botResponse: "আপনার প্রশ্নটির জন্য ধন্যবাদ। আমাদের একজন রিপ্রেজেন্টেটিভ খুব শীঘ্রই আপনার সাথে যুক্ত হচ্ছেন।"
-            },
-            en: {
-                siteTitle: "Bikash88 - Best Online Gaming Platform",
-                lnkLogin1: "Login", lnkLogin2: "Login",
-                lnkReg1: "Registration", lnkReg2: "Register Now",
-                txtWallet: "৳ 500.00",
-                navHome: "🏠 Home", navCasino: "🔥 Live Casino", navSlots: "🎰 Slots", navSportsbook: "⚽ Sportsbook", navTable: "🃏 Table Games", navPromo: "🎁 Promotions",
-                bannerTitle: "100% Welcome Bonus!", bannerSub: "Join today and win exciting bonuses on your first deposit.", btnClaim: "Claim Now",
-                catSlots: "Slots", catCasino: "Live Casino", catCricket: "Cricket", catSports: "Sports", catTable: "Table",
-                promoTitle1: "Limited Time Offer", promoHead1: "Daily Cashback", promoSub1: "Up to 5% loss back offer every day!", promoBtn1: "Details",
-                promoTitle2: "New User Special", promoHead2: "Free Spin Offer", promoSub2: "Get 20 free spins upon verifying your account.", promoBtn2: "Claim",
-                btnDownload: "🤖 Download Android App", ftPartner1: "Gaming Partners", ftPartner2: "Security Partners",
-                seoTitle: "Bikash88 - No. 1 Secure Gaming Platform in Bangladesh", seoDesc: "We provide trusted deposit and fast withdrawal systems. With 24-hour live customer support and the best game collection, we are here for you.",
-                ftLinkAbout: "About Us", ftLinkTerms: "Terms & Conditions", ftLinkPrivacy: "Privacy Policy", ftLinkFaq: "FAQ",
-                ftCopyright: "&copy; 2026 Bikash88. All Rights Reserved.",
-                lblUser: "Username*", inputUserPlaceholder: "Minimum 4 characters",
-                lblPhone: "Phone Number*", inputPhonePlaceholder: "1XXXXXXXXX",
-                lblPass: "Password*", inputPassPlaceholder: "Enter secure password",
-                btnSubmitReg: "Continue 🚀", chatTitle: "Bikash88 Customer Support",
-                chatWelcomeMsg: "Welcome to Bikash88 Support! How can we assist you today?",
-                quickReplies: ["How to deposit?", "My bonus not added", "Account verification issue"],
-                botResponse: "Thank you for your question. One of our representatives will join you shortly."
-            }
-        };
-
-        // বর্তমান ভাষা ট্র্যাকার (ডিফল্ট: বট রেসপন্স হ্যান্ডলিং এর জন্য)
-        let currentLang = 'bn';
-
-        // ভাষা পরিবর্তন করার কোর লজিক
-        function switchLanguage(lang) {
-            currentLang = lang;
-            const data = langData[lang];
-            
-            // টাইটেল এবং টেক্সট পরিবর্তন
-            document.getElementById('siteTitle').innerText = data.siteTitle;
-            document.getElementById('lnkLogin1').innerText = data.lnkLogin1;
-            document.getElementById('lnkLogin2').innerText = data.lnkLogin2;
-            document.getElementById('lnkReg1').innerText = data.lnkReg1;
-            document.getElementById('lnkReg2').innerText = data.lnkReg2;
-            document.getElementById('txtWallet').innerText = data.txtWallet;
-            
-            // নেভিগেশন
-            document.getElementById('navHome').innerText = data.navHome;
-            document.getElementById('navCasino').innerText = data.navCasino;
-            document.getElementById('navSlots').innerText = data.navSlots;
-            document.getElementById('navSportsbook').innerText = data.navSportsbook;
-            document.getElementById('navTable').innerText = data.navTable;
-            document.getElementById('navPromo').innerText = data.navPromo;
-            
-            // ব্যানার ও ক্যাটাগরি
-            document.getElementById('bannerTitle').innerText = data.bannerTitle;
-            document.getElementById('bannerSub').innerText = data.bannerSub;
-            document.getElementById('btnClaim').innerText = data.btnClaim;
-            document.getElementById('catSlots').innerText = data.catSlots;
-            document.getElementById('catCasino').innerText = data.catCasino;
-            document.getElementById('catCricket').innerText = data.catCricket;
-            document.getElementById('catSports').innerText = data.catSports;
-            document.getElementById('catTable').innerText = data.catTable;
-            
-            // প্রোমো ও ফুটার
-            document.getElementById('promoTitle1').innerText = data.promoTitle1;
-            document.getElementById('promoHead1').innerText = data.promoHead1;
-            document.getElementById('promoSub1').innerText = data.promoSub1;
-            document.getElementById('promoBtn1').innerText = data.promoBtn1;
-            document.getElementById('promoTitle2').innerText = data.promoTitle2;
-            document.getElementById('promoHead2').innerText = data.promoHead2;
-            document.getElementById('promoSub2').innerText = data.promoSub2;
-            document.getElementById('promoBtn2').innerText = data.promoBtn2;
-            document.getElementById('btnDownload').innerText = data.btnDownload;
-            document.getElementById('ftPartner1').innerText = data.ftPartner1;
-            document.getElementById('ftPartner2').innerText = data.ftPartner2;
-            document.getElementById('seoTitle').innerText = data.seoTitle;
-            document.getElementById('seoDesc').innerText = data.seoDesc;
-            document.getElementById('ftLinkAbout').innerText = data.ftLinkAbout;
-            document.getElementById('ftLinkTerms').innerText = data.ftLinkTerms;
-            document.getElementById('ftLinkPrivacy').innerText = data.ftLinkPrivacy;
-            document.getElementById('ftLinkFaq').innerText = data.ftLinkFaq;
-            document.getElementById('ftCopyright').innerHTML = data.ftCopyright;
-            
-            // মডাল এলিমেন্টস
-            document.getElementById('lblUser').innerHTML = data.lblUser;
-            document.getElementById('inputUser').placeholder = data.inputUserPlaceholder;
-            document.getElementById('lblPhone').innerHTML = data.lblPhone;
-            document.getElementById('inputPhone').placeholder = data.inputPhonePlaceholder;
-            document.getElementById('lblPass').innerHTML = data.lblPass;
-            document.getElementById('inputPass').placeholder = data.inputPassPlaceholder;
-            document.getElementById('btnSubmitReg').innerText = data.btnSubmitReg;
-            
-            // লাইভ চ্যাট উইন্ডো
-            document.getElementById('chatTitle').innerText = data.chatTitle;
-            document.getElementById('chatWelcomeMsg').innerText = data.chatWelcomeMsg;
-            
-            // কুইক রিপ্লাই বাটন আপডেট
-            const replyButtons = document.querySelectorAll('#quickRepliesBox .quick-reply-btn');
-            replyButtons.forEach((btn, index) => {
-                btn.innerText = data.quickReplies[index];
-            });
+        function toggleAuthModal(type) {
+            document.getElementById('auth-modal').style.display = 'flex';
+            document.getElementById('modal-login-form').style.display = 'block';
         }
-
-        // চ্যাট বাটন ও উইন্ডো টগল লজিক
-        function toggleChatSystem() {
-            const subButtons = document.getElementById('chatSubButtons');
-            const chatWindow = document.getElementById('chatWindow');
-            
-            if (chatWindow.style.display === 'flex') {
-                toggleChatWindow(false);
-            } else {
-                subButtons.classList.toggle('open');
-                setTimeout(() => {
-                    if(subButtons.classList.contains('open')) {
-                        toggleChatWindow(true);
-                    }
-                }, 200);
-            }
+        function closeAuthModal() {
+            document.getElementById('auth-modal').style.display = 'none';
         }
-
-        function toggleChatWindow(show) {
-            const chatWindow = document.getElementById('chatWindow');
-            const subButtons = document.getElementById('chatSubButtons');
-            if (show) {
-                chatWindow.style.display = 'flex';
-                subButtons.classList.remove('open');
-            } else {
-                chatWindow.style.display = 'none';
-            }
-        }
-
-        // কুইক রিপ্লাই রেসপন্স লজিক (ভাষা অনুযায়ী ডাইনামিক)
-        function sendQuickReply(message) {
-            const chatBody = document.getElementById('chatBody');
-            
-            // ইউজার চ্যাট বাবল
-            const userMsg = document.createElement('div');
-            userMsg.className = 'user-msg-bubble';
-            userMsg.innerText = message;
-            chatBody.appendChild(userMsg);
-            chatBody.scrollTop = chatBody.scrollHeight;
-
-            // বট রেসপন্স (ভাষা অনুযায়ী মেসেজ পিক করবে)
-            setTimeout(() => {
-                const botMsg = document.createElement('div');
-                botMsg.className = 'bot-msg-bubble';
-                botMsg.innerText = langData[currentLang].botResponse;
-                chatBody.appendChild(botMsg);
-                chatBody.scrollTop = chatBody.scrollHeight;
-            }, 1000);
+        function executeDemoLogin() {
+            // সফল লগইন ডেমো: ব্যালেন্স শো করবে
+            document.getElementById('logged-out-header').style.display = 'none';
+            document.getElementById('logged-in-header').style.display = 'flex';
+            closeAuthModal();
         }
     </script>
 </body>
-    </html>
+</html>
