@@ -1,4 +1,4 @@
-/*Bikas88 রেসপন্সিভ স্টাইল শীট */
+/* BIKASH88 রেসপন্সিভ স্টাইল শীট */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -185,22 +185,19 @@ body {
 .input-wrapper input { width: 100%; padding: 10px; background-color: #111622; border: 1px solid #2e394e; color: #fff; border-radius: 4px; }
 .btn-submit-yellow { width: 100%; padding: 10px; background-color: #ffbc00; border: none; font-weight: bold; border-radius: 4px; }
 
-/* 🌟 ৩ নম্বর স্ক্রিনশটের মতো রেসপন্সিভ ডেস্কটপ ভিউ (PC Mode) 🌟 */
+/* ৩ নম্বর স্ক্রিনশটের মতো রেসপন্সিভ ডেস্কটপ ভিউ (PC Mode) */
 @media (min-width: 992px) {
     .desktop-nav { display: flex; }
     .menu-btn { display: none; }
     
-    /* ৯টি গ্রিড বাটন এক লাইনে স্ক্রিনশট ৩ এর মতো সমান্তরাল হয়ে যাবে */
     .categories-grid {
         grid-template-columns: repeat(9, 1fr);
     }
     
-    /* মোবাইলের অতিরিক্ত লিংক এবং ফর্ম বাটনগুলো পিসিতে হাইড থাকবে */
     .mobile-hero-actions, .mobile-quick-links, .mobile-only-item {
         display: none;
     }
     
-    /* গেম কার্ডগুলো সুন্দরভাবে পাশাপাশি ৪টি লাইনে বসবে */
     .game-cards-container {
         grid-template-columns: repeat(4, 1fr);
     }
