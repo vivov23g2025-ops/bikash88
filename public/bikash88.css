@@ -1,4 +1,4 @@
-/* BIKASH88 মাস্টার রেসপন্সিভ স্টাইলশীট */
+/* BIKASH88 আল্ট্রা-রেসপন্সিভ মোবাইল ফিক্সড স্টাইলশীট */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -11,27 +11,19 @@ body {
     background-color: #0c0f16;
     color: #ffffff;
     padding-bottom: 30px;
+    overflow-x: hidden;
 }
 
-/* --- হেডার কন্ট্রোল লজিক: এর মাধ্যমে একটার উপাদান অন্যটায় লিক হওয়া ১০০% অসম্ভব --- */
-body.logged-out-state .logged-in-controls {
-    display: none !important;
-}
-body.logged-out-state .logged-out-controls {
-    display: flex !important;
-}
+/* স্টেট লজিক */
+body.logged-out-state .logged-in-controls { display: none !important; }
+body.logged-out-state .logged-out-controls { display: flex !important; }
+body.logged-in-state .logged-out-controls { display: none !important; }
+body.logged-in-state .logged-in-controls { display: flex !important; }
 
-body.logged-in-state .logged-out-controls {
-    display: none !important;
-}
-body.logged-in-state .logged-in-controls {
-    display: flex !important;
-}
-
-/* Header Container UI */
+/* হেডার ফিক্স - উপাদানের পারস্পরিক দূরত্ব ও সাইড গ্যাপ বজায় রাখবে */
 .header {
     background-color: #141923;
-    padding: 12px 16px;
+    padding: 10px 14px;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -42,8 +34,6 @@ body.logged-in-state .logged-in-controls {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
     width: 100%;
 }
 
@@ -51,6 +41,7 @@ body.logged-in-state .logged-in-controls {
     display: flex;
     align-items: center;
     gap: 12px;
+    flex-shrink: 0; /* কোনো মতেই লোগো ছোট বা সংকুচিত হবে না */
 }
 
 .menu-btn {
@@ -60,86 +51,69 @@ body.logged-in-state .logged-in-controls {
     flex-direction: column;
     gap: 4px;
     cursor: pointer;
+    padding: 6px;
 }
 
 .menu-btn span {
     display: block;
-    width: 20px;
-    height: 2px;
+    width: 22px;
+    height: 2.5px;
     background-color: #ffffff;
+    border-radius: 2px;
 }
 
 .logo {
-    font-size: 21px;
+    font-size: 19px;
     font-weight: 900;
     color: #ffffff;
     letter-spacing: 0.5px;
 }
+.logo span { color: #ffbc00; }
 
-.logo span {
-    color: #ffbc00;
-}
+.desktop-nav { display: none; }
 
-/* ডেক্সটপ নেভিগেশন */
-.desktop-nav {
-    display: none;
-    gap: 18px;
-}
-
-.desktop-nav a {
-    color: #a0aec0;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.desktop-nav a.active, .desktop-nav a:hover {
-    color: #ffbc00;
+/* ডানদিকের কন্ট্রোল প্যানেল একদম শেষ মাথায় লক থাকবে */
+.header-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-grow: 1;
 }
 
 .logged-out-controls, .logged-in-controls {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
 }
 
-/* ভাই৮৮ স্টাইল কারেন্সি ইন্ডিকেটর */
+/* কারেন্সি ব্যাজ রেসপন্সিভ সাইজ */
 .currency-badge {
     background-color: #1a2232;
     border: 1px solid #2d3748;
     color: #48bb78;
-    padding: 6px 10px;
+    padding: 6px 8px;
     border-radius: 4px;
     font-weight: 700;
-    font-size: 13px;
+    font-size: 11px;
     display: flex;
     align-items: center;
     gap: 4px;
     white-space: nowrap;
 }
 
+/* বাটন সাইজ অপ্টিমাইজেশন */
 .header-btn {
     border: none;
-    padding: 6px 12px;
+    padding: 7px 11px;
     border-radius: 4px;
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 700;
     cursor: pointer;
     white-space: nowrap;
 }
+.btn-login { background-color: #2d3748; color: #ffffff; border: 1px solid #4a5568; }
+.btn-register { background-color: #ffbc00; color: #000000; }
 
-.btn-login {
-    background-color: #2d3748;
-    color: #ffffff;
-    border: 1px solid #4a5568;
-}
-
-.btn-register {
-    background-color: #ffbc00;
-    color: #000000;
-}
-
-/* গোল্ডেন ব্যালেন্স ক্যাপসিউল বক্স */
 .balance-box {
     background-color: #1e2635;
     border: 1px solid #2d384e;
@@ -147,25 +121,44 @@ body.logged-in-state .logged-in-controls {
     border-radius: 20px;
     color: #ffcc00;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 12px;
     display: flex;
     align-items: center;
     gap: 6px;
-    white-space: nowrap;
 }
 
-.bell-icon {
-    color: #a0aec0;
-    margin-left: 4px;
-    cursor: pointer;
+/* সাইডবার মেনু লেআউট */
+.sidebar-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.75);
+    z-index: 2500;
+    display: flex;
 }
-
-.main-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 12px;
+.sidebar-content {
+    background-color: #141923;
+    width: 270px;
+    height: 100%;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
 }
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #2d3748;
+    padding-bottom: 12px;
+}
+.sidebar-header h3 { color: #ffbc00; font-size: 16px; }
+.close-sidebar { background: none; border: none; color: #fff; font-size: 22px; cursor: pointer; }
+.sidebar-nav { display: flex; flex-direction: column; gap: 12px; }
+.sidebar-nav a { color: #cbd5e0; text-decoration: none; font-size: 14px; font-weight: 600; padding: 10px 14px; border-radius: 6px; }
+.sidebar-nav a.active, .sidebar-nav a:hover { background-color: #1a2232; color: #ffbc00; }
 
+/* মেইন এরিয়া */
+.main-content { padding: 12px; max-width: 1200px; margin: 0 auto; }
 .hero-banner {
     background: linear-gradient(135deg, #100a26, #2d0e6b);
     border-radius: 12px;
@@ -173,316 +166,64 @@ body.logged-in-state .logged-in-controls {
     margin-bottom: 16px;
     border: 1px solid #231942;
 }
+.hero-text h1 { font-size: 18px; color: #ffbc00; margin-bottom: 6px; font-weight: 800; }
+.hero-text p { font-size: 12px; color: #cbd5e0; margin-bottom: 14px; line-height: 1.4; }
+.btn-claim { background-color: #2ecc71; color: #ffffff; font-weight: bold; font-size: 12px; padding: 10px 22px; border: none; border-radius: 4px; cursor: pointer; }
 
-.hero-text h1 {
-    font-size: 20px;
-    color: #ffbc00;
-    margin-bottom: 8px;
-    font-weight: 800;
-}
+.mobile-main-actions { display: flex; gap: 10px; margin-bottom: 20px; }
+.mobile-btn-action { flex: 1; padding: 14px; border: none; font-weight: 800; font-size: 13px; border-radius: 6px; cursor: pointer; }
+.btn-gray-bg { background-color: #232b3c; color: #ffffff; }
+.btn-yellow-bg { background-color: #ffbc00; color: #000000; }
 
-.hero-text p {
-    font-size: 13px;
-    color: #cbd5e0;
-    margin-bottom: 16px;
-    line-height: 1.4;
-}
-
-.btn-claim {
-    background-color: #2ecc71;
-    color: #ffffff;
-    font-weight: bold;
-    font-size: 14px;
-    padding: 10px 24px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-/* মোবাইল ভিউ অ্যাকশন বাটন লেআউট (স্ক্রিনশট অনুযায়ী) */
-.mobile-main-actions {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 20px;
-}
-
-.mobile-btn-action {
-    flex: 1;
-    padding: 14px;
-    border: none;
-    font-weight: 800;
-    font-size: 14px;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.btn-gray-bg {
-    background-color: #232b3c;
-    color: #ffffff;
-}
-
-.btn-yellow-bg {
-    background-color: #ffbc00;
-    color: #000000;
-}
-
-/* ৯টি ক্যাটাগরি গ্রিড রুলস */
+/* ক্যাটাগরি গ্রিড */
 .categories-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
     margin-bottom: 24px;
 }
-
 .grid-item {
     background-color: #151c28;
     border: 1px solid #1e2637;
     border-radius: 8px;
-    padding: 16px 8px;
+    padding: 14px 6px;
     text-align: center;
-    cursor: pointer;
 }
+.icon-wrapper { font-size: 24px; margin-bottom: 4px; }
+.grid-item span { font-size: 11px; color: #e2e8f0; font-weight: 600; }
 
-.icon-wrapper {
-    font-size: 26px;
-    margin-bottom: 6px;
-}
+.section-title { font-size: 15px; color: #ffbc00; margin-bottom: 12px; font-weight: 700; }
+.game-cards-wrapper { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.game-card { height: 100px; border-radius: 8px; padding: 8px; display: flex; align-items: flex-end; background-color: #2d3748; }
+.game-label { font-size: 11px; font-weight: 700; background-color: rgba(0, 0, 0, 0.7); padding: 2px 6px; border-radius: 4px; }
 
-.grid-item span {
-    font-size: 12px;
-    color: #e2e8f0;
-    font-weight: 600;
-}
-
-/* গেম কার্ডস লেআউট */
-.section-title {
-    font-size: 16px;
-    color: #ffbc00;
-    margin-bottom: 12px;
-    font-weight: 700;
-}
-
-.game-cards-wrapper {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-}
-
-.game-card {
-    height: 110px;
-    border-radius: 8px;
-    padding: 12px;
-    display: flex;
-    align-items: flex-end;
-    background-color: #2d3748;
-}
-
-.game-label {
-    font-size: 12px;
-    font-weight: 700;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 2px 6px;
-    border-radius: 4px;
-}
-
-/* ফ্লোটিং উইজেট */
 .floating-chat-icon {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 46px;
-    height: 46px;
-    background-color: #ffbc00;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    cursor: pointer;
-    z-index: 999;
+    position: fixed; bottom: 20px; right: 20px; width: 48px; height: 48px;
+    background-color: #ffbc00; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 999;
 }
 
-.chat-bubble {
-    font-size: 20px;
-}
-
-/* মডাল মেইন পপআপ সিএসএস */
+/* মডাল এবং ফর্ম ইনপুট ফিক্স */
 .modal-overlay {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.85);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2000;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center; z-index: 3000;
 }
+.modal-box { background-color: #171e29; width: 92%; max-width: 370px; padding: 24px; border-radius: 8px; position: relative; border: 1px solid #2d3748; max-height: 90vh; overflow-y: auto; }
+.close-modal { position: absolute; top: 14px; right: 14px; background: none; border: none; color: #fff; font-size: 18px; cursor: pointer; }
+.modal-title { text-align: center; margin-bottom: 18px; font-size: 16px; color: #ffbc00; font-weight: 700; }
+.form-input-box { margin-bottom: 12px; }
+.form-input-box label { display: block; font-size: 11px; color: #cbd5e0; margin-bottom: 5px; }
+.form-input-box input, .form-select-box { width: 100%; padding: 11px; background-color: #0f131a; border: 1px solid #2d3748; color: #fff; border-radius: 4px; font-size: 13px; outline: none; }
+.form-input-box input:focus { border-color: #ffbc00; }
+.submit-auth-btn { width: 100%; padding: 12px; background-color: #ffbc00; border: none; font-weight: bold; border-radius: 4px; font-size: 13px; color: #000; margin-top: 8px; cursor: pointer; }
 
-.modal-box {
-    background-color: #171e29;
-    width: 90%;
-    max-width: 380px;
-    padding: 24px;
-    border-radius: 8px;
-    position: relative;
-    border: 1px solid #2d3748;
-}
-
-.close-modal {
-    position: absolute;
-    top: 14px; right: 14px;
-    background: none; border: none; color: #ffffff; font-size: 16px; cursor: pointer;
-}
-
-.modal-body-content h3 {
-    text-align: center; margin-bottom: 20px; font-size: 16px;
-}
-
-.form-input-box {
-    margin-bottom: 14px;
-}
-
-.form-input-box label {
-    display: block; font-size: 11px; color: #f56565; margin-bottom: 4px;
-}
-
-.form-input-box input {
-    width: 100%; padding: 12px; background-color: #0f131a; border: 1px solid #2d3748; color: #fff; border-radius: 4px;
-}
-
-.submit-auth-btn {
-    width: 100%; padding: 12px; background-color: #ffbc00; border: none; font-weight: bold; border-radius: 4px; font-size: 14px; cursor: pointer;
-}
-
-/* --- 🌟 রেসপন্সিভ ডেক্সটপ ব্রেকপয়েন্ট (৩ নম্বর স্ক্রিনশটের মতো ডেক্সটপ লেআউট) 🌟 --- */
+/* ডেস্কটপ ওভাররাইড */
 @media (min-width: 992px) {
-    .desktop-nav {
-        display: flex;
-    }
-    
-    .menu-btn {
-        display: none;
-    }
-    
-    /* ৯টি বাটন হরিজন্টাল স্ট্রিপ হয়ে এক লাইনে চলে যাবে */
-    .categories-grid {
-        grid-template-columns: repeat(9, 1fr);
-    }
-    
-    .mobile-main-actions {
-        display: none;
-    }
-    
-    .game-cards-wrapper {
-        grid-template-columns: repeat(4, 1fr);
-    }
-    
-    .hero-banner {
-        padding: 40px;
-    }
-    
-    .hero-text h1 {
-        font-size: 26px;
-    }
-    }    font-size: 13px;
-}
-
-.balance-container {
-    background-color: #1e2633;
-    padding: 6px 12px;
-    border-radius: 20px;
-    color: #ffcc00;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.main-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 12px;
-}
-
-.hero-banner {
-    background: linear-gradient(135deg, #1b0c3a, #3d1075);
-    border-radius: 8px;
-    padding: 15px;
-    text-align: left;
-    margin-bottom: 15px;
-}
-
-.hero-text h1 { font-size: 16px; color: #ffcc00; margin-bottom: 5px; }
-.hero-text p { font-size: 12px; color: #ccc; margin-bottom: 8px; }
-.btn-hero-action { background-color: #ffcc00; border: none; padding: 5px 12px; font-weight: bold; border-radius: 4px; }
-
-.mobile-hero-actions {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-}
-
-.mobile-hero-actions button {
-    flex: 1; padding: 12px; border: none; font-weight: bold; border-radius: 6px; font-size: 14px;
-}
-.btn-yellow { background-color: #ffbc00; color: #000; }
-.btn-purple { background-color: #aa00ff; color: #fff; }
-
-/* ১ এবং ২ নম্বর স্ক্রিনশটের গ্রিড লেআউট (মোবাইল ভিউ) */
-.categories-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    margin-bottom: 20px;
-}
-
-.grid-item {
-    background-color: #1c2331;
-    border-radius: 6px;
-    padding: 12px 5px;
-    text-align: center;
-}
-
-.icon-box { font-size: 24px; margin-bottom: 5px; color: #ffbc00; }
-.grid-item span { font-size: 12px; color: #b0b8c4; }
-
-.mobile-quick-links { display: block; margin-bottom: 20px; }
-.two-column-row { display: flex; gap: 8px; margin-bottom: 10px; }
-.link-btn { flex: 1; background-color: #1c2331; padding: 12px; border-radius: 6px; text-align: center; font-weight: bold; font-size: 13px; }
-.link-list li { background-color: #161b26; padding: 12px; margin-bottom: 5px; border-radius: 6px; display: flex; justify-content: space-between; font-size: 13px; }
-
-.game-cards-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-.game-card { height: 100px; border-radius: 6px; background-color: #2c3e50; padding: 10px; display: flex; align-items: flex-end; }
-.game-title { font-size: 11px; background: rgba(0,0,0,0.6); padding: 2px 5px; border-radius: 3px; }
-
-.floating-widgets { position: fixed; bottom: 20px; right: 15px; display: flex; flex-direction: column; gap: 8px; }
-.widget-gift, .widget-chat { width: 40px; height: 40px; border-radius: 50%; background-color: #ffbc00; color: #000; display: flex; align-items: center; justify-content: center; }
-
-/* পপআপ স্টাইল */
-.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; z-index: 1000; }
-.modal-container { background-color: #1a2130; width: 90%; max-width: 360px; border-radius: 8px; padding: 20px; position: relative; }
-.modal-close { position: absolute; top: 10px; right: 10px; background: none; border: none; color: #fff; font-size: 16px; }
-.input-wrapper { margin-bottom: 12px; }
-.input-wrapper label { display: block; font-size: 11px; color: #ff6b6b; margin-bottom: 4px; }
-.input-wrapper input { width: 100%; padding: 10px; background-color: #111622; border: 1px solid #2e394e; color: #fff; border-radius: 4px; }
-.btn-submit-yellow { width: 100%; padding: 10px; background-color: #ffbc00; border: none; font-weight: bold; border-radius: 4px; }
-
-/* ৩ নম্বর স্ক্রিনশটের মতো রেসপন্সিভ ডেস্কটপ ভিউ (PC Mode) */
-@media (min-width: 992px) {
-    .desktop-nav { display: flex; }
+    .desktop-nav { display: flex; gap: 18px; }
+    .desktop-nav a { color: #a0aec0; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .desktop-nav a.active { color: #ffbc00; }
     .menu-btn { display: none; }
-    
-    .categories-grid {
-        grid-template-columns: repeat(9, 1fr);
-    }
-    
-    .mobile-hero-actions, .mobile-quick-links, .mobile-only-item {
-        display: none;
-    }
-    
-    .game-cards-container {
-        grid-template-columns: repeat(4, 1fr);
-    }
-    
-    .hero-banner { min-height: 200px; display: flex; align-items: center; }
-    .hero-text h1 { font-size: 24px; }
+    .categories-grid { grid-template-columns: repeat(9, 1fr); }
+    .mobile-main-actions { display: none; }
+    .game-cards-wrapper { grid-template-columns: repeat(4, 1fr); }
+    .logo { font-size: 22px; }
 }
