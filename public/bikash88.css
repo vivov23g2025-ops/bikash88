@@ -1,22 +1,21 @@
-/* BIKASH88 প্রিমিয়াম রেসপন্সিভ থিম */
+/* আল্ট্রা ফিক্সড প্রিমিয়াম থিম সিএসএস */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    -webkit-tap-highlight-color: transparent;
 }
 
 body {
-    background-color: #17142b; /* ভাই৮৮ এর আসল ডিপ পার্পল-ব্লু ব্যাকগ্রাউন্ড */
+    background-color: #1a172e; /* ভাই৮৮ সিগনেচার ডার্ক পার্পল ব্যাকগ্রাউন্ড */
     color: #ffffff;
     overflow-x: hidden;
 }
 
-/* হেডার ফিক্স - মোবাইলে বাটন থাকবে না, ফাঁকা অংশ উধাও হবে */
+/* হেডার ডিজাইন */
 .header {
-    background-color: #0d0b1a;
-    padding: 14px 16px;
+    background-color: #0e0c1b;
+    padding: 12px 16px;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -27,7 +26,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
 }
 
 .menu-btn {
@@ -41,111 +39,105 @@ body {
 
 .menu-btn span {
     display: block;
-    width: 24px;
+    width: 22px;
     height: 2.5px;
     background-color: #ffffff;
     border-radius: 2px;
 }
 
 .logo {
-    font-size: 20px;
-    font-weight: 900;
+    font-size: 19px;
+    font-weight: bold;
     color: #ffffff;
     letter-spacing: 0.5px;
 }
-.logo span { color: #ffffff; }
 
-/* মোবাইলে ডানপাশের ফাঁকা অংশ দূর করার স্পেসার */
-.header-spacer-mobile {
-    width: 24px;
+/* মোবাইল ভিউ ল্যাঙ্গুয়েজ ও কারেন্সি ব্যাজ */
+.mobile-lang-trigger {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #1c1933;
+    padding: 6px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    border: 1px solid #2b274c;
 }
 
+.flag-circle { font-size: 16px; }
+.currency-txt { font-size: 12px; font-weight: bold; color: #a9a6c4; }
+
+/* ডেক্সটপ উইজেট - মোবাইলে সম্পূর্ণ হাইড (১ নম্বর সমস্যার মূল সমাধান) */
 .header-right-desktop {
-    display: none; /* মোবাইলে হেডার বাটন সম্পূর্ণ হাইড */
+    display: none;
 }
 
-/* হিরো ব্যানার এবং বাটন লেআউট (স্ক্রিনশটের অবিকল রূপ) */
-.main-content {
-    padding: 12px;
+/* মূল লেআউট কন্টেইনার */
+.main-container {
+    padding: 16px 12px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.hero-section {
+/* প্রোমো ব্যানার (স্ক্রিনশট ১) */
+.hero-promo-section {
+    text-align: center;
     margin-bottom: 20px;
 }
 
-.hero-banner {
-    background: linear-gradient(180deg, #321059, #1a0a33);
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    padding: 30px 16px;
-    text-align: center;
-    border-bottom: 2px solid #a62eb8;
+.promo-banner-card {
+    background: linear-gradient(135deg, #1f1345, #11092b);
+    padding: 24px;
+    border-radius: 12px;
+    margin-bottom: 14px;
+    border: 1px solid #2d1d5c;
 }
 
-.hero-banner h1 {
+.promo-banner-card h2 {
     font-size: 20px;
     color: #ffffff;
-    font-weight: bold;
     margin-bottom: 6px;
 }
 
-.hero-banner p {
-    font-size: 13px;
-    color: #bfaed4;
+.promo-banner-card p {
+    font-size: 12px;
+    color: #a9a6c4;
 }
 
-.hero-actions-container {
-    background-color: #201c38;
-    padding: 14px;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
-}
-
-/* বড় গোল্ডেন বাটন */
-.btn-yellow-main {
+/* বাটন একুরেসি ডিজাইন */
+.action-btn-yellow {
     width: 100%;
-    background: linear-gradient(180deg, #ffca08, #e0b000);
-    color: #000000;
-    font-weight: 800;
-    font-size: 14px;
-    padding: 12px;
+    padding: 14px;
+    background-color: #ffca08;
     border: none;
+    font-weight: bold;
+    font-size: 15px;
     border-radius: 8px;
-    margin-bottom: 12px;
+    color: #000000;
     cursor: pointer;
+    margin-bottom: 12px;
 }
 
-.auth-split-buttons {
+.auth-buttons-row {
     display: flex;
     gap: 12px;
 }
 
-.btn-split-white {
+.auth-btn {
     flex: 1;
-    background-color: #ffffff;
-    color: #000000;
-    font-weight: 800;
-    font-size: 14px;
-    padding: 11px;
+    padding: 12px;
     border: none;
+    font-weight: bold;
+    font-size: 14px;
     border-radius: 8px;
     cursor: pointer;
 }
 
-.btn-split-magenta {
-    flex: 1;
-    background: linear-gradient(90deg, #cc2596, #94137c);
-    color: #ffffff;
-    font-weight: 800;
-    font-size: 14px;
-    padding: 11px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-}
+.btn-register-white { background-color: #ffffff; color: #000000; }
+.btn-login-purple { background-color: #b01a76; color: #ffffff; }
 
-/* ৩ কলাম বিশিষ্ট আইকন গ্রিড */
-.categories-grid {
+/* ক্যাটাগরি গ্রিড লেআউট (৩ কলাম গ্রিড - স্ক্রিনশট ১ এর মতো) */
+.game-categories-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
@@ -153,148 +145,211 @@ body {
 }
 
 .grid-item {
-    background-color: #211e3b;
+    background-color: #121022;
+    padding: 16px 8px;
     border-radius: 8px;
-    padding: 18px 8px;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    border: 1px solid #1c1935;
+    cursor: pointer;
 }
 
-.grid-item span {
+.grid-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.grid-item p {
     font-size: 12px;
-    color: #c5c2db;
-    font-weight: bold;
-    margin-top: 8px;
+    color: #e2e0f0;
 }
 
-.gold-icon {
-    font-size: 28px;
-    color: #ffcc00; /* মোনোক্রোম গোল্ডেন ভাইব */
-}
+.hot-item p { color: #ffca08; font-weight: bold; }
 
-.item-promo-highlight {
-    background-color: #29244a;
-}
-.text-white { color: #ffffff !important; }
-
-/* রেফারেল এবং ভিআইপি বাটন রো */
-.vip-referral-row {
+/* স্পেশাল রো (রেফারেল ও ভিআইপি - স্ক্রিনশট ২) */
+.special-tabs-row {
     display: flex;
     gap: 12px;
     margin-bottom: 20px;
 }
 
-.vip-card {
+.tab-card {
     flex: 1;
-    background-color: #211e3b;
-    padding: 14px;
+    padding: 16px;
     border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.card-icon-gold {
-    font-size: 20px;
-    color: #ffcc00;
-}
-
-/* অতিরিক্ত ফিচার লিস্ট ভিউ */
-.native-menu-list {
+    gap: 8px;
     background-color: #1c1933;
-    border-radius: 10px;
-    overflow: hidden;
+    border: 1px solid #231f42;
 }
 
-.menu-list-row {
+.tab-icon { font-size: 18px; }
+
+/* সেটিংস লিংক লিস্ট */
+.account-links-list {
+    background-color: #1c1933;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+.link-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 16px;
-    border-bottom: 1px solid #282447;
+    border-bottom: 1px solid #252144;
     cursor: pointer;
 }
 
-.menu-list-row:last-child {
-    border-bottom: none;
-}
+.link-item:last-child { border-bottom: none; }
 
-.menu-list-left {
+.link-left {
     display: flex;
     align-items: center;
     gap: 12px;
     font-size: 14px;
-    font-weight: bold;
     color: #e2e0f0;
 }
 
-.row-graphic-icon {
-    font-size: 18px;
+.link-icon { font-size: 16px; }
+.link-right { color: #4a466b; font-size: 12px; }
+
+/* গেম থাম্বনেইল সেকশন (স্ক্রিনশট ৩) */
+.popular-games-section { margin-bottom: 20px; }
+.section-title { font-size: 15px; color: #ffca08; margin-bottom: 12px; }
+.games-thumbnail-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.game-thumb-card { background-color: #1c1933; border-radius: 8px; overflow: hidden; padding-bottom: 10px; text-align: center;}
+.thumb-placeholder { background-color: #272346; width: 100%; height: 100px; margin-bottom: 8px; }
+.game-thumb-card p { font-size: 12px; font-weight: bold; color: #ffffff; }
+
+/* ফ্লোটিং বাটন */
+.floating-chat-widget {
+    position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px;
+    background-color: #ffca08; border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; font-size: 22px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 999;
 }
 
-.menu-list-right {
-    color: #494569;
-    font-size: 12px;
-}
-
-/* ফ্লোটিং পিঙ্ক বাবল */
-.floating-pink-gift {
-    position: fixed;
-    bottom: 30px;
-    right: 16px;
-    width: 54px;
-    height: 54px;
-    background: radial-gradient(circle, #ff5ee3, #8f0f7e);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 15px rgba(237, 47, 190, 0.5);
-    z-index: 999;
-}
-.gift-animation { font-size: 24px; }
-
-/* সাইডবার মেনু মডিউল */
-.sidebar-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.75); z-index: 2000; display: flex;
-}
-.sidebar-content {
-    background-color: #121021; width: 260px; height: 100%; padding: 24px 16px;
-}
-.sidebar-header {
-    display: flex; justify-content: space-between; color: #ffca08; margin-bottom: 24px;
-}
-.close-sidebar { background: none; border: none; color: #fff; font-size: 22px; }
-.sidebar-nav a { display: block; color: #a9a6c4; text-decoration: none; padding: 12px; font-weight: bold; font-size: 14px; }
-.sidebar-nav a.active { background-color: #211e3b; color: #ffca08; border-radius: 6px; }
-
-/* মডাল পপআপ */
+/* ভাই৮৮ ডার্ক মোবাইল ল্যাঙ্গুয়েজ মডাল (স্ক্রিনশট ৫ ক্লোন) */
 .modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; z-index: 3000;
+    background-color: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 2000;
 }
-.modal-box { background-color: #211e3b; width: 90%; max-width: 360px; padding: 24px; border-radius: 12px; position: relative; }
-.close-modal { position: absolute; top: 12px; right: 12px; background: none; border: none; color: #fff; font-size: 18px; }
-.modal-title { text-align: center; margin-bottom: 20px; color: #ffca08; font-size: 18px; }
-.form-group { margin-bottom: 14px; }
-.form-group label { display: block; font-size: 12px; margin-bottom: 6px; color: #a9a6c4; }
-.form-group input { width: 100%; padding: 12px; background-color: #17142b; border: 1px solid #36325c; color: #fff; border-radius: 6px; outline: none; }
-.submit-btn { width: 100%; padding: 12px; background: linear-gradient(180deg, #ffca08, #e0b000); border: none; font-weight: bold; border-radius: 6px; color: #000; cursor: pointer; }
+.modal-overlay.active { display: flex; }
 
-/* 🖥️ ডেক্সটপ ওভাররাইড (ডেক্সটপ মোডে বাটনগুলো আগের জায়গায় ফিরে আসবে) */
+.modal-box {
+    background-color: #17142b; width: 90%; max-width: 360px; border-radius: 12px;
+    border: 1px solid #2b274c; padding: 16px;
+}
+
+.modal-header {
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid #231f3f; padding-bottom: 10px; margin-bottom: 14px;
+}
+.modal-header h3 { font-size: 14px; color: #ffffff; }
+.close-modal-btn { background: none; border: none; color: #a9a6c4; font-size: 18px; cursor: pointer; }
+
+.lang-selection-container { display: flex; flex-direction: column; gap: 10px; }
+.lang-row-option {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 14px; background-color: #211e3b; border-radius: 8px; cursor: pointer;
+}
+.lang-row-option.selected { background-color: #29244d; }
+.lang-info { display: flex; align-items: center; gap: 10px; }
+.flag-icon { font-size: 18px; }
+.lang-text-label { font-size: 13px; font-weight: bold; }
+.status-tick { color: #48bb78; font-weight: bold; font-size: 14px; }
+
+/* সাইডবার ওভারলে */
+.sidebar-overlay { position: fixed; top: 0; left: -100%; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); z-index: 1500; transition: left 0.3s ease; }
+.sidebar-overlay.open { left: 0; }
+.sidebar-content { background-color: #121021; width: 250px; height: 100%; padding: 20px; }
+.sidebar-header { display: flex; justify-content: space-between; color: #ffca08; margin-bottom: 20px; border-bottom: 1px solid #1c1935; padding-bottom: 10px; }
+.sidebar-header h3 { font-size: 15px; }
+.close-sidebar { background: none; border: none; color: #fff; font-size: 20px; }
+.sidebar-nav a { display: flex; align-items: center; gap: 10px; color: #a9a6c4; text-decoration: none; padding: 12px 8px; font-size: 14px; }
+.sidebar-nav a.active { background-color: #1c1933; color: #ffca08; border-radius: 6px; }
+
+/* 🖥️ ডেক্সটপ ভিউ এবং অটো-হাইড লজিক মিডিয়া কুয়েরি */
 @media (min-width: 992px) {
-    .header-right-desktop { display: flex; align-items: center; gap: 10px; }
-    .header-spacer-mobile { display: none; }
-    .header-btn { border: none; padding: 8px 14px; border-radius: 6px; font-weight: bold; font-size: 13px; cursor: pointer; }
-    .btn-login { background-color: #2d3748; color: #fff; }
-    .btn-register { background-color: #ffbc00; color: #000; }
-    .currency-badge { background-color: #1a2232; padding: 8px; border-radius: 6px; font-size: 13px; color: #48bb78; font-weight: bold; }
-    .categories-grid { grid-template-columns: repeat(5, 1fr); }
+    /* ডেক্সটপে হ্যামবার্গার ও মোবাইল ল্যাঙ্গুয়েজ ট্রিপার অটো-হাইড */
+    .menu-btn, .mobile-lang-trigger {
+        display: none !important;
+    }
+
+    /* ডেক্সটপ কন্ট্রোল প্যানেল অন করা */
+    .header-right-desktop {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .currency-badge {
+        background-color: #121021;
+        padding: 8px 14px;
+        border-radius: 6px;
+        font-size: 13px;
+        font-weight: bold;
+        border: 1px solid #231f3f;
+    }
+
+    /* ডেক্সটপ এক্সক্লুসিভ ড্রপডাউন (স্ক্রিনশট ৭ এর মতো সাইড পপআপ) */
+    .desktop-lang-selector {
+        position: relative;
+        background-color: #1c1933;
+        padding: 8px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        border: 1px solid #2d294a;
+        user-select: none;
+    }
+
+    .arrow-down { font-size: 9px; color: #8f8ba8; }
+
+    .desktop-dropdown-box {
+        display: none;
+        position: absolute;
+        top: 40px;
+        right: 0;
+        background-color: #1c1933;
+        border: 1px solid #36325c;
+        border-radius: 6px;
+        width: 130px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        z-index: 1001;
+        overflow: hidden;
+    }
+    
+    /* জাভাস্ক্রিপ্ট টগল ক্লাস */
+    .desktop-dropdown-box.show {
+        display: block;
+    }
+
+    .dropdown-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 12px;
+        color: #e2e0f0;
+    }
+    .dropdown-item:hover { background-color: #252144; }
+    .dropdown-item.active { color: #ffca08; }
+
+    /* ডেক্সটপে মূল কন্টেন্ট গ্রিড লেআউট উইডথ ফিক্স */
+    .main-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+    }
+
+    .hero-promo-section, .game-categories-grid {
+        grid-column: span 2;
+    }
 }
