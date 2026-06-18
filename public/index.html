@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BIKASH88</title>
-    <!-- সিএসএস ফাইল লিঙ্ক -->
     <link rel="stylesheet" href="bikash88.css">
 </head>
 <body>
 
-    <!-- হেডার সেকশন -->
     <header class="header">
         <div class="header-container">
             <button class="menu-btn" onclick="toggleMobileSidebar(event)">
@@ -28,7 +26,6 @@
         </div>
     </header>
 
-    <!-- মোবাইল সাইড ড্রয়ার মেনু -->
     <div id="mobile-sidebar" class="sidebar-overlay" onclick="closeSidebarMenu()">
         <div class="sidebar-content" onclick="event.stopPropagation()">
             <div class="sidebar-header">
@@ -36,7 +33,6 @@
                 <button class="close-sidebar" onclick="closeSidebarMenu()">✕</button>
             </div>
             
-            <!-- গেম মেনু ক্যাটাগরি অংশ (স্ক্রিনশট ১) -->
             <nav class="sidebar-nav">
                 <a href="#" class="active"><span class="nav-icon">👑</span> বাড়ি</a>
                 <a href="#"><span class="nav-icon">🏏</span> ক্রিকেট</a>
@@ -49,9 +45,7 @@
                 <a href="#"><span class="nav-icon">🎱</span> লটারি</a>
             </nav>
 
-            <!-- স্ক্রিনশট ২ এর অপশনসমূহ যা নিচে যুক্ত হবে -->
             <div class="sidebar-extra-section">
-                <!-- রেফারেল এবং ভিআইপি গ্রিড বাটন -->
                 <div class="extra-grid-buttons">
                     <div class="grid-btn-item">
                         <span class="grid-icon">👥</span>
@@ -63,7 +57,6 @@
                     </div>
                 </div>
 
-                <!-- অতিরিক্ত মেনু লিস্ট -->
                 <div class="extra-list-menu">
                     <div class="extra-list-item">
                         <div class="item-left"><span class="list-icon">🎁</span> অতিরিক্ত পুরস্কার</div>
@@ -86,7 +79,6 @@
         </div>
     </div>
 
-    <!-- মূল ইউজার প্রোফাইল কন্টেন্ট সেকশন -->
     <main class="main-container">
         <div class="profile-layout-wrapper">
             <div class="profile-user-card">
@@ -123,7 +115,6 @@
         </div>
     </main>
 
-    <!-- ভাষা পরিবর্তনের মডাল পপআপ -->
     <div id="mobile-lang-modal" class="modal-overlay" onclick="closeMobileLangModal()">
         <div class="modal-box" onclick="event.stopPropagation()">
             <div class="modal-header">
@@ -149,7 +140,6 @@
         </div>
     </div>
 
-    <!-- জাভাস্ক্রিপ্ট কোড -->
     <script>
         function toggleMobileSidebar(e) {
             if(e) e.stopPropagation();
