@@ -145,90 +145,36 @@
                 <button class="close-modal-btn" onclick="closeAuthModal()">✕</button>
             </div>
             
-            <form id="auth-native-form" onsubmit="event.preventDefault();">
-                <div class="form-group">
-                    <label>ব্যবহারকারীর নাম *</label>
-                    <input type="text" placeholder="৪-১৫টি অক্ষর এবং সংখ্যা">
-                </div>
-                
-                <div class="form-group">
-                    <label>পাসওয়ার্ড *</label>
-                    <input type="password" placeholder="৬-২০টি অক্ষর এবং সংখ্যা">
-                </div>
-                
-                <div class="form-group">
-                    <label>পাসওয়ার্ড নিশ্চিত করুন *</label>
-                    <input type="password" placeholder="পাসওয়ার্ড নিশ্চিত করুন">
-                </div>
-
-                <div class="form-group">
-                    <label>মুদ্রা *</label>
-                    <select class="form-select-native">
-                        <option value="BDT">BDT</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>পূর্ণ নাম *</label>
-                    <input type="text" placeholder="পূর্ণ নাম">
-                </div>
-                
-                <div class="form-group">
-                    <label>ফোন নম্বর *</label>
-                    <div class="phone-input-container">
-                        <span class="country-code">+880</span>
-                        <input type="tel" placeholder="ফোন নম্বর">
+            <div class="modal-scroll-body">
+                <form id="auth-native-form" onsubmit="event.preventDefault();">
+                    <div class="form-group">
+                        <label>ব্যবহারকারীর নাম *</label>
+                        <input type="text" placeholder="৪-১৫টি অক্ষর এবং সংখ্যা">
                     </div>
-                </div>
-
-                <div class="form-group">
-                    <label>যাচাইকরণ কোড *</label>
-                    <div class="captcha-container">
-                        <input type="text" placeholder="যাচাইকরণ কোড">
-                        <div class="captcha-code-box">4639</div>
+                    
+                    <div class="form-group">
+                        <label>পাসওয়ার্ড *</label>
+                        <input type="password" placeholder="৬-২০টি অক্ষর এবং সংখ্যা">
                     </div>
-                </div>
+                    
+                    <div class="form-group">
+                        <label>পাসওয়ার্ড নিশ্চিত করুন *</label>
+                        <input type="password" placeholder="পাসওয়ার্ড নিশ্চিত করুন">
+                    </div>
 
-                <button type="submit" class="submit-btn">নিবন্ধন সম্পন্ন করুন</button>
-            </form>
-        </div>
-    </div>
+                    <div class="form-group">
+                        <label>মুদ্রা *</label>
+                        <select class="form-select-native">
+                            <option value="BDT">BDT</option>
+                        </select>
+                    </div>
 
-    <script>
-        function toggleMobileSidebar(e) {
-            if(e) e.stopPropagation();
-            document.getElementById('mobile-sidebar').classList.toggle('open');
-        }
-        function closeSidebarMenu() {
-            document.getElementById('mobile-sidebar').classList.remove('open');
-        }
-        function toggleDesktopLangDropdown(e) {
-            if(e) e.stopPropagation();
-            document.getElementById('desktop-lang-dropdown').classList.toggle('show');
-        }
-        function openMobileLangModal() {
-            document.getElementById('mobile-lang-modal').classList.add('active');
-        }
-        function closeMobileLangModal() {
-            document.getElementById('mobile-lang-modal').classList.remove('active');
-        }
-        function openAuthModal(mode) {
-            const title = document.getElementById('auth-modal-title');
-            title.innerText = mode === 'login' ? 'প্রবেশ করুন' : 'নিবন্ধন';
-            document.getElementById('auth-modal-overlay').classList.add('active');
-        }
-        function closeAuthModal() {
-            document.getElementById('auth-modal-overlay').classList.remove('active');
-        }
-        function selectLanguage(lang) {
-            closeMobileLangModal();
-        }
-        window.onclick = function(event) {
-            const dropdown = document.getElementById('desktop-lang-dropdown');
-            if (dropdown && dropdown.classList.contains('show')) {
-                dropdown.classList.remove('show');
-            }
-        }
-    </script>
-</body>
-</html>                    <div class="row-left
+                    <div class="form-group">
+                        <label>পূর্ণ নাম *</label>
+                        <input type="text" placeholder="পূর্ণ নাম">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>ফোন নম্বর *</label>
+                        <div class="phone-input-container">
+                            <span class="country-code">+880</span>
