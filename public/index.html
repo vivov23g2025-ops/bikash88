@@ -3,206 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BIKASH88 - অনলাইন গেমিং প্ল্যাটফর্ম</title>
+    <title>BIKASH88</title>
     <link rel="stylesheet" href="bikash88.css">
 </head>
-<body class="logged-out-state" id="main-body">
+<body>
 
+    <!-- হেডার সেকশন -->
     <header class="header">
         <div class="header-container">
-            <button class="menu-btn" onclick="openSidebarMenu(event)">
+            <button class="menu-btn" onclick="toggleMobileSidebar(event)">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             
-            <div class="logo">B<span>IKASH88</span></div>
+            <div class="logo">BIKASH88</div>
             
+            <!-- ডেক্সটপ ভিউ কন্ট্রোলস (ডেক্সটপে শো করবে, মোবাইলে অটো-হাইড) -->
             <div class="header-right-desktop">
                 <div class="currency-badge">
                     <span class="flag">🇧🇩</span> ৳ BDT
                 </div>
-                <button class="header-btn btn-login" onclick="openAuthModal('login')">লগইন</button>
-                <button class="header-btn btn-register" onclick="openAuthModal('register')">নিবন্ধন</button>
+                <!-- ডেক্সটপ ল্যাঙ্গুয়েজ ড্রপডাউন (স্ক্রিনশট ৭ এর মতো অবিকল) -->
+                <div class="desktop-lang-selector" onclick="toggleDesktopLangDropdown(event)">
+                    <span class="current-lang-flag">🇧🇩</span> <span>৳ BDT</span> <span class="arrow-down">▼</span>
+                    <div id="desktop-lang-dropdown" class="desktop-dropdown-box">
+                        <div class="dropdown-item active">
+                            <span class="flag">🇧🇩</span> <span>বাংলা</span> <span class="tick-mark">✓</span>
+                        </div>
+                        <div class="dropdown-item">
+                            <span class="flag">🇬🇧</span> <span>English</span> <span class="tick-mark"></span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <div class="header-spacer-mobile"></div>
+
+            <!-- মোবাইল ভিউ ল্যাঙ্গুয়েজ ট্রিগার (মোবাইলে শো, ডেক্সটপে হাইড) -->
+            <div class="mobile-lang-trigger" onclick="openMobileLangModal()">
+                <span class="flag-circle">🇧🇩</span> <span class="currency-txt">৳ BDT</span>
+            </div>
         </div>
     </header>
 
-    <div id="mobile-sidebar" class="sidebar-overlay" style="display: none;" onclick="closeSidebarMenu()">
+    <!-- মোবাইল নেভিগেশন সাইড ড্রয়ার (স্ক্রিনশট ৪ এর মতো 'মেনু ক্যাটাগরি') -->
+    <div id="mobile-sidebar" class="sidebar-overlay" onclick="closeSidebarMenu()">
         <div class="sidebar-content" onclick="event.stopPropagation()">
             <div class="sidebar-header">
                 <h3>মেনু ক্যাটাগরি</h3>
                 <button class="close-sidebar" onclick="closeSidebarMenu()">✕</button>
             </div>
             <nav class="sidebar-nav">
-                <a href="#" class="active">👑 বাড়ি</a>
-                <a href="#">🏏 ক্রিকেট</a>
-                <a href="#">🃏 লাইভ ক্যাসিনো</a>
-                <a href="#">🎰 স্লট গেম</a>
-                <a href="#">🎲 টেবিল গেম</a>
-                <a href="#">✈️ ক্র্যাশ</a>
-                <a href="#">⚽ স্পোর্টস</a>
-                <a href="#">🐟 মাছ ধরা</a>
-                <a href="#">🎱 লটারি</a>
+                <a href="#" class="active"><span class="nav-icon">👑</span> বাড়ি</a>
+                <a href="#"><span class="nav-icon">🏏</span> ক্রিকেট</a>
+                <a href="#"><span class="nav-icon">🃏</span> লাইভ ক্যাসিনো</a>
+                <a href="#"><span class="nav-icon">🎰</span> স্লট গেম</a>
+                <a href="#"><span class="nav-icon">🎲</span> টেবিল গেম</a>
+                <a href="#"><span class="nav-icon">✈️</span> ক্র্যাশ</a>
+                <a href="#"><span class="nav-icon">⚽</span> স্পোর্টস</a>
+                <a href="#"><span class="nav-icon">🐟</span> মাছ ধরা</a>
+                <a href="#"><span class="nav-icon">🎱</span> লটারি</a>
             </nav>
         </div>
     </div>
 
-    <main class="main-content">
-        <section class="hero-section">
-            <div class="hero-banner">
-                <h1>১১০% ওয়েলকাম বোনাস</h1>
+    <!-- মূল কন্টেন্ট এরিয়া -->
+    <main class="main-container">
+        
+        <!-- প্রোমোশন ব্যানার ও অ্যাকশন বাটন সেকশন (স্ক্রিনশট ১ ও ৫ এর মতো) -->
+        <section class="hero-promo-section">
+            <div class="promo-banner-card">
+                <h2>১১০% ওয়েলকাম বোনাস</h2>
                 <p>প্রথমবার যোগ দিলেই</p>
             </div>
             
-            <div class="hero-actions-container">
-                <button class="btn-yellow-main" onclick="openAuthModal('register')">এখনই নিয়ে নিন</button>
-                <div class="auth-split-buttons">
-                    <button class="btn-split-white" onclick="openAuthModal('register')">নিবন্ধন</button>
-                    <button class="btn-split-magenta" onclick="openAuthModal('login')">প্রবেশ করুন</button>
-                </div>
+            <button class="action-btn-yellow">এখনই নিয়ে নিন</button>
+            
+            <div class="auth-buttons-row">
+                <button class="auth-btn btn-register-white">নিবন্ধন</button>
+                <button class="auth-btn btn-login-purple">প্রবেশ করুন</button>
             </div>
         </section>
 
-        <section class="categories-grid">
-            <div class="grid-item"><div class="gold-icon">🏠</div><span>বাড়ি</span></div>
-            <div class="grid-item"><div class="gold-icon">🏏</div><span>ক্রিকেট</span></div>
-            <div class="grid-item"><div class="gold-icon">🃏</div><span>লাইভ ক্যাসিনো</span></div>
-            <div class="grid-item"><div class="gold-icon">🎰</div><span>স্লট গেম</span></div>
-            <div class="grid-item"><div class="gold-icon">🎲</div><span>টেবিল গেম</span></div>
-            <div class="grid-item"><div class="gold-icon">✈️</div><span>ক্র্যাশ</span></div>
-            <div class="grid-item"><div class="gold-icon">⚽</div><span>স্পোর্টস</span></div>
-            <div class="grid-item"><div class="gold-icon">🐟</div><span>মাছ ধরা</span></div>
-            <div class="grid-item"><div class="gold-icon">🎱</div><span>লটারি</span></div>
-            <div class="grid-item item-promo-highlight"><div class="gold-icon">🔥</div><span class="text-white">Promo</span></div>
+        <!-- গেম ক্যাটাগরি গ্রিড লেআউট (স্ক্রিনশট ১ এবং ৫ এর আইকন গ্রিড) -->
+        <section class="game-categories-grid">
+            <div class="grid-item">
+                <div class="grid-icon">🏠</div>
+                <p>বাড়ি</p>
+            </div>
+            <div class="grid-item">
+                <div class="grid-icon">🏏</div>
+                <p>ক্রিকেট</p>
+            </div>
+            <div class="grid-item">
+                <div class="grid-icon">🃏</div>
+                <p>লাইভ ক্যাসিনো</p>
+            </div>
+            <div class="grid-item">
+                <div class="grid-icon">🎰</div>
+                <p>স্লট গেম</p>
+            </div>
+            <div class="grid-item">
+                <div class="grid-icon">🎲</div>
+                <p>টেবিল গেম</p>
+            </div>
+            <div class="grid-item">
+                <div class="grid-icon">✈️</div>
+                <p>ক্র্যাশ</p>
+            </div>
+            <div class="grid-item">
+                <div class="grid-icon">⚽</div>
+                <p>স্পোর্টস</p>
+            </div>
+            <div class="grid-item">
+                <div class="grid-icon">🐟</div>
+                <p>মাছ ধরা</p>
+            </div>
+            <div class="grid-item">
+                <div class="grid-icon">🎱</div>
+                <p>লটারি</p>
+            </div>
+            <div class="grid-item hot-item">
+                <div class="grid-icon">🔥</div>
+                <p>Promo</p>
+            </div>
         </section>
 
-        <section class="vip-referral-row">
-            <div class="vip-card">
-                <span class="card-icon-gold">👥</span>
-                <span>রেফারেল</span>
+        <!-- স্পেশাল ট্যাব বাটন (রেফারেল ও ভিআইপি - স্ক্রিনশট ২ ও ৬ এর মতো) -->
+        <section class="special-tabs-row">
+            <div class="tab-card ref-tab">
+                <span class="tab-icon">👥</span> রেফারেল
             </div>
-            <div class="vip-card">
-                <span class="card-icon-gold">👑</span>
-                <span>ভিআইপি</span>
+            <div class="tab-card vip-tab">
+                <span class="tab-icon">👑</span> ভিআইপি
             </div>
         </section>
 
-        <section class="native-menu-list">
-            <div class="menu-list-row">
-                <div class="menu-list-left"><span class="row-graphic-icon">🎁</span> অতিরিক্ত পুরস্কার</div>
-                <div class="menu-list-right">❯</div>
+        <!-- লিস্টিং মেনু সেকশন (স্ক্রিনশট ২ এবং ৬ এর নিচের অপশনগুলো) -->
+        <section class="account-links-list">
+            <div class="link-item">
+                <div class="link-left"><span class="link-icon">🎁</span> অতিরিক্ত পুরস্কার</div>
+                <div class="link-right">❯</div>
             </div>
-            <div class="menu-list-row">
-                <div class="menu-list-left"><span class="row-graphic-icon">🌐</span> ভাষা</div>
-                <div class="menu-list-right">❯</div>
+            <div class="link-item" onclick="openMobileLangModal()">
+                <div class="link-left"><span class="link-icon">🌐</span> ভাষা</div>
+                <div class="link-right">❯</div>
             </div>
-            <div class="menu-list-row">
-                <div class="menu-list-left"><span class="row-graphic-icon">💬</span> গ্রাহক সেবা</div>
-                <div class="menu-list-right">❯</div>
+            <div class="link-item">
+                <div class="link-left"><span class="link-icon">💬</span> গ্রাহক সেবা</div>
+                <div class="link-right">❯</div>
             </div>
-            <div class="menu-list-row">
-                <div class="menu-list-left"><span class="row-graphic-icon">📥</span> ডাউনলোড করুন</div>
-                <div class="menu-list-right">❯</div>
+            <div class="link-item">
+                <div class="link-left"><span class="link-icon">📥</span> ডাউনলোড করুন</div>
+                <div class="link-right">❯</div>
+            </div>
+        </section>
+
+        <!-- জনপ্রিয় গেমসমূহ গ্রিড (স্ক্রিনশট ৩ এর নিচের অংশ) -->
+        <section class="popular-games-section">
+            <h3 class="section-title">জনপ্রিয় গেমসমূহ</h3>
+            <div class="games-thumbnail-grid">
+                <div class="game-thumb-card"><div class="thumb-placeholder"></div><p>Crazy Time</p></div>
+                <div class="game-thumb-card"><div class="thumb-placeholder"></div><p>Lightning Roulette</p></div>
+                <div class="game-thumb-card"><div class="thumb-placeholder"></div><p>Super Ace</p></div>
+                <div class="game-thumb-card"><div class="thumb-placeholder"></div><p>Aviator</p></div>
             </div>
         </section>
     </main>
 
-    <div class="floating-pink-gift">
-        <div class="gift-animation">🎁</div>
-    </div>
+    <!-- ফ্লোটিং চ্যাট বাটন -->
+    <div class="floating-chat-widget">💬</div>
 
-    <div id="auth-modal-overlay" class="modal-overlay" style="display: none;" onclick="closeAuthModal()">
+    <!-- ভাই৮৮ স্টাইল মোবাইল ল্যাঙ্গুয়েজ মডাল পপআপ (স্ক্রিনশট ৫ এর অবিকল ক্লোন) -->
+    <div id="mobile-lang-modal" class="modal-overlay" onclick="closeMobileLangModal()">
         <div class="modal-box" onclick="event.stopPropagation()">
-            <button class="close-modal" onclick="closeAuthModal()">✕</button>
-            
-            <div id="login-form-wrapper" style="display: none;">
-                <h3 class="modal-title">প্রবেশ করুন</h3>
-                <div class="form-group">
-                    <label>ব্যবহারকারীর নাম</label>
-                    <input type="text" placeholder="ইউজারনেম দিন">
-                </div>
-                <div class="form-group">
-                    <label>পাসওয়ার্ড</label>
-                    <input type="password" placeholder="পাসওয়ার্ড দিন">
-                </div>
-                <button class="submit-btn" onclick="closeAuthModal()">লগইন</button>
+            <div class="modal-header">
+                <h3>语言 / ভাষা নির্বাচন করুন</h3>
+                <button class="close-modal-btn" onclick="closeMobileLangModal()">✕</button>
             </div>
-
-            <div id="register-form-wrapper" style="display: none;">
-                <h3 class="modal-title">নিবন্ধন</h3>
-                
-                <div class="form-group">
-                    <label>ব্যবহারকারীর নাম *</label>
-                    <input type="text" placeholder="৪-১৫টি অক্ষর এবং সংখ্যা">
-                </div>
-                
-                <div class="form-group">
-                    <label>পাসওয়ার্ড *</label>
-                    <input type="password" placeholder="৬-২০টি অক্ষর এবং সংখ্যা">
-                </div>
-                
-                <div class="form-group">
-                    <label>পাসওয়ার্ড নিশ্চিত করুন *</label>
-                    <input type="password" placeholder="পাসওয়ার্ড নিশ্চিত করুন">
-                </div>
-
-                <div class="form-group">
-                    <label>মুদ্রা *</label>
-                    <select class="form-select-native">
-                        <option value="BDT">BDT</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>পূর্ণ নাম *</label>
-                    <input type="text" placeholder="পূর্ণ নাম">
-                </div>
-                
-                <div class="form-group">
-                    <label>ফোন নম্বর *</label>
-                    <div class="phone-input-container">
-                        <span class="country-code">+880</span>
-                        <input type="tel" placeholder="ফোন নম্বর">
+            <div class="lang-selection-container">
+                <!-- একটিভ ভাষা (টিকমার্ক সহ) -->
+                <div class="lang-row-option selected" onclick="selectLanguage('bn')">
+                    <div class="lang-info">
+                        <span class="flag-icon">🇧🇩</span>
+                        <span class="lang-text-label">বাংলা</span>
                     </div>
+                    <span class="status-tick">✓</span>
                 </div>
-
-                <div class="form-group">
-                    <label>যাচাইকরণ কোড *</label>
-                    <div class="captcha-container">
-                        <input type="text" placeholder="যাচাইকরণ কোড">
-                        <div class="captcha-code-box">5824</div>
+                <!-- অল্টারনেটিভ ভাষা -->
+                <div class="lang-row-option" onclick="selectLanguage('en')">
+                    <div class="lang-info">
+                        <span class="flag-icon">🇬🇧</span>
+                        <span class="lang-text-label">English</span>
                     </div>
+                    <span class="status-tick"></span>
                 </div>
-
-                <button class="submit-btn" onclick="closeAuthModal()">নিবন্ধন সম্পন্ন করুন</button>
             </div>
         </div>
     </div>
 
     <script>
-        function openSidebarMenu(e) {
+        function toggleMobileSidebar(e) {
             if(e) e.stopPropagation();
-            document.getElementById('mobile-sidebar').style.display = 'flex';
+            const sidebar = document.getElementById('mobile-sidebar');
+            sidebar.classList.toggle('open');
         }
         function closeSidebarMenu() {
-            document.getElementById('mobile-sidebar').style.display = 'none';
+            document.getElementById('mobile-sidebar').classList.remove('open');
         }
-        function openAuthModal(mode) {
-            document.getElementById('auth-modal-overlay').style.display = 'flex';
-            if(mode === 'login') {
-                document.getElementById('login-form-wrapper').style.display = 'block';
-                document.getElementById('register-form-wrapper').style.display = 'none';
-            } else {
-                document.getElementById('login-form-wrapper').style.display = 'none';
-                document.getElementById('register-form-wrapper').style.display = 'block';
+        function toggleDesktopLangDropdown(e) {
+            if(e) e.stopPropagation();
+            const dropdown = document.getElementById('desktop-lang-dropdown');
+            dropdown.classList.toggle('show');
+        }
+        function openMobileLangModal() {
+            document.getElementById('mobile-lang-modal').classList.add('active');
+        }
+        function closeMobileLangModal() {
+            document.getElementById('mobile-lang-modal').classList.remove('active');
+        }
+        function selectLanguage(lang) {
+            closeMobileLangModal();
+            console.log("Selected language: " + lang);
+        }
+        // গ্লোবাল উইন্ডো ক্লিক ইভেন্ট হ্যান্ডলার ড্রপডাউন বন্ধ করার জন্য
+        window.onclick = function(event) {
+            const dropdown = document.getElementById('desktop-lang-dropdown');
+            if (dropdown && dropdown.classList.contains('show')) {
+                dropdown.classList.remove('show');
             }
-        }
-        function closeAuthModal() {
-            document.getElementById('auth-modal-overlay').style.display = 'none';
         }
     </script>
 </body>
-                    </html>
+</html>
