@@ -1,18 +1,29 @@
-/* গ্লোবাল স্টাইল */
+/* গ্লোবাল কোর রুলস এবং ভেরিয়েবল */
+:root {
+    --primary-glow: #ffca08;      /* ভাই৮৮ সিগনেচার গোল্ড */
+    --win-green: #48bb78;
+    --loss-red: #ef4444;
+    --dark-body: #131124;        /* ডার্ক প্রিমিয়াম ব্যাকগ্রাউন্ড */
+    --card-surface: #1c1933;     /* কার্ড/ক্যাটাগরি সারফেস */
+    --input-bg: #0d0b1a;
+    --border-color: #252244;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
 body {
-    background-color: #17142b;
+    background-color: var(--dark-body);
     color: #ffffff;
     overflow-x: hidden;
+    padding-bottom: 75px; 
 }
 
-/* হেডার ডিজাইন */
+/* ১. টপ হেডার ডিজাইন (Logo, Menu, Background) */
 .header {
     background-color: #0d0b1a;
     padding: 12px 16px;
@@ -21,186 +32,126 @@ body {
     z-index: 1000;
     border-bottom: 1px solid #1f1b3a;
 }
-
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.menu-btn {
-    background: none;
-    border: none;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-}
-
-.menu-btn span {
-    display: block;
-    width: 22px;
-    height: 2.5px;
-    background-color: #ffffff;
-    border-radius: 2px;
-}
-
-.logo { font-size: 20px; font-weight: bold; color: #ffffff; }
-.currency-badge { background-color: #121021; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; border: 1px solid #231f3f; }
-
-/* প্রোফাইল পেজ লেআউট */
-.main-container {
-    padding: 16px 12px;
-    max-width: 600px;
+    max-width: 1200px;
     margin: 0 auto;
 }
+.logo { font-size: 22px; font-weight: 900; color: #ffffff; letter-spacing: 0.5px; }
+.header-right-actions { display: flex; align-items: center; gap: 8px; }
 
-.profile-user-card {
-    background: linear-gradient(135deg, #2b124c, #180a2b);
-    padding: 20px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 16px;
-    border: 1px solid #3d2263;
-}
-
-.user-avatar-box {
-    width: 54px;
-    height: 54px;
-    background-color: #3b3566;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-}
-
-.user-info-text h2 { font-size: 16px; margin-bottom: 2px; }
-.vip-tag { background-color: #ffca08; color: #000; font-size: 11px; font-weight: bold; padding: 1px 8px; border-radius: 10px; }
-.balance-display { font-size: 13px; color: #a9a6c4; margin-top: 4px; }
-.balance-display span { color: #48bb78; font-weight: bold; }
-
-.premium-settings-panel {
-    background-color: #1c1933;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid #252244;
-}
-
-.settings-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px;
-    border-bottom: 1px solid #282447;
+/* হেডার অথেনটিকেশন বাটন */
+.btn-auth {
+    padding: 7px 14px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 13px;
     cursor: pointer;
+    transition: all 0.2s ease;
 }
-.settings-row:last-child { border-bottom: none; }
-.row-left { display: flex; align-items: center; gap: 12px; font-size: 14px; color: #e2e0f0; }
-.setting-icon { font-size: 16px; }
-.row-right { color: #494569; font-size: 13px; }
-.current-lang-txt { color: #8f8ba8; margin-right: 4px; font-size: 12px; }
+.btn-login { background: transparent; color: #fff; border: 1px solid var(--primary-glow); }
+.btn-register { background: var(--primary-glow); color: #000; }
+.currency-badge { background-color: var(--input-bg); padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; border: 1px solid #231f3f; }
 
-/* সাইডবার মেনু ড্রয়ার (স্ক্রিনশট ১) */
-.sidebar-overlay { 
-    position: fixed; top: 0; left: -100%; width: 100%; height: 100%; 
-    background-color: rgba(0,0,0,0.6); z-index: 1500; transition: left 0.3s ease; 
-}
+/* ২. হ্যামবার্গার স্লাইড মেনু (Slide Menu) */
+.menu-btn { background: none; border: none; display: flex; flex-direction: column; gap: 5px; cursor: pointer; }
+.menu-btn span { display: block; width: 22px; height: 2.5px; background-color: #ffffff; border-radius: 2px; }
+
+.sidebar-overlay { position: fixed; top: 0; left: -100%; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); z-index: 2500; transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
 .sidebar-overlay.open { left: 0; }
-
-.sidebar-content { 
-    background-color: #131124; width: 280px; height: 100%; 
-    display: flex; flex-direction: column; overflow: hidden;
-}
-.sidebar-header { 
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 16px; border-bottom: 1px solid #1f1b3a;
-}
-.sidebar-header h3 { color: #ffca08; font-size: 16px; }
+.sidebar-content { background-color: #131124; width: 280px; height: 100%; display: flex; flex-direction: column; box-shadow: 5px 0 25px rgba(0,0,0,0.5); }
+.sidebar-header { display: flex; justify-content: space-between; align-items: center; padding: 18px 16px; border-bottom: 1px solid #1f1b3a; }
+.sidebar-header h3 { color: var(--primary-glow); font-size: 16px; }
 .close-sidebar { background: none; border: none; color: #fff; font-size: 18px; cursor: pointer; }
 
-/* ক্যাটাগরি মেনু স্ক্রল এরিয়া */
-.sidebar-nav { 
-    padding: 10px; overflow-y: auto; flex: 1;
-}
-.sidebar-nav a { 
-    display: flex; align-items: center; gap: 12px; color: #a9a6c4; 
-    text-decoration: none; padding: 12px; font-size: 14px; border-radius: 6px; margin-bottom: 4px;
-}
-.sidebar-nav a.active, .sidebar-nav a:hover { background-color: #1c1933; color: #ffca08; }
-.nav-icon { font-size: 16px; }
+.sidebar-nav { padding: 10px; overflow-y: auto; flex: 1; }
+.sidebar-nav a { display: flex; align-items: center; gap: 12px; color: #a9a6c4; text-decoration: none; padding: 12px; font-size: 14px; border-radius: 6px; margin-bottom: 2px; }
+.sidebar-nav a.active, .sidebar-nav a:hover { background-color: var(--card-surface); color: var(--primary-glow); }
+.sidebar-extra-section { border-top: 1px solid #231f3f; background-color: #17142b; padding: 12px; }
+.extra-grid-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+.grid-btn-item { background-color: #201b3d; border: 1px solid #2e2854; border-radius: 8px; padding: 12px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.extra-list-menu { display: flex; flex-direction: column; gap: 4px; }
+.extra-list-item { display: flex; justify-content: space-between; align-items: center; padding: 12px; background-color: #131124; border-radius: 6px; cursor: pointer; }
+.item-left { display: flex; align-items: center; gap: 10px; font-size: 13px; color: #e2e0f0; }
 
-/* অতিরিক্ত অপশনসমূহ (স্ক্রিনশট ২ এর মতো নিচের অংশ) */
-.sidebar-extra-section {
-    border-top: 1px solid #231f3f;
-    background-color: #17142b;
-    padding: 12px;
+/* ৩. মেইন ফিক্সড কন্টেইনার এবং ইউজার কার্ড */
+.main-container { padding: 16px 12px; max-width: 1200px; margin: 0 auto; }
+.profile-user-card { background: linear-gradient(135deg, #2b124c, #180a2b); padding: 16px; border-radius: 12px; display: flex; align-items: center; gap: 16px; margin-bottom: 16px; border: 1px solid #3d2263; }
+.user-avatar-box { width: 50px; height: 50px; background-color: #3b3566; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+.user-info-text h2 { font-size: 15px; }
+.vip-tag { background-color: var(--primary-glow); color: #000; font-size: 11px; font-weight: bold; padding: 1px 8px; border-radius: 10px; }
+.balance-display { font-size: 13px; color: #a9a6c4; margin-top: 2px; }
+.balance-display span { color: var(--win-green); font-weight: bold; }
+
+/* ৪. রেসপন্সিভ মোবাইল লেআউট এবং একই ডিজাইনের ক্যাটাগরি বক্স */
+.gaming-workspace { display: grid; grid-template-columns: 1fr 380px; gap: 16px; margin-bottom: 16px; }
+@media (max-width: 900px) {
+    .gaming-workspace { grid-template-columns: 1fr; }
 }
 
-/* রেফারেল ও ভিআইপি গ্রিড বোতাম */
-.extra-grid-buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 12px;
+/* ক্যাটাগরি প্যানেলের ইউনিফাইড ডিজাইন */
+.category-panel-box { 
+    background: var(--card-surface); 
+    border-radius: 12px; 
+    padding: 20px; 
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
-.grid-btn-item {
-    background-color: #201b3d;
-    border: 1px solid #2e2854;
-    border-radius: 8px;
-    padding: 12px;
-    text-align: center;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-}
-.grid-icon { font-size: 18px; }
-.grid-txt { font-size: 12px; font-weight: bold; color: #ffffff; }
+.box-header-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid #252244; padding-bottom: 10px; }
+.box-header-title h3 { font-size: 15px; font-weight: bold; color: #ffffff; display: flex; align-items: center; gap: 8px; }
 
-/* অতিরিক্ত লিস্ট আইটেম */
-.extra-list-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-.extra-list-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px;
-    background-color: #131124;
-    border-radius: 6px;
-    cursor: pointer;
-}
-.item-left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 13px;
-    color: #e2e0f0;
-}
-.list-icon { font-size: 14px; }
-.item-right { color: #494569; font-size: 11px; }
+/* ৩×৩ গেম স্পেসিফিক এলিমেন্ট */
+.bet-input-wrapper { display: flex; border: 1px solid #3d376e; border-radius: 6px; overflow: hidden; background: var(--input-bg); }
+.bet-input-wrapper input { background: transparent; border: none; color: #fff; padding: 8px; width: 75px; text-align: center; font-size: 14px; outline: none; }
+.bet-label-btn { background: #2d2952; color: var(--primary-glow); border: none; padding: 0 12px; font-weight: bold; }
 
-/* ল্যাঙ্গুয়েজ মডাল পপআপ */
-.modal-overlay {
-    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-    background-color: rgba(0, 0, 0, 0.75); display: none; align-items: center; justify-content: center; z-index: 3000;
-}
+.grid-3x3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 340px; margin: 0 auto; }
+.grid-box { aspect-ratio: 1; background: #252142; border: 2px solid #373261; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; }
+.grid-box:hover { background: #2f2b54; border-color: var(--primary-glow); }
+.box-icon { font-size: 26px; color: #615b8f; }
+
+.win-anim { background: linear-gradient(145deg, #1e462f, #2e7d48) !important; border-color: var(--win-green) !important; animation: bounce 0.4s ease infinite alternate; }
+.loss-style { background: #2b1822 !important; border-color: var(--loss-red) !important; }
+@keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-5px); } }
+.game-status-msg { text-align: center; margin-top: 15px; font-size: 13px; color: #a9a6c4; font-weight: 500; }
+
+/* লাইভ চ্যাট প্যানেল স্টাইল */
+.chat-box-layout { height: 380px; display: flex; flex-direction: column; justify-content: space-between; }
+.chat-messages { flex: 1; padding: 5px 0; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
+.msg { background: #252142; padding: 8px 12px; border-radius: 6px; font-size: 13px; max-width: 90%; width: fit-content; }
+.msg .user { color: var(--primary-glow); font-weight: bold; margin-right: 4px; }
+.chat-input-area { display: flex; gap: 8px; background: var(--input-bg); padding: 6px; border-radius: 8px; border: 1px solid #252244; }
+.chat-input-area input { flex: 1; background: transparent; border: none; padding: 8px; color: #fff; outline: none; font-size: 13px; }
+.chat-input-area button { background: var(--primary-glow); color: #000; border: none; padding: 0 14px; border-radius: 6px; cursor: pointer; }
+
+/* ৫. একই প্রিমিয়াম স্টাইলের মোডাল উইন্ডো (Login/Register Same Style) */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.85); display: none; align-items: center; justify-content: center; z-index: 3000; backdrop-filter: blur(3px); }
 .modal-overlay.active { display: flex; }
-.modal-box { background-color: #1a172e; width: 90%; max-width: 360px; border-radius: 12px; border: 1px solid #2b274c; padding: 20px; }
-.modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #231f3f; padding-bottom: 12px; margin-bottom: 16px; }
-.modal-header h3 { font-size: 16px; color: #ffffff; }
+.modal-box { background-color: var(--card-surface); width: 92%; max-width: 360px; border-radius: 12px; border: 1px solid var(--primary-glow); padding: 24px 20px; box-shadow: 0 0 20px rgba(255, 202, 8, 0.2); }
+.modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #252244; padding-bottom: 12px; margin-bottom: 20px; }
+.modal-header h3 { font-size: 16px; color: #fff; font-weight: bold; }
 .close-modal-btn { background: none; border: none; color: #a9a6c4; font-size: 18px; cursor: pointer; }
 
-.lang-selection-container { display: flex; flex-direction: column; gap: 10px; }
-.lang-row-option { display: flex; justify-content: space-between; align-items: center; padding: 12px 14px; background-color: #211e3b; border-radius: 8px; cursor: pointer; }
-.lang-row-option.selected { background-color: #29244d; border: 1px solid #ffca08; }
-.lang-info { display: flex; align-items: center; gap: 10px; }
-.flag-icon { font-size: 18px; }
-.lang-text-label { font-size: 13px; font-weight: bold; }
-.status-tick { color: #48bb78; font-weight: bold; }
+/* মোডাল ইনপুট গ্রুপ */
+.auth-form { display: flex; flex-direction: column; gap: 14px; }
+.input-container { position: relative; display: flex; align-items: center; background: var(--input-bg); border: 1px solid #312a52; border-radius: 8px; padding: 0 12px; }
+.input-icon { color: var(--primary-glow); font-size: 14px; width: 20px; }
+.auth-form input { width: 100%; background: transparent; border: none; padding: 12px 6px; color: #fff; outline: none; font-size: 14px; }
+.auth-submit-btn { width: 100%; padding: 12px; background: var(--primary-glow); color: #000; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 14px; margin-top: 5px; transition: 0.2s; }
+.auth-submit-btn:strong { transform: scale(0.98); }
+
+/* মোবাইল ফিক্সড বটম নেভিগেশন */
+.fixed-bottom-nav { position: fixed; bottom: 0; left: 0; width: 100vw; height: 62px; background-color: #0d0b1a; border-top: 1px solid #1f1b3a; display: flex; justify-content: space-around; align-items: center; z-index: 2000; }
+.nav-item { color: #a9a6c4; text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 11px; gap: 3px; }
+.nav-item i { font-size: 18px; }
+.nav-item.active, .nav-item:hover { color: var(--primary-glow); }
+
+/* অ্যাডমিন ড্যাোর্ড */
+.admin-panel-box { display: none; margin-top: 16px; background: #090812; border: 2px dashed #3e386e; }
+.admin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.admin-card { background: var(--card-surface); padding: 14px; border-radius: 8px; border: 1px solid #252244; }
+.admin-card h5 { color: #8f8ba8; margin-bottom: 4px; font-size: 13px; }
+.admin-card p { font-size: 18px; font-weight: bold; }
