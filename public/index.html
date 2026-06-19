@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BIKASH88</title>
+    <title>BIKASH88 - Premium Ultimate Gaming</title>
     <link rel="stylesheet" href="bikash88.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
@@ -19,6 +20,8 @@
             <div class="logo">BIKASH88</div>
             
             <div class="header-right-actions">
+                <button class="btn-auth btn-login" onclick="openAuthModal('loginModal')">লগইন</button>
+                <button class="btn-auth btn-register" onclick="openAuthModal('registerModal')">সাইন আপ</button>
                 <div class="currency-badge">
                     <span class="flag">🇧🇩</span> ৳ BDT
                 </div>
@@ -41,8 +44,7 @@
                 <a href="#"><span class="nav-icon">🎲</span> টেবিল গেম</a>
                 <a href="#"><span class="nav-icon">✈️</span> ক্র্যাশ</a>
                 <a href="#"><span class="nav-icon">⚽</span> স্পোর্টস</a>
-                <a href="#"><span class="nav-icon">🐟</span> মাছ ধরা</a>
-                <a href="#"><span class="nav-icon">🎱</span> লটারি</a>
+                <a href="#" onclick="toggleAdminPanel()"><span class="nav-icon">🛡️</span> অ্যাডমিন প্যানেল</a>
             </nav>
 
             <div class="sidebar-extra-section">
@@ -56,22 +58,9 @@
                         <span class="grid-txt">ভিআইপি</span>
                     </div>
                 </div>
-
                 <div class="extra-list-menu">
-                    <div class="extra-list-item">
-                        <div class="item-left"><span class="list-icon">🎁</span> অতিরিক্ত পুরস্কার</div>
-                        <div class="item-right">❯</div>
-                    </div>
                     <div class="extra-list-item" onclick="openMobileLangModal()">
                         <div class="item-left"><span class="list-icon">🌐</span> ভাষা</div>
-                        <div class="item-right">❯</div>
-                    </div>
-                    <div class="extra-list-item">
-                        <div class="item-left"><span class="list-icon">💬</span> গ্রাহক সেবা</div>
-                        <div class="item-right">❯</div>
-                    </div>
-                    <div class="extra-list-item">
-                        <div class="item-left"><span class="list-icon">📥</span> ডাউনলোড করুন</div>
                         <div class="item-right">❯</div>
                     </div>
                 </div>
@@ -80,67 +69,134 @@
     </div>
 
     <main class="main-container">
+        
         <div class="profile-layout-wrapper">
             <div class="profile-user-card">
                 <div class="user-avatar-box">👤</div>
                 <div class="user-info-text">
-                    <h2>bhai88_user</h2>
+                    <h2>bikash88_player</h2>
                     <span class="vip-tag">VIP 1</span>
-                    <div class="balance-display">প্রধান ব্যালেন্স: <span>৳ 0.00</span></div>
+                    <div class="balance-display">প্রধান ব্যালেন্স: <span id="userBalance">৳ 500.00</span></div>
                 </div>
             </div>
+        </div>
 
-            <section class="premium-settings-panel">
-                <div class="settings-row">
-                    <div class="row-left"><span class="setting-icon">ℹ️</span>个人资料 / ব্যক্তিগত তথ্য</div>
-                    <div class="row-right">❯</div>
+        <div class="gaming-workspace">
+            
+            <section class="category-panel-box">
+                <div class="box-header-title">
+                    <h3><i class="fas fa-dice-d6"></i> ৩×৩ লাকি বক্স গেম</h3>
+                    <div class="bet-input-wrapper">
+                        <input type="number" id="betAmount" value="100" min="10">
+                        <button class="bet-label-btn">BDT</button>
+                    </div>
                 </div>
-                <div class="settings-row">
-                    <div class="row-left"><span class="setting-icon">🛡️</span>অ্যাকাউন্ট সিকিউরিটি</div>
-                    <div class="row-right">❯</div>
+                
+                <div class="grid-3x3" id="gameGrid">
+                    </div>
+                <div id="gameStatus" class="game-status-msg">যেকোনো একটি বক্সে ক্লিক করে বেট ধরুন</div>
+            </section>
+
+            <section class="category-panel-box chat-box-layout">
+                <div class="box-header-title">
+                    <h3><i class="fas fa-comments"></i> লাইভ চ্যাট রুম</h3>
                 </div>
-                <div class="settings-row">
-                    <div class="row-left"><span class="setting-icon">📊</span>ট্রানজেকশন রেকর্ড</div>
-                    <div class="row-right">❯</div>
+                <div class="chat-messages" id="chatMessages">
+                    <div class="msg"><span class="user">সিস্টেম:</span> বিকাশ৮৮ লাইভ চ্যাটে স্বাগতম!</div>
                 </div>
-                <div class="settings-row">
-                    <div class="row-left"><span class="setting-icon">🎁</span>রিওয়ার্ড পয়েন্ট</div>
-                    <div class="row-right">❯</div>
-                </div>
-                <div class="settings-row" onclick="openMobileLangModal()">
-                    <div class="row-left"><span class="setting-icon">🌐</span>语言 / ভাষা (Language)</div>
-                    <div class="row-right"><span class="current-lang-txt">বাংলা (BD)</span> ❯</div>
+                <div class="chat-input-area">
+                    <input type="text" id="chatInput" placeholder="এখানে কিছু লিখুন..." onkeypress="if(event.key === 'Enter') sendChatMessage()">
+                    <button onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
                 </div>
             </section>
         </div>
+
+        <section class="category-panel-box admin-panel-box" id="adminPanel">
+            <div class="box-header-title">
+                <h3><i class="fas fa-shield-alt"></i> বিকাশ৮৮ কন্ট্রোল সেন্টার</h3>
+            </div>
+            <div class="admin-grid">
+                <div class="admin-card"><h5>অনলাইন ইউজার</h5><p>১,৫২০ জন</p></div>
+                <div class="admin-card"><h5>টোটাল লাইভ বেট</h5><p>৳ ৮২,৪০০</p></div>
+                <div class="admin-card"><h5>উইন রেট (অ্যালগরিদম)</h5><p style="color: #48bb78;">স্বয়ংক্রিয় (৩৫%)</p></div>
+            </div>
+        </section>
+
     </main>
+
+    <div class="fixed-bottom-nav">
+        <a href="#" class="nav-item active"><i class="fas fa-home"></i><span>হোম</span></a>
+        <a href="#" class="nav-item"><i class="fas fa-wallet"></i><span>ডিপোজিট</span></a>
+        <a href="#" class="nav-item promotion-center"><i class="fas fa-gift"></i><span>অফার</span></a>
+        <a href="#" class="nav-item"><i class="fas fa-headset"></i><span>সাপোর্ট</span></a>
+        <a href="#" class="nav-item" onclick="toggleMobileSidebar(event)"><i class="fas fa-bars"></i><span>মেনু</span></a>
+    </div>
+
+    <div id="loginModal" class="modal-overlay" onclick="closeAuthModals()">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3>অ্যাকাউন্টে লগইন করুন</h3>
+                <button class="close-modal-btn" onclick="closeAuthModals()">✕</button>
+            </div>
+            <div class="auth-form">
+                <div class="input-container">
+                    <i class="fas fa-user input-icon"></i>
+                    <input type="text" placeholder="ইউজারনেম বা ফোন নম্বর">
+                </div>
+                <div class="input-container">
+                    <i class="fas fa-lock input-icon"></i>
+                    <input type="password" placeholder="পাসওয়ার্ড">
+                </div>
+                <button class="auth-submit-btn" onclick="closeAuthModals()">লগইন নিশ্চিত করুন</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal-overlay" onclick="closeAuthModals()">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3>নতুন অ্যাকাউন্ট খুলুন</h3>
+                <button class="close-modal-btn" onclick="closeAuthModals()">✕</button>
+            </div>
+            <div class="auth-form">
+                <div class="input-container">
+                    <i class="fas fa-user-plus input-icon"></i>
+                    <input type="text" placeholder="ইউজারনেম (ইংরেজি)">
+                </div>
+                <div class="input-container">
+                    <i class="fas fa-phone input-icon"></i>
+                    <input type="text" placeholder="বিকাশ / নগদ নম্বর">
+                </div>
+                <div class="input-container">
+                    <i class="fas fa-lock input-icon"></i>
+                    <input type="password" placeholder="পাসওয়ার্ড সেট করুন">
+                </div>
+                <button class="auth-submit-btn" onclick="closeAuthModals()">রেজিস্ট্রেশন সম্পন্ন করুন</button>
+            </div>
+        </div>
+    </div>
 
     <div id="mobile-lang-modal" class="modal-overlay" onclick="closeMobileLangModal()">
         <div class="modal-box" onclick="event.stopPropagation()">
             <div class="modal-header">
-                <h3>ভাষা নির্বাচন করুন</h3>
+                <h3>ভাষা পরিবর্তন করুন</h3>
                 <button class="close-modal-btn" onclick="closeMobileLangModal()">✕</button>
             </div>
             <div class="lang-selection-container">
                 <div class="lang-row-option selected" onclick="closeMobileLangModal()">
-                    <div class="lang-info">
-                        <span class="flag-icon">🇧🇩</span>
-                        <span class="lang-text-label">বাংলা</span>
-                    </div>
+                    <div class="lang-info"><span class="flag-icon">🇧🇩</span><span class="lang-text-label">বাংলা</span></div>
                     <span class="status-tick">✓</span>
-                </div>
-                <div class="lang-row-option" onclick="closeMobileLangModal()">
-                    <div class="lang-info">
-                        <span class="flag-icon">🇬🇧</span>
-                        <span class="lang-text-label">English</span>
-                    </div>
-                    <span class="status-tick"></span>
                 </div>
             </div>
         </div>
     </div>
 
+    <script src="/socket.io/socket.io.js"></script>
     <script>
+        const socket = io();
+        let myUsername = "প্লেয়ার_" + Math.floor(Math.random() * 9000 + 1000);
+        let currentBalance = 500.00;
+
         function toggleMobileSidebar(e) {
             if(e) e.stopPropagation();
             document.getElementById('mobile-sidebar').classList.toggle('open');
@@ -148,12 +204,87 @@
         function closeSidebarMenu() {
             document.getElementById('mobile-sidebar').classList.remove('open');
         }
-        function openMobileLangModal() {
-            document.getElementById('mobile-lang-modal').classList.add('active');
+        function openAuthModal(id) { document.getElementById(id).classList.add('active'); }
+        function closeAuthModals() {
+            document.getElementById('loginModal').classList.remove('active');
+            document.getElementById('registerModal').classList.remove('active');
         }
-        function closeMobileLangModal() {
-            document.getElementById('mobile-lang-modal').classList.remove('active');
+        function openMobileLangModal() { document.getElementById('mobile-lang-modal').classList.add('active'); }
+        function closeMobileLangModal() { document.getElementById('mobile-lang-modal').classList.remove('active'); }
+
+        const gameGrid = document.getElementById('gameGrid');
+        function generateGrid() {
+            gameGrid.innerHTML = '';
+            for(let i=0; i<9; i++) {
+                const box = document.createElement('div');
+                box.classList.add('grid-box');
+                box.dataset.index = i;
+                box.innerHTML = '<i class="fas fa-box-open box-icon"></i>';
+                box.addEventListener('click', () => submitBet(i, box));
+                gameGrid.appendChild(box);
+            }
         }
+
+        function submitBet(index, element) {
+            const amount = Number(document.getElementById('betAmount').value);
+            if(amount <= 0 || amount > currentBalance) {
+                alert('দুঃখিত! পর্যাপ্ত ব্যালেন্স নেই বা ভুল অ্যামাউন্ট দিয়েছেন।');
+                return;
+            }
+            currentBalance -= amount;
+            document.getElementById('userBalance').innerText = `৳ ${currentBalance.toFixed(2)}`;
+            socket.emit('placeBet', { index: index, amount: amount });
+        }
+
+        socket.on('gameResult', (data) => {
+            const boxes = document.querySelectorAll('.grid-box');
+            boxes.forEach((box, idx) => {
+                box.style.pointerEvents = 'none';
+                if(data.winPositions.includes(idx)) {
+                    box.classList.add('win-anim');
+                    box.innerHTML = '<i class="fas fa-gem" style="color: #ffca08;"></i>';
+                } else {
+                    box.classList.add('loss-style');
+                    box.innerHTML = '<i class="fas fa-times" style="color: #ef4444;"></i>';
+                }
+            });
+
+            if(data.isWin) {
+                currentBalance += data.payout;
+                document.getElementById('userBalance').innerText = `৳ ${currentBalance.toFixed(2)}`;
+            }
+            document.getElementById('gameStatus').innerText = data.message;
+            
+            setTimeout(() => {
+                generateGrid();
+                document.getElementById('gameStatus').innerText = 'যেকোনো একটি বক্সে ক্লিক করে বেট ধরুন';
+            }, 3500);
+        });
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            if(input.value.trim() !== '') {
+                socket.emit('chatMessage', { user: myUsername, text: input.value });
+                input.value = '';
+            }
+        }
+
+        socket.on('chatMessage', (data) => {
+            const chatBox = document.getElementById('chatMessages');
+            const msgNode = document.createElement('div');
+            msgNode.classList.add('msg');
+            msgNode.innerHTML = `<span class="user">${data.user}:</span> ${data.text}`;
+            chatBox.appendChild(msgNode);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        });
+
+        function toggleAdminPanel() {
+            const panel = document.getElementById('adminPanel');
+            panel.style.display = (panel.style.display === 'block') ? 'none' : 'block';
+            closeSidebarMenu();
+        }
+
+        generateGrid();
     </script>
 </body>
 </html>
